@@ -3,148 +3,264 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HOTA 師徒成長計畫 S1 ・ 巡檢報告</title>
+<title>HOTA 師徒成長計畫 S1 巡查報告</title>
 <style>
-  :root{--bg:#0f1115;--panel:#181b22;--panel2:#1f232c;--line:#2a2f3a;--txt:#e8ebf0;--muted:#9aa3b2;--accent:#ff2d55;--accent2:#4f8cff;--gold:#ffcf4d;--green:#39d98a;--red:#ff5c5c;--orange:#ff9f43}
+  :root{
+    --bg:#0f1115; --panel:#181b22; --panel2:#1f232c; --line:#2a2f3a;
+    --txt:#e8ebf0; --muted:#9aa3b2; --accent:#ff2d55; --accent2:#4f8cff;
+    --gold:#ffcf4d; --green:#39d98a; --red:#ff5c5c; --orange:#ff9f43;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang TC","Microsoft JhengHei",Segoe UI,sans-serif;line-height:1.6;padding:32px 20px 80px}
   .wrap{max-width:1080px;margin:0 auto}
   header{text-align:center;padding:28px 0 18px;border-bottom:1px solid var(--line);margin-bottom:28px}
   header h1{font-size:26px;letter-spacing:1px}
   header .sub{color:var(--muted);font-size:14px;margin-top:6px}
+  .badge{display:inline-block;background:var(--green);color:#06281a;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:10px}
   h2{font-size:19px;margin:38px 0 14px;padding-left:12px;border-left:4px solid var(--accent);display:flex;align-items:center;gap:8px}
   h2 .n{background:var(--accent);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:16px;overflow-x:auto}
   table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
   th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line)}
   th:first-child,td:first-child{text-align:left}
-  thead th{color:var(--muted);font-weight:600;background:var(--panel2)}
+  thead th{color:var(--muted);font-weight:600;background:var(--panel2);position:sticky;top:0}
   tbody tr:hover{background:var(--panel2)}
+  .rk{font-weight:700;color:var(--gold)}
   .pos{color:var(--green)} .neg{color:var(--red)}
+  .tag{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600}
+  .tag.lead{background:#3a2a00;color:var(--gold)}
+  .tag.master{background:#2a1a3a;color:#c8a8ff}
+  .tag.app{background:#10202f;color:var(--accent2)}
+  .tag.warn{background:#3a1500;color:var(--orange)}
+  .tag.danger{background:#3a0000;color:var(--red)}
+  /* 11 種狀態各一種獨立顏色 */
+  .tag.t-bangshou{background:#3a2a00;color:#ffcf4d}
+  .tag.t-zhuigan{background:#0e2a4d;color:#60a5fa}
+  .tag.t-hexin{background:#06302c;color:#2dd4bf}
+  .tag.t-zhanbi{background:#3a1f00;color:#fb923c}
+  .tag.t-junheng{background:#06301f;color:#34d399}
+  .tag.t-channeng{background:#260a3a;color:#c084fc}
+  .tag.t-changxian{background:#3a0a26;color:#f472b6}
+  .tag.t-wenjian{background:#062b33;color:#22d3ee}
+  .tag.t-wenbu{background:#161a3a;color:#a5b4fc}
+  .tag.t-dabiao{background:#322600;color:#fbbf24}
+  .tag.t-yidacheng{background:#06301c;color:#4ade80}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:4px 10px}
+  .chip i{width:10px;height:10px;border-radius:3px;display:inline-block}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
   .stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px}
   .stat .k{color:var(--muted);font-size:12px}
   .stat .v{font-size:24px;font-weight:700;margin-top:4px}
+  .stat .v small{font-size:13px;color:var(--muted);font-weight:400}
   .note{background:var(--panel2);border-left:3px solid var(--accent2);padding:12px 16px;border-radius:8px;color:var(--muted);font-size:13px;margin:10px 0}
+  .alert{display:flex;gap:12px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:10px}
+  .alert .ic{font-size:18px}
+  .alert b{color:var(--txt)}
+  ul.rec{list-style:none}
+  ul.rec li{padding:10px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px}
+  ul.rec li:before{content:"▸";color:var(--accent)}
+  .star{background:linear-gradient(135deg,#1a1d26,#241a2e);border:1px solid var(--gold);border-radius:14px;padding:18px}
+  .star h3{color:var(--gold);font-size:16px;margin-bottom:6px}
+  .pill{display:inline-block;background:var(--gold);color:#2a1d00;font-weight:700;font-size:12px;padding:2px 9px;border-radius:20px;margin-left:6px}
   footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
+  .src{font-size:12px;color:var(--muted)}
+  .src a{color:var(--accent2)}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
   <h1>HOTA 師徒成長計畫 S1 ・ 巡檢報告</h1>
-  <div class="sub">資料截止: 2026/7/11 下午9:21:42 ｜ 活動期間: 2026-07-09 ~ 2026-07-31 ｜ 已過 3 天 / 剩餘 20 天</div>
-  <div class="note" style="display:inline-block;margin-top:12px">✓ 透過 Edge 真實 session 自動抓取 TikTok LIVE Backstage</div>
+  <div class="sub">資料截止：2026-07-10 23:44 (GMT+8) ｜ 活動期間：07/09 ~ 07/31 ｜ 剩餘 21 天</div>
+  <div class="badge">✓ 已登入 TikTok LIVE Backstage（透過 Edge 真實 session）</div>
+  <div class="legend">
+    <span class="chip"><i style="background:#ffcf4d"></i>榜首</span>
+    <span class="chip"><i style="background:#60a5fa"></i>追趕中</span>
+    <span class="chip"><i style="background:#2dd4bf"></i>核心主力</span>
+    <span class="chip"><i style="background:#fb923c"></i>師傅佔比偏高</span>
+    <span class="chip"><i style="background:#34d399"></i>均衡</span>
+    <span class="chip"><i style="background:#c084fc"></i>產能尚有提升空間</span>
+    <span class="chip"><i style="background:#f472b6"></i>長線目標</span>
+    <span class="chip"><i style="background:#22d3ee"></i>穩健推進</span>
+    <span class="chip"><i style="background:#a5b4fc"></i>穩步累積</span>
+    <span class="chip"><i style="background:#fbbf24"></i>達標在望</span>
+    <span class="chip"><i style="background:#4ade80"></i>✅ 已達成</span>
+  </div>
 </header>
 
-<h2><span class="n">1</span>戰隊積分排名 (活動期間)</h2>
-<div class="card"><table><thead><tr><th>排名</th><th>戰隊</th><th>師傅</th><th>隊員數</th><th>活動積分</th><th>7月總鑽石</th><th>師傅佔比</th></tr></thead><tbody>
-<tr><td>1</td><td>丁丁 戰隊</td><td>ccc99999ccc</td><td>6</td><td><b>1,283,124</b></td><td>1,170,813</td><td class="pos">46.0%</td></tr>
-<tr><td>2</td><td>維維 戰隊</td><td>saxwei</td><td>5</td><td><b>635,647</b></td><td>1,159,687</td><td class="neg">87.1%</td></tr>
-<tr><td>3</td><td>YoYo 戰隊</td><td>yoyo_cello</td><td>5</td><td><b>618,850</b></td><td>819,840</td><td class="pos">52.2%</td></tr>
-<tr><td>4</td><td>Mina 戰隊</td><td>minaloveu2</td><td>5</td><td><b>532,340</b></td><td>854,683</td><td class="neg">89.7%</td></tr>
-</tbody></table></div>
-<h2><span class="n">2</span>21 位主播 7 月鑽石一覽</h2>
-<div class="card"><table><thead><tr><th>主播</th><th>戰隊</th><th>角色</th><th>6月</th><th>7月(截至本日)</th><th>較6月</th><th>本月層級</th><th>升級門檻</th><th>達標率</th></tr></thead><tbody>
-<tr><td>saxwei</td><td>維維</td><td>師傅</td><td>3,325,099</td><td><b>1,010,610</b></td><td class="neg">-2,314,489</td><td>7(&gt;=1m)</td><td>5,000,000</td><td class="neg">20%</td></tr>
-<tr><td>minaloveu2</td><td>Mina</td><td>師傅</td><td>7,032,220</td><td><b>766,844</b></td><td class="neg">-6,265,376</td><td>6(&lt;1m)</td><td>5,000,000</td><td class="neg">15%</td></tr>
-<tr><td>ccc99999ccc</td><td>丁丁</td><td>師傅</td><td>51,832</td><td><b>538,968</b></td><td class="pos">+487,136</td><td>5(&lt;700k)</td><td>200,000</td><td class="pos">269%</td></tr>
-<tr><td>yoyo_cello</td><td>YoYo</td><td>師傅</td><td>1,190,751</td><td><b>427,678</b></td><td class="neg">-763,073</td><td>4(&lt;500k)</td><td>1,600,000</td><td class="neg">27%</td></tr>
-<tr><td>yyyy8888aaaa</td><td>丁丁</td><td>徒弟</td><td>413,259</td><td><b>375,391</b></td><td class="neg">-37,868</td><td>4(&lt;500k)</td><td>500,000</td><td class="">75%</td></tr>
-<tr><td>tongtong3131</td><td>YoYo</td><td>徒弟</td><td>412,199</td><td><b>313,295</b></td><td class="neg">-98,904</td><td>4(&lt;500k)</td><td>500,000</td><td class="">63%</td></tr>
-<tr><td>samting70</td><td>丁丁</td><td>徒弟</td><td>1,195,025</td><td><b>191,293</b></td><td class="neg">-1,003,732</td><td>2(&lt;200k)</td><td>1,600,000</td><td class="neg">12%</td></tr>
-<tr><td>ice_m01</td><td>維維</td><td>徒弟</td><td>355,479</td><td><b>60,525</b></td><td class="neg">-294,954</td><td>1(&lt;100k)</td><td>500,000</td><td class="neg">12%</td></tr>
-<tr><td>yang_mie00</td><td>Mina</td><td>徒弟</td><td>73,126</td><td><b>57,041</b></td><td class="neg">-16,085</td><td>1(&lt;100k)</td><td>100,000</td><td class="">57%</td></tr>
-<tr><td>crystal520530</td><td>YoYo</td><td>徒弟</td><td>215,483</td><td><b>50,060</b></td><td class="neg">-165,423</td><td>1(&lt;100k)</td><td>300,000</td><td class="neg">17%</td></tr>
-<tr><td>peggyhuang0622</td><td>維維</td><td>徒弟</td><td>486,852</td><td><b>33,883</b></td><td class="neg">-452,969</td><td>1(&lt;100k)</td><td>500,000</td><td class="neg">7%</td></tr>
-<tr><td>love_atj</td><td>維維</td><td>徒弟</td><td>368,665</td><td><b>31,829</b></td><td class="neg">-336,836</td><td>1(&lt;100k)</td><td>500,000</td><td class="neg">6%</td></tr>
-<tr><td>in26222595</td><td>丁丁</td><td>徒弟</td><td>371,581</td><td><b>29,501</b></td><td class="neg">-342,080</td><td>1(&lt;100k)</td><td>500,000</td><td class="neg">6%</td></tr>
-<tr><td>1998._.07_08_</td><td>丁丁</td><td>徒弟</td><td>79,783</td><td><b>27,305</b></td><td class="neg">-52,478</td><td>1(&lt;100k)</td><td>200,000</td><td class="neg">14%</td></tr>
-<tr><td>2003_0212</td><td>維維</td><td>徒弟</td><td>299,826</td><td><b>22,840</b></td><td class="neg">-276,986</td><td>1(&lt;100k)</td><td>300,000</td><td class="neg">8%</td></tr>
-<tr><td>user1cdtm85cdl</td><td>YoYo</td><td>徒弟</td><td>268,693</td><td><b>19,341</b></td><td class="neg">-249,352</td><td>1(&lt;100k)</td><td>300,000</td><td class="neg">6%</td></tr>
-<tr><td>carysonhuang</td><td>Mina</td><td>徒弟</td><td>161,265</td><td><b>17,115</b></td><td class="neg">-144,150</td><td>1(&lt;100k)</td><td>200,000</td><td class="neg">9%</td></tr>
-<tr><td>tizzy1334</td><td>YoYo</td><td>徒弟</td><td>232,915</td><td><b>9,466</b></td><td class="neg">-223,449</td><td>1(&lt;100k)</td><td>300,000</td><td class="neg">3%</td></tr>
-<tr><td>kimmy202106</td><td>Mina</td><td>徒弟</td><td>0</td><td><b>9,079</b></td><td class="pos">+9,079</td><td>1(&lt;100k)</td><td>100,000</td><td class="neg">9%</td></tr>
-<tr><td>jackson_860904</td><td>丁丁</td><td>徒弟</td><td>64,633</td><td><b>8,355</b></td><td class="neg">-56,278</td><td>1(&lt;100k)</td><td>200,000</td><td class="neg">4%</td></tr>
-<tr><td>show2266</td><td>Mina</td><td>徒弟</td><td>379,491</td><td><b>4,604</b></td><td class="neg">-374,887</td><td>1(&lt;100k)</td><td>500,000</td><td class="neg">1%</td></tr>
-</tbody></table></div>
-<h2><span class="n">3</span>戰隊明細 (師傅 + 徒弟)</h2>
-<h3 style="color:var(--gold);font-size:15px;margin:20px 0 8px">丁丁 戰隊 (總積分 1,283,124)</h3>
-<div class="card"><table><thead><tr><th>成員</th><th>角色</th><th>7月鑽石</th><th>佔比</th><th>活動積分</th><th>PK鑽石</th><th>有效天</th><th>新粉團</th></tr></thead><tbody>
-<tr><td><b>ccc99999ccc</b> ★</td><td>師傅</td><td><b>538,968</b></td><td>46.0%</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>yyyy8888aaaa</td><td>徒弟</td><td>375,391</td><td>32.1%</td><td>194,775</td><td>50,623</td><td>3</td><td>149</td></tr>
-<tr><td>in26222595</td><td>徒弟</td><td>29,501</td><td>2.5%</td><td>61,394</td><td>29,612</td><td>3</td><td>1</td></tr>
-<tr><td>samting70</td><td>徒弟</td><td>191,293</td><td>16.3%</td><td>328,700</td><td>132,667</td><td>3</td><td>88</td></tr>
-<tr><td>1998._.07_08_</td><td>徒弟</td><td>27,305</td><td>2.3%</td><td>33,824</td><td>236</td><td>3</td><td>136</td></tr>
-<tr><td>jackson_860904</td><td>徒弟</td><td>8,355</td><td>0.7%</td><td>12,825</td><td>0</td><td>3</td><td>79</td></tr>
-</tbody></table></div>
-<h3 style="color:var(--gold);font-size:15px;margin:20px 0 8px">維維 戰隊 (總積分 635,647)</h3>
-<div class="card"><table><thead><tr><th>成員</th><th>角色</th><th>7月鑽石</th><th>佔比</th><th>活動積分</th><th>PK鑽石</th><th>有效天</th><th>新粉團</th></tr></thead><tbody>
-<tr><td><b>saxwei</b> ★</td><td>師傅</td><td><b>1,010,610</b></td><td>87.1%</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>peggyhuang0622</td><td>徒弟</td><td>33,883</td><td>2.9%</td><td>52,820</td><td>16,212</td><td>2</td><td>19</td></tr>
-<tr><td>love_atj</td><td>徒弟</td><td>31,829</td><td>2.7%</td><td>49,688</td><td>11,199</td><td>3</td><td>152</td></tr>
-<tr><td>ice_m01</td><td>徒弟</td><td>60,525</td><td>5.2%</td><td>93,841</td><td>21,154</td><td>3</td><td>333</td></tr>
-<tr><td>2003_0212</td><td>徒弟</td><td>22,840</td><td>2.0%</td><td>27,090</td><td>0</td><td>2</td><td>95</td></tr>
-</tbody></table></div>
-<h3 style="color:var(--gold);font-size:15px;margin:20px 0 8px">YoYo 戰隊 (總積分 618,850)</h3>
-<div class="card"><table><thead><tr><th>成員</th><th>角色</th><th>7月鑽石</th><th>佔比</th><th>活動積分</th><th>PK鑽石</th><th>有效天</th><th>新粉團</th></tr></thead><tbody>
-<tr><td><b>yoyo_cello</b> ★</td><td>師傅</td><td><b>427,678</b></td><td>52.2%</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>tongtong3131</td><td>徒弟</td><td>313,295</td><td>38.2%</td><td>190,243</td><td>69,840</td><td>3</td><td>8</td></tr>
-<tr><td>user1cdtm85cdl</td><td>徒弟</td><td>19,341</td><td>2.4%</td><td>27,651</td><td>0</td><td>3</td><td>207</td></tr>
-<tr><td>tizzy1334</td><td>徒弟</td><td>9,466</td><td>1.2%</td><td>15,877</td><td>4,223</td><td>1</td><td>47</td></tr>
-<tr><td>crystal520530</td><td>徒弟</td><td>50,060</td><td>6.1%</td><td>53,778</td><td>361</td><td>3</td><td>41</td></tr>
-</tbody></table></div>
-<h3 style="color:var(--gold);font-size:15px;margin:20px 0 8px">Mina 戰隊 (總積分 532,340)</h3>
-<div class="card"><table><thead><tr><th>成員</th><th>角色</th><th>7月鑽石</th><th>佔比</th><th>活動積分</th><th>PK鑽石</th><th>有效天</th><th>新粉團</th></tr></thead><tbody>
-<tr><td><b>minaloveu2</b> ★</td><td>師傅</td><td><b>766,844</b></td><td>89.7%</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>show2266</td><td>徒弟</td><td>4,604</td><td>0.5%</td><td>7,546</td><td>1</td><td>3</td><td>28</td></tr>
-<tr><td>carysonhuang</td><td>徒弟</td><td>17,115</td><td>2.0%</td><td>31,302</td><td>9,727</td><td>2</td><td>102</td></tr>
-<tr><td>kimmy202106</td><td>徒弟</td><td>9,079</td><td>1.1%</td><td>13,983</td><td>2,114</td><td>3</td><td>23</td></tr>
-<tr><td>yang_mie00</td><td>徒弟</td><td>57,041</td><td>6.7%</td><td>80,201</td><td>21,565</td><td>2</td><td>5</td></tr>
-</tbody></table></div>
-<h2><span class="n">4</span>升級進度 (距離下一級還差多少)</h2>
-<div class="card"><table><thead><tr><th>主播</th><th>戰隊</th><th>6月層級</th><th>7月累計</th><th>下一級</th><th>還差</th><th>日均需</th></tr></thead><tbody>
-<tr><td>saxwei</td><td>維維</td><td>9(&gt;=2.5m)</td><td>1,010,610</td><td>Lv10 (5,000,000)</td><td class="neg">3,989,390</td><td>199,469</td></tr>
-<tr><td>minaloveu2</td><td>Mina</td><td>10(&gt;=5m)</td><td>766,844</td><td>Lv11 (99,999,999)</td><td class="neg">99,233,155</td><td>4,961,657</td></tr>
-<tr><td>ccc99999ccc</td><td>丁丁</td><td>2(&lt;200k)</td><td>538,968</td><td>Lv3 (200,000)</td><td class="pos">✅ 已達</td><td>-</td></tr>
-<tr><td>yoyo_cello</td><td>YoYo</td><td>7(&gt;=1m)</td><td>427,678</td><td>Lv8 (1,600,000)</td><td class="neg">1,172,322</td><td>58,616</td></tr>
-<tr><td>yyyy8888aaaa</td><td>丁丁</td><td>4(&lt;500k)</td><td>375,391</td><td>Lv5 (500,000)</td><td class="neg">124,609</td><td>6,230</td></tr>
-<tr><td>tongtong3131</td><td>YoYo</td><td>4(&lt;500k)</td><td>313,295</td><td>Lv5 (500,000)</td><td class="neg">186,705</td><td>9,335</td></tr>
-<tr><td>samting70</td><td>丁丁</td><td>7(&gt;=1m)</td><td>191,293</td><td>Lv8 (1,600,000)</td><td class="neg">1,408,707</td><td>70,435</td></tr>
-<tr><td>ice_m01</td><td>維維</td><td>4(&lt;500k)</td><td>60,525</td><td>Lv5 (500,000)</td><td class="neg">439,475</td><td>21,973</td></tr>
-<tr><td>yang_mie00</td><td>Mina</td><td>1(&lt;100k)</td><td>57,041</td><td>Lv2 (100,000)</td><td class="">42,959</td><td>2,147</td></tr>
-<tr><td>crystal520530</td><td>YoYo</td><td>3(&lt;300k)</td><td>50,060</td><td>Lv4 (300,000)</td><td class="neg">249,940</td><td>12,497</td></tr>
-<tr><td>peggyhuang0622</td><td>維維</td><td>4(&lt;500k)</td><td>33,883</td><td>Lv5 (500,000)</td><td class="neg">466,117</td><td>23,305</td></tr>
-<tr><td>love_atj</td><td>維維</td><td>4(&lt;500k)</td><td>31,829</td><td>Lv5 (500,000)</td><td class="neg">468,171</td><td>23,408</td></tr>
-<tr><td>in26222595</td><td>丁丁</td><td>4(&lt;500k)</td><td>29,501</td><td>Lv5 (500,000)</td><td class="neg">470,499</td><td>23,524</td></tr>
-<tr><td>1998._.07_08_</td><td>丁丁</td><td>2(&lt;200k)</td><td>27,305</td><td>Lv3 (200,000)</td><td class="neg">172,695</td><td>8,634</td></tr>
-<tr><td>2003_0212</td><td>維維</td><td>3(&lt;300k)</td><td>22,840</td><td>Lv4 (300,000)</td><td class="neg">277,160</td><td>13,858</td></tr>
-<tr><td>user1cdtm85cdl</td><td>YoYo</td><td>3(&lt;300k)</td><td>19,341</td><td>Lv4 (300,000)</td><td class="neg">280,659</td><td>14,032</td></tr>
-<tr><td>carysonhuang</td><td>Mina</td><td>2(&lt;200k)</td><td>17,115</td><td>Lv3 (200,000)</td><td class="neg">182,885</td><td>9,144</td></tr>
-<tr><td>tizzy1334</td><td>YoYo</td><td>3(&lt;300k)</td><td>9,466</td><td>Lv4 (300,000)</td><td class="neg">290,534</td><td>14,526</td></tr>
-<tr><td>kimmy202106</td><td>Mina</td><td>1(&lt;100k)</td><td>9,079</td><td>Lv2 (100,000)</td><td class="">90,921</td><td>4,546</td></tr>
-<tr><td>jackson_860904</td><td>丁丁</td><td>2(&lt;200k)</td><td>8,355</td><td>Lv3 (200,000)</td><td class="neg">191,645</td><td>9,582</td></tr>
-<tr><td>show2266</td><td>Mina</td><td>4(&lt;500k)</td><td>4,604</td><td>Lv5 (500,000)</td><td class="neg">495,396</td><td>24,769</td></tr>
-</tbody></table></div>
-<h2><span class="n">5</span>數據總覽</h2>
-<div class="grid">
-<div class="stat"><div class="k">7月總鑽石 (21人)</div><div class="v">4,005,023</div></div>
-<div class="stat"><div class="k">6月總鑽石 (21人)</div><div class="v">16,978,177</div></div>
-<div class="stat"><div class="k">7月 vs 6月</div><div class="v" style="color:var(red)">-76.4%</div></div>
-<div class="stat"><div class="k">已活躍師傅</div><div class="v">4/4</div></div>
-<div class="stat"><div class="k">已活躍徒弟</div><div class="v">17/17</div></div>
-<div class="stat"><div class="k">7月已過天數</div><div class="v">11 天</div></div>
+<!-- 1. 戰隊排名表 -->
+<h2><span class="n">1</span>戰隊排名表</h2>
+<div class="card">
+<table>
+  <thead><tr><th>排名</th><th>戰隊</th><th>隊長（師傅）</th><th>總積分</th><th>比上一名差距</th><th>成員數</th><th>狀態</th></tr></thead>
+  <tbody>
+    <tr><td class="rk">1</td><td><b>丁丁 戰隊</b></td><td>ccc99999ccc</td><td>943,564</td><td class="pos">—（領先）</td><td>6</td><td><span class="tag t-bangshou">榜首</span></td></tr>
+    <tr><td class="rk">2</td><td><b>Mina 戰隊</b></td><td>minaloveu2</td><td>472,720</td><td class="neg">−470,844</td><td>5</td><td><span class="tag t-zhuigan">追趕中</span></td></tr>
+    <tr><td class="rk">3</td><td><b>維維 戰隊</b></td><td>saxwei</td><td>415,121</td><td class="neg">−57,599</td><td>5</td><td><span class="tag t-zhuigan">追趕中</span></td></tr>
+    <tr><td class="rk">4</td><td><b>YoYo 戰隊</b></td><td>yoyo_cello</td><td>310,987</td><td class="neg">−104,134</td><td>5</td><td><span class="tag t-zhuigan">追趕中</span></td></tr>
+  </tbody>
+</table>
+<div class="note">丁丁戰隊以 94.3 萬積分大幅領先（約為末位 YoYo 的 <b>3 倍</b>）。但 2～4 名咬得很緊：Mina 落後丁丁約 47 萬、<b>維維只落後 Mina 約 5.8 萬</b>、<b>YoYo 只落後維維約 10.4 萬</b>——只要再往前一名就能改寫排位，剩餘 21 天各隊都大有可為。</div>
 </div>
-<h2><span class="n">6</span>本週 TOP 3 + 觀察重點</h2>
-<div class="card"><ol style="padding-left:20px">
-<li><b>saxwei</b> (維維・師傅): 1,010,610 鑽石, 已達 Lv7(>=1m)</li>
-<li><b>minaloveu2</b> (Mina・師傅): 766,844 鑽石, 已達 Lv6(<1m)</li>
-<li><b>ccc99999ccc</b> (丁丁・師傅): 538,968 鑽石, 已達 Lv5(<700k)</li>
-</ol></div>
-<h2><span class="n">7</span>風險提示</h2>
-<div class="card"><ul style="list-style:none;padding:0">
-<li style="padding:8px 0;border-bottom:1px solid var(--line)">⚠️ <b>維維 戰隊</b> 師傅佔比 87%, 過度依賴師傅, 徒弟需加強</li>
-<li style="padding:8px 0;border-bottom:1px solid var(--line)">⚠️ <b>Mina 戰隊</b> 師傅佔比 90%, 過度依賴師傅, 徒弟需加強</li>
-</ul></div>
-<footer>本報告由 HOTA S1 自動更新系統產出 ・ 來源: TikTok LIVE Backstage ・ 抓取時間: 2026/7/11 下午9:21:42<br>公開網址: <a href="https://lvlv2121.github.io/hota-s1/" style="color:var(--accent2)">https://lvlv2121.github.io/hota-s1/</a></footer>
-</div></body></html>
+
+<!-- 2. 師傅排行榜 -->
+<h2><span class="n">2</span>師傅排行榜</h2>
+<div class="card">
+<table>
+  <thead><tr><th>排名</th><th>師傅</th><th>戰隊</th><th>個人積分</th><th>佔隊比例</th><th>備註</th></tr></thead>
+  <tbody>
+    <tr><td class="rk">1</td><td>ccc99999ccc</td><td>丁丁 戰隊</td><td>545,968</td><td>57.9%</td><td><span class="tag t-hexin">核心主力</span></td></tr>
+    <tr><td class="rk">2</td><td>minaloveu2</td><td>Mina 戰隊</td><td>350,137</td><td>74.0%</td><td><span class="tag t-zhanbi">師傅佔比偏高</span></td></tr>
+    <tr><td class="rk">3</td><td>saxwei</td><td>維維 戰隊</td><td>254,259</td><td>61.2%</td><td><span class="tag t-junheng">均衡</span></td></tr>
+    <tr><td class="rk">4</td><td>yoyo_cello</td><td>YoYo 戰隊</td><td>70,341</td><td>22.6%</td><td><span class="tag t-channeng">產能尚有提升空間</span></td></tr>
+  </tbody>
+</table>
+<div class="note">yoyo_cello 個人積分僅 7.0 萬，是全場唯一被自家徒弟（tongtong3131）大幅超越的師傅，隊伍靠徒弟撐起。Mina 戰隊 74% 積分集中於師傅，徒弟成長空間大，可由師傅帶動分擔產出。</div>
+</div>
+
+<!-- 3. 徒弟排行榜 -->
+<h2><span class="n">3</span>徒弟排行榜（依本月/活動積分排序，共 17 人）</h2>
+<div class="card">
+<table>
+  <thead><tr><th>排名</th><th>徒弟</th><th>戰隊</th><th>積分</th><th>鑽石數</th><th>PK鑽石</th><th>有效開播</th><th>新粉團</th></tr></thead>
+  <tbody>
+    <tr><td class="rk">1</td><td>tongtong3131</td><td>YoYo</td><td>172,703</td><td>104,430</td><td>66,663</td><td>2天</td><td>7</td></tr>
+    <tr><td class="rk">2</td><td>samting70</td><td>丁丁</td><td>150,502</td><td>84,567</td><td>62,975</td><td>2天</td><td>52</td></tr>
+    <tr><td class="rk">3</td><td>yyyy8888aaaa</td><td>丁丁</td><td>145,485</td><td>94,427</td><td>46,988</td><td>2天</td><td>89</td></tr>
+    <tr><td class="rk">4</td><td>yang_mie00</td><td>Mina</td><td>80,071</td><td>56,956</td><td>21,565</td><td>2天</td><td>5</td></tr>
+    <tr><td class="rk">5</td><td>ice_m01</td><td>維維</td><td>69,469</td><td>41,723</td><td>20,706</td><td>2天</td><td>188</td></tr>
+    <tr><td class="rk">6</td><td>in26222595</td><td>丁丁</td><td>60,334</td><td>29,461</td><td>29,443</td><td>2天</td><td>1</td></tr>
+    <tr><td class="rk">7</td><td>crystal520530</td><td>YoYo</td><td>42,749</td><td>39,974</td><td>235</td><td>2天</td><td>38</td></tr>
+    <tr><td class="rk">8</td><td>peggyhuang0622</td><td>維維</td><td>35,129</td><td>19,879</td><td>14,370</td><td>1天</td><td>6</td></tr>
+    <tr><td class="rk">9</td><td>1998._.07_08_</td><td>丁丁</td><td>31,216</td><td>25,976</td><td>120</td><td>2天</td><td>124</td></tr>
+    <tr><td class="rk">10</td><td>love_atj</td><td>維維</td><td>29,174</td><td>17,395</td><td>8,729</td><td>2天</td><td>55</td></tr>
+    <tr><td class="rk">11</td><td>carysonhuang</td><td>Mina</td><td>28,806</td><td>14,709</td><td>9,727</td><td>2天</td><td>99</td></tr>
+    <tr><td class="rk">12</td><td>2003_0212</td><td>維維</td><td>27,090</td><td>22,840</td><td>0</td><td>2天</td><td>95</td></tr>
+    <tr><td class="rk">13</td><td>tizzy1334</td><td>YoYo</td><td>15,373</td><td>9,160</td><td>4,223</td><td>1天</td><td>43</td></tr>
+    <tr><td class="rk">14</td><td>jackson_860904</td><td>丁丁</td><td>10,059</td><td>7,399</td><td>0</td><td>2天</td><td>42</td></tr>
+    <tr><td class="rk">15</td><td>user1cdtm85cdl</td><td>YoYo</td><td>9,821</td><td>7,851</td><td>0</td><td>2天</td><td>19</td></tr>
+    <tr><td class="rk">16</td><td>kimmy202106</td><td>Mina</td><td>7,476</td><td>5,064</td><td>532</td><td>2天</td><td>16</td></tr>
+    <tr><td class="rk">17</td><td>show2266</td><td>Mina</td><td>6,230</td><td>4,199</td><td>1</td><td>2天</td><td>21</td></tr>
+  </tbody>
+</table>
+<div class="note">「本月增量」以活動期間（07/09 起）積分近似，因活動甫開始 2 天，與月份增量基本一致。前 3 名徒弟（tongtong3131 / samting70 / yyyy8888aaaa）積分均破 14 萬，是各隊衝榜主力。</div>
+</div>
+
+<!-- 4. 成長之星 -->
+<h2><span class="n">4</span>成長之星（7月 vs 6月 進步最大 Top 4）</h2>
+<div class="note">下列為<b>全場徒弟中「7月相較6月進步幅度最大」的前四名</b>，以「日均鑽石成長」排名（7月日均 − 6月日均）。說明：7月數據為 7/1–7/10（約10天），6月為全月（30天），為公平比較成長動能，統一換算為「日均」後再比進步幅度。🥇～④ 依進步排名標註，重點表揚「動能最強」的徒弟。</div>
+<div class="grid">
+  <div class="star" style="border-color:var(--gold)">
+    <h3>🥇 第 1 名 ・ yyyy8888aaaa <span class="pill">+20,163/天</span></h3>
+    <div class="src">丁丁 戰隊 ｜ 徒弟 ｜ 6月 413,250 → 7月 339,380</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--muted)">日均鑽石從 1.38 萬躍升至 3.39 萬，<b>成長 2.5 倍</b>，是本期進步最猛的徒弟。6月基期已不低，仍能在7月翻倍產能，爆發力驚人，建議作為衝榜核心重點培養。</p>
+  </div>
+  <div class="star" style="border-color:var(--gold)">
+    <h3>🥈 第 2 名 ・ tongtong3131 <span class="pill">+15,332/天</span></h3>
+    <div class="src">YoYo 戰隊 ｜ 徒弟 ｜ 6月 412,190 → 7月 290,720</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--muted)">日均從 1.37 萬提升到 2.91 萬，<b>成長 2.1 倍</b>。延續6月高產能並再上一層樓，是 YoYo 戰隊穩住排名的絕對主力，動能持續向上。</p>
+  </div>
+  <div class="star" style="border-color:var(--gold)">
+    <h3>🥉 第 3 名 ・ peggyhuang0622 <span class="pill">+10,464/天</span></h3>
+    <div class="src">維維 戰隊 ｜ 徒弟 ｜ 6月 486,850 → 7月 266,920</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--muted)">日均從 1.62 萬提升到 2.67 萬，<b>成長 1.6 倍</b>。在6月已居高位（48.7萬全月）的基礎上繼續加碼，產能厚度扎實，是維維戰隊守成的重要支柱。</p>
+  </div>
+  <div class="star" style="border-color:var(--gold)">
+    <h3>④ 第 4 名 ・ 2003_0212 <span class="pill">+6,869/天</span></h3>
+    <div class="src">維維 戰隊 ｜ 徒弟 ｜ 6月 299,820 → 7月 168,630</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--muted)">日均從 1.00 萬提升到 1.69 萬，<b>成長 1.7 倍</b>，增速亮眼。基期紮實、漲勢明確，是維維戰隊中後段最值得加碼資源、複製打法的潛力股。</p>
+  </div>
+</div>
+<div class="note">特別提及：<b>kimmy202106</b>（Mina，6月鑽石為 0、7月已破 7,530）與 <b>carysonhuang</b>（Mina，日均 +4,076/天）、<b>ice_m01</b>（維維，日均 +1,849/天）同樣展現強勁上升曲線，列入下一波重點觀察名單，資源可優先傾斜助其放量。</div>
+
+<!-- 5. 升級分析（已取得門檻數據） -->
+<h2><span class="n">5</span>升級分析（含門檻與達成率）</h2>
+<div class="card">
+<div class="note"><b>資料來源：</b>升級門檻取自前置訊息 xlsx「達到升級鑽石數為」欄位；7 月鑽石取自 TikTok 後台「主播數據」頁面（07/01~07/10，共 10 天）。剩餘活動時間 21 天。</div>
+
+<h3 style="margin:16px 0 8px;color:var(--accent);font-size:15px">📊 個人升級達成狀態（21 人）</h3>
+<table>
+  <thead><tr><th>主播</th><th>戰隊</th><th>6月等級</th><th>升級門檻</th><th>7月已獲(10天)</th><th>距升級還差</th><th>狀態</th></tr></thead>
+  <tbody>
+    <tr><td>saxwei</td><td>維維</td><td>9(≥2.5m)</td><td>5,000,000</td><td>859,480</td><td class="neg">4,140,520</td><td><span class="tag t-changxian">長線目標</span></td></tr>
+    <tr><td>minaloveu2</td><td>Mina</td><td>10(≥5m)</td><td>5,000,000</td><td>499,920</td><td class="neg">4,500,080</td><td><span class="tag t-changxian">長線目標</span></td></tr>
+    <tr><td>yoyo_cello</td><td>YoYo</td><td>7(≥1m)</td><td>1,600,000</td><td>360,570</td><td class="neg">1,239,430</td><td><span class="tag t-wenjian">穩健推進</span></td></tr>
+    <tr><td>samting70</td><td>丁丁</td><td>7(≥1m)</td><td>1,600,000</td><td>110,390</td><td class="neg">1,489,610</td><td><span class="tag t-wenjian">穩健推進</span></td></tr>
+    <tr><td>tongtong3131</td><td>YoYo</td><td>4(&lt;500k)</td><td>500,000</td><td>290,720</td><td class="neg">209,280</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>yyyy8888aaaa</td><td>丁丁</td><td>4(&lt;500k)</td><td>500,000</td><td>339,380</td><td class="neg">160,620</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>peggyhuang0622</td><td>維維</td><td>4(&lt;500k)</td><td>500,000</td><td>266,920</td><td class="neg">233,080</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>user1cdtm85cdl</td><td>YoYo</td><td>3(&lt;300k)</td><td>300,000</td><td>35,530</td><td class="neg">264,470</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>crystal520530</td><td>YoYo</td><td>3(&lt;300k)</td><td>300,000</td><td>5,600</td><td class="neg">294,400</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>ice_m01</td><td>維維</td><td>4(&lt;500k)</td><td>500,000</td><td>136,980</td><td class="neg">363,020</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>in26222595</td><td>丁丁</td><td>4(&lt;500k)</td><td>500,000</td><td>137,430</td><td class="neg">362,570</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>love_atj</td><td>維維</td><td>4(&lt;500k)</td><td>500,000</td><td>96,750</td><td class="neg">403,250</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>show2266</td><td>Mina</td><td>4(&lt;500k)</td><td>500,000</td><td>28,360</td><td class="neg">471,640</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>jackson_860904</td><td>丁丁</td><td>2(&lt;200k)</td><td>200,000</td><td>10,700</td><td class="neg">189,300</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>1998._.07_08_</td><td>丁丁</td><td>2(&lt;200k)</td><td>200,000</td><td>15,190</td><td class="neg">184,810</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>tizzy1334</td><td>YoYo</td><td>3(&lt;300k)</td><td>300,000</td><td>85,120</td><td class="neg">214,880</td><td><span class="tag t-wenbu">穩步累積</span></td></tr>
+    <tr><td>carysonhuang</td><td>Mina</td><td>2(&lt;200k)</td><td>200,000</td><td>94,510</td><td class="neg">105,490</td><td><span class="tag t-dabiao">達標在望</span></td></tr>
+    <tr><td>2003_0212</td><td>維維</td><td>3(&lt;300k)</td><td>300,000</td><td>168,630</td><td class="neg">131,370</td><td><span class="tag t-dabiao">達標在望</span></td></tr>
+    <tr><td>kimmy202106</td><td>Mina</td><td>1(&lt;100k)</td><td>100,000</td><td>7,530</td><td class="neg">92,470</td><td><span class="tag t-dabiao">達標在望</span></td></tr>
+    <tr><td>yang_mie00</td><td>Mina</td><td>1(&lt;100k)</td><td>100,000</td><td>39,820</td><td class="neg">60,180</td><td><span class="tag t-dabiao">達標在望</span></td></tr>
+    <tr><td><b>ccc99999ccc</b></td><td><b>丁丁</b></td><td>2(&lt;200k)</td><td>200,000</td><td><b>328,040</b></td><td class="pos"><b>+128,040 超標</b></td><td><span class="tag t-yidacheng">✅ 已達成</span></td></tr>
+  </tbody>
+</table>
+
+<h3 style="margin:16px 0 8px;color:var(--gold);font-size:15px">⭐ 重點摘要</h3>
+<div class="grid">
+  <div class="star" style="border-color:#39d98a">
+    <h3>✅ 已達成升級門檻</h3>
+    <p><b>ccc99999ccc（丁丁師傅）</b><br>目標 200K → 已達 328K，超標 +128K<br>是全場唯一在 7 月前 10 天就跨過升級線的主播，速度領先群雄。</p>
+  </div>
+  <div class="star" style="border-color:#ffcf4d">
+    <h3>🔥 達標在望（差距 &lt; 150K）</h3>
+    <p>yang_mie00 差 60K / kimmy202106 差 92K / carysonhuang 差 105K / 2003_0212 差 131K<br>這 4 人若保持目前日均產能，預計 7 月底前即可達標，衝刺動能充足。</p>
+  </div>
+  <div class="star" style="border-color:#ff9f43">
+    <h3>⭐ 師傅級長線目標</h3>
+    <p>saxwei 目標 5M / minaloveu2 目標 5M<br>yoyo_cello 目標 1.6M / samting70 目標 1.6M<br>四位師傅門檻為 1.6M~5M 的長期累積型目標，建議以全期視角穩步推進，重點放在穩定開播與帶動徒弟，單月衝刺之餘更要穩住日常產出。</p>
+  </div>
+</div>
+
+<div class="note"><b>關於師傅門檻：</b>saxwei 和 minaloveu2 的門檻為 500 萬（等級 9 / 等級 10），這很可能是<strong>全期累積型目標</strong>而非單月目標，以長線視角規劃更合理。yoyo_cello 和 samting70 的 160 萬門檻同樣屬長線級別。建議向官方確認門檻的計算口徑（單月 or 全期累計），以便更精準安排衝刺節奏。填好的 xlsx 已保存供核對。</div>
+</div>
+
+<!-- 6. 異常提醒 -->
+<h2><span class="n">6</span>異常提醒</h2>
+<div class="card">
+  <div class="alert"><div class="ic">🔴</div><div><b>PK 鑽石掛零（3 人，影響晉級）</b><br>
+    • user1cdtm85cdl（YoYo）— 積分 9,821，PK 0<br>
+    • jackson_860904（丁丁）— 積分 10,059，PK 0<br>
+    • 2003_0212（維維）— 積分 27,090，PK 0<br>
+    <span class="src">另：show2266（Mina）PK 僅 1，實質等同未參與 PK。</span></div></div>
+  <div class="alert"><div class="ic">🟠</div><div><b>有效開播天數偏低（活動僅 2 天，已有人掉隊）</b><br>
+    • tizzy1334（YoYo）— 僅 1 天有效開播<br>
+    • peggyhuang0622（維維）— 僅 1 天有效開播<br>
+    <span class="src">其餘 15 人均 2 天達標。開播天數直接影響 700 分/天 的固定積分，需即時提醒。</span></div></div>
+  <div class="alert"><div class="ic">🟡</div><div><b>低產能尾段（需扶持或激勵）</b><br>
+    底部 4 名徒弟積分皆低於 1.1 萬：show2266(6,230) / kimmy202106(7,476) / user1cdtm85cdl(9,821) / jackson_860904(10,059)。其中 3 人屬 Mina 戰隊，恰是該隊徒弟層最需加碼扶持、安排固定開播與帶教的環節。</div></div>
+  <div class="alert"><div class="ic">🟢</div><div><b>資料完整性</b><br>
+    四隊活動頁面資料齊全，無缺漏欄位；成員數 5～6 人，無空白帳號。本次無「資料缺失」類異常。</div></div>
+</div>
+
+<!-- 7. 營運建議 -->
+<h2><span class="n">7</span>營運建議</h2>
+<div class="card">
+<ul class="rec">
+  <li><b>丁丁戰隊（守成）：</b>優勢穩固，重點轉向「確保師傅 ccc99999ccc 不斷播」+ 讓底部 jackson_860904 補上 PK，鎖定榜首。</li>
+  <li><b>Mina戰隊（補短板）：</b>74% 產能壓在師傅身上，必須激活徒弟層。建議對 show2266 / kimmy202106 / user1cdtm85cdl 三低產能者安排固定開播時段與 PK 連線，降低單點依賴風險。</li>
+  <li><b>維維戰隊（拉開差距）：</b>結構均衡但總量偏低。peggyhuang0622 僅 1 天開播是隱患；ice_m01 拉新能力頂尖（188 新粉），可複製其漲粉 SOP 給其他徒弟。</li>
+  <li><b>YoYo戰隊（保核心+補師傅）：</b>彤彤撐起半邊天，應給予資源傾斜；同時師傅 yoyo_cello 個人產能僅 7 萬，需本人提升開播頻率與禮物轉化，否則隊伍天花板受限。</li>
+  <li><b>全隊統一動作：</b>針對 PK=0 的 3~4 人，本週內安排至少 2 場跨隊 PK 連線，單場即可補上數萬 PK 鑽石，對排名邊緣者（如 2/3 名之爭）效益最高。</li>
+  <li><b>監控機制：</b>當前數據為人工巡查取得。建議建立「每日自動擷取」流程（登入態持久化），追蹤開播天數與 PK 鑽石變化，及早發現掉隊者。</li>
+</ul>
+</div>
+
+<footer>
+  報告由 WorkBuddy 自動巡檢生成 ｜ 資料來源：TikTok LIVE Backstage 活動頁（四戰隊 rank-multistage-activity-analytics）<br>
+  擷取時間 2026-07-10 23:44 GMT+8 ｜ 共 4 戰隊 / 21 名主播（4 師傅 + 17 徒弟）
+</footer>
+</div>
+</body>
+</html>
