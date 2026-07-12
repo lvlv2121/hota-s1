@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🌱 7月穩定成長計畫 · 衝刺看板</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif; background:#f4f6f9; color:#1f2933; padding:20px; }
+.wrap { max-width:1200px; margin:0 auto; }
+.hero { background:linear-gradient(135deg,#2e7d32,#66bb6a); color:#fff; border-radius:16px; padding:24px 28px; margin-bottom:18px; box-shadow:0 6px 20px rgba(46,125,50,.25); }
+.hero h1 { font-size:26px; margin-bottom:8px; }
+.hero .cd { font-size:15px; opacity:.95; }
+.hero .cd b { font-size:20px; }
+.updated { font-size:12px; opacity:.85; margin-top:6px; }
+.tabs { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+.tab { background:#fff; border:1px solid #d6dde5; border-radius:24px; padding:8px 18px; text-decoration:none; color:#2e7d32; font-weight:600; font-size:14px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+.tab:hover { background:#e8f5e9; }
+.act { background:#fff; border-radius:16px; padding:22px 24px; margin-bottom:22px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+.act-head { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px; border-bottom:2px solid #eef1f4; padding-bottom:12px; }
+.act-head h2 { font-size:21px; color:#1b5e20; }
+.act-meta { font-size:13px; color:#607d8b; }
+.note-cap { color:#e65100; }
+.rules { display:flex; gap:18px; flex-wrap:wrap; background:#e8f1fb; border-radius:10px; padding:10px 16px; margin:14px 0 8px; font-size:13.5px; color:#0d47a1; }
+.rules b { color:#1565c0; }
+.rules2 { display:flex; gap:18px; flex-wrap:wrap; background:#f1f8e9; border-radius:10px; padding:10px 16px; margin:8px 0 4px; font-size:13.5px; color:#33691e; }
+.rules2 b { color:#2e7d32; }
+.sub { font-size:15px; margin:18px 0 10px; color:#37474f; }
+.podium { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:6px 0 4px; }
+.pod { background:#fafbfc; border:1px solid #eceff1; border-radius:10px; padding:14px; text-align:center; }
+.pod-medal { font-size:30px; }
+.pod-id { font-weight:800; font-size:15px; color:#263238; word-break:break-all; }
+.pod-score { font-size:18px; font-weight:800; color:#1b5e20; margin:4px 0; }
+.pod-sub { font-size:12px; color:#78909c; }
+.pod-qlf { display:inline-block; margin-top:8px; font-size:12px; font-weight:700; padding:3px 11px; border-radius:12px; }
+.pod-reason { font-size:11.5px; color:#c62828; margin-top:5px; line-height:1.4; }
+.cands { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+.cand { background:#fafbfc; border:1px solid #eceff1; border-radius:10px; padding:12px 14px; }
+.cand-top { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.cand-rank { font-weight:800; color:#455a64; font-size:15px; }
+.cand-name { font-weight:700; font-size:14px; color:#263238; word-break:break-all; }
+.cand-gap { font-size:13px; color:#455a64; }
+.cand-gap b { color:#c62828; font-size:15px; }
+.cand-sub { font-size:12px; color:#78909c; margin:4px 0 8px; }
+.cand-sub b { color:#2e7d32; }
+.cand-tag { display:inline-block; font-size:12px; font-weight:700; padding:2px 10px; border-radius:12px; margin-top:6px; }
+.cand-empty { color:#90a4ae; font-size:14px; padding:10px; }
+.live-dot { width:8px; height:8px; border-radius:50%; background:#e53935; display:inline-block; box-shadow:0 0 0 3px rgba(229,57,53,.18); }
+.tbl-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+thead th { background:#f5f7fa; color:#546e7a; font-weight:600; padding:10px 8px; text-align:right; white-space:nowrap; border-bottom:2px solid #e0e6ec; }
+thead th:nth-child(1),thead th:nth-child(2) { text-align:left; }
+tbody td { padding:9px 8px; border-bottom:1px solid #f0f3f6; }
+.rk { font-weight:800; color:#607d8b; width:52px; }
+.host { line-height:1.35; }
+.hid { font-weight:700; color:#263238; }
+.nick { font-size:11.5px; color:#90a4ae; }
+.num { text-align:right; white-space:nowrap; }
+.num.strong { font-weight:800; color:#1b5e20; }
+.num.gap { color:#c62828; font-weight:700; }
+.num.rline { color:#6a1b9a; font-weight:700; }
+.tag { text-align:center; }
+.tag span { font-size:11.5px; font-weight:700; padding:2px 9px; border-radius:11px; white-space:nowrap; }
+.risk { color:#e65100; font-weight:700; font-size:11px; }
+tr.lv-hot td { background:#fff6f6; }
+tr.lv-chance td { background:#f6fbf6; }
+tr.lv-leader td { background:#fffdf3; }
+tr.rwd td { background:#fffaf0; }
+tr.qlf-fail td { box-shadow: inset 2px 0 0 #ef9a9a; }
+tr.qlf-risk td { box-shadow: inset 2px 0 0 #ffcc80; }
+tr.qlf-ok td { box-shadow: inset 2px 0 0 #a5d6a7; }
+tr.qlf-safe td { box-shadow: inset 2px 0 0 #a5d6a7; }
+.qlf-banner { background:#f3e5f5; border-radius:10px; padding:11px 16px; margin:12px 0; font-size:13.5px; color:#4a148c; display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; }
+.qlf-banner b { color:#311b92; }
+.qlf-banner .qlf { font-weight:700; white-space:nowrap; }
+.q-fail { color:#c62828; }
+.q-risk { color:#e65100; }
+.q-ok { color:#2e7d32; }
+.qlf-note { flex-basis:100%; color:#8e24aa; font-size:12px; font-weight:400; margin-top:2px; }
+.tag.qlf { padding:0; }
+.tag.qlf span { font-size:11px; }
+.foot { text-align:center; color:#b0bec5; font-size:12px; margin:20px 0; }
+</style></head>
+<body><div class="wrap">
+  <div class="hero">
+    <h1>🌱 7月穩定成長計畫 · 衝刺看板</h1>
+    <div class="cd">距活動結束還剩 <b>3</b> 天 <b>5</b> 小時 · 截止 07/15 23:59 (UTC+8)</div>
+    <div class="updated">更新時間：2026-07-12 18:48 (UTC+8) · 剩餘可衝刺自然日約 4 天</div>
+  </div>
+  <div class="tabs"><a href="#act-shili" class="tab">👑 實力之星</a><a href="#act-wending" class="tab">⭐ 穩定之星</a><a href="#act-chengzhang" class="tab">🌱 成長之星</a></div>
+  
+    <section class="act" id="act-shili">
+      <div class="act-head">
+        <h2>👑 實力之星</h2>
+        <div class="act-meta">參賽 <b>23</b> 人 · 各賽道前 <b>3</b> 名獲獎 · </div>
+      </div>
+      <div class="rules">
+        <span>🚪 賽道門檻：近30天累積鑽石 &gt; 700k</span>
+        <span>🚪 參賽資格：有效開播 ≥ <b>12</b>天 且 累積時長 ≥ <b>30</b>h</span>
+      </div>
+      <div class="rules2">
+        <span>💎 1 鑽石 = <b>1</b> 分</span>
+        <span>📅 1 有效開播日 = <b>700</b> 分</span>
+        <span>💚 1 新粉絲團 = <b>10</b> 分</span>
+        <span>🏆 前3名：🥇三階 / 🥈二階 / 🥉一階 神秘寶庫</span>
+      </div>
+      <div class="qlf-banner">📋 <b>資格預測（至 07/15 截止，剩餘 4 天含今天）</b>：
+      <span class="qlf q-fail">🔴 10 人確定無法達標</span>
+      <span class="qlf q-risk">🟡 1 人邊緣危險</span>
+      <span class="qlf q-ok">🟢 12 人已達標/安全（其中 12 人還未達標但尚餘空間）</span>
+      <div class="qlf-note">算法：當前有效天數 + 剩餘 4 天（含今天，假設每日皆開播之樂觀上限）對比門檻 12 天。邊緣危險=還差 1~2 天、須全勤或空間僅 1 天；已安全=還差數天且尚餘 ≥2 天空間；無法達標=即便全勤也差 ≥1 天。</div>
+    </div>
+      <h3 class="sub">🏆 頒獎台（當前前3名）</h3>
+      <div class="podium">
+        <div class="pod" style="border-top:4px solid #b8860b">
+          <div class="pod-medal">🥇</div>
+          <div class="pod-id">kittybaby1314<span class="live-dot"></span></div>
+          <div class="pod-score">1,309,101 分</div>
+          <div class="pod-sub">鑽石 1,301,011 · 10有效天</div>
+          <div class="pod-qlf" style="background:#e8f5e9;color:#2e7d32">🟢 已安全</div>
+          <div class="pod-reason">目前 10 天，還差 2 天達標，剩 4 天可補</div>
+        </div>
+        <div class="pod" style="border-top:4px solid #2e7d32">
+          <div class="pod-medal">🥈</div>
+          <div class="pod-id">saxwei<span class="live-dot"></span></div>
+          <div class="pod-score">1,039,198 分</div>
+          <div class="pod-sub">鑽石 1,022,688 · 10有效天</div>
+          <div class="pod-qlf" style="background:#e8f5e9;color:#2e7d32">🟢 已安全</div>
+          <div class="pod-reason">目前 10 天，還差 2 天達標，剩 4 天可補</div>
+        </div>
+        <div class="pod" style="border-top:4px solid #2e7d32">
+          <div class="pod-medal">🥉</div>
+          <div class="pod-id">minaloveu2<span class="live-dot"></span></div>
+          <div class="pod-score">866,207 分</div>
+          <div class="pod-sub">鑽石 840,227 · 10有效天 <span class="risk">⚠️可被反超</span></div>
+          <div class="pod-qlf" style="background:#e8f5e9;color:#2e7d32">🟢 已安全</div>
+          <div class="pod-reason">目前 10 天，還差 2 天達標，剩 4 天可補</div>
+        </div></div>
+      <h3 class="sub">🎯 獎勵線挑戰（距第3名最近的主播）</h3><div class="cands">
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#4</span>
+            <span class="cand-name">jammy.314.2200</span>
+            </div>
+          <div class="cand-gap">距第3名(獎勵線) <b>42,530</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.5</b> 倍 · 約 <b>0.5 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 10 天，還差 2 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#5</span>
+            <span class="cand-name">yichi5177</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>51,707</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.7</b> 倍 · 約 <b>0.7 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 11 天，還差 1 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#6</span>
+            <span class="cand-name">0424w</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>84,071</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>1.2</b> 倍 · 約 <b>1.2 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 11 天，還差 1 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#7</span>
+            <span class="cand-name">yulikeqq</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>107,999</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>1.6</b> 倍 · 約 <b>1.6 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 11 天，還差 1 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div></div><h3 class="sub">📈 排名上升機會（最容易往上爬一名）</h3><div class="cands">
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#5</span>
+            <span class="cand-name">yichi5177</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距前一名 <b>9,177</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.1</b> 倍 · 約 <b>0.1 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#13</span>
+            <span class="cand-name">tiffany_0630_</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>9,622</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.2</b> 倍 · 約 <b>0.2 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#16</span>
+            <span class="cand-name">huei_0606</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>11,287</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.5</b> 倍 · 約 <b>0.5 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#19</span>
+            <span class="cand-name">wu.tsen</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>13,949</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.1</b> 倍 · 約 <b>0.1 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div></div>
+      <h3 class="sub">📊 完整排行 · 機會分析</h3>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th>排名</th><th>主播</th><th>積分</th><th>鑽石數</th><th>有效開播</th><th>資格預測</th><th>新粉團</th>
+          <th>距前一名</th><th>距前三(獎勵線)</th><th>日均鑽</th><th>反超所需</th><th>機會</th>
+        </tr></thead>
+        <tbody><tr class="lv-leader rwd qlf-safe">
+          <td class="rk">🥇 1</td>
+          <td class="host"><span class="hid">kittybaby1314</span><span class="live-dot"></span><br><span class="nick">小貓日記🐱📖 7/7生日慶 21:30首次跨區🎂</span></td>
+          <td class="num strong">1,309,101</td>
+          <td class="num">1,301,011</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">109</td>
+          <td class="num gap">—</td>
+          <td class="num rline">🏆</td>
+          <td class="num">130,101</td>
+          <td class="num">守擂</td>
+          <td class="tag"><span style="background:#fff8e1;color:#b8860b">🏆 榜首</span></td>
+        </tr><tr class="lv-chance rwd qlf-safe">
+          <td class="rk">🥈 2</td>
+          <td class="host"><span class="hid">saxwei</span><span class="live-dot"></span><br><span class="nick">薩克斯維維🎷SaxWei🎷</span></td>
+          <td class="num strong">1,039,198</td>
+          <td class="num">1,022,688</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">951</td>
+          <td class="num gap">269,903</td>
+          <td class="num rline">🏆</td>
+          <td class="num">102,268</td>
+          <td class="num">2.6 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-chance rwd qlf-safe">
+          <td class="rk">🥉 3</td>
+          <td class="host"><span class="hid">minaloveu2</span><span class="live-dot"></span><br><span class="nick">🐦‍🔥Mina🐦‍🔥住Alex 艾力克斯生日快樂</span></td>
+          <td class="num strong">866,207</td>
+          <td class="num">840,227</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">1,898</td>
+          <td class="num gap">172,991</td>
+          <td class="num rline">🏆</td>
+          <td class="num">84,022</td>
+          <td class="num">2.1 天 <span class="risk" title="與後一名差距極小，有被反超風險">⚠️守</span></td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">4</td>
+          <td class="host"><span class="hid">jammy.314.2200</span><br><span class="nick">Jammy 哲宇🪐</span></td>
+          <td class="num strong">823,677</td>
+          <td class="num">816,357</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">32</td>
+          <td class="num gap">42,530</td>
+          <td class="num rline">42,530</td>
+          <td class="num">81,635</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">5</td>
+          <td class="host"><span class="hid">yichi5177</span><span class="live-dot"></span><br><span class="nick">伍壹柒🍗517⁰²⁰⁶🍁</span></td>
+          <td class="num strong">814,500</td>
+          <td class="num">797,490</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">931</td>
+          <td class="num gap">9,177</td>
+          <td class="num rline">51,707</td>
+          <td class="num">72,499</td>
+          <td class="num">0.1 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">6</td>
+          <td class="host"><span class="hid">0424w</span><span class="live-dot"></span><br><span class="nick">薇薇vivi🗿</span></td>
+          <td class="num strong">782,136</td>
+          <td class="num">769,066</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">537</td>
+          <td class="num gap">32,364</td>
+          <td class="num rline">84,071</td>
+          <td class="num">69,915</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">7</td>
+          <td class="host"><span class="hid">yulikeqq</span><span class="live-dot"></span><br><span class="nick">小魚飽飽🥒</span></td>
+          <td class="num strong">758,208</td>
+          <td class="num">745,598</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">491</td>
+          <td class="num gap">23,928</td>
+          <td class="num rline">107,999</td>
+          <td class="num">67,781</td>
+          <td class="num">0.4 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-risk">
+          <td class="rk">8</td>
+          <td class="host"><span class="hid">yoyo_cello</span><br><span class="nick">吳登凱YoYoCello🎻🎵ʸᵒʸᵒ</span></td>
+          <td class="num strong">678,770</td>
+          <td class="num">670,840</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">163</td>
+          <td class="num gap">79,438</td>
+          <td class="num rline">187,437</td>
+          <td class="num">74,537</td>
+          <td class="num">1.1 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-chance qlf-fail">
+          <td class="rk">9</td>
+          <td class="host"><span class="hid">lienyou0416</span><span class="live-dot"></span><br><span class="nick">游小安 新北霧眉 🧧⁰⁴¹⁶</span></td>
+          <td class="num strong">576,922</td>
+          <td class="num">570,492</td>
+          <td class="num">7天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">153</td>
+          <td class="num gap">101,848</td>
+          <td class="num rline">289,285</td>
+          <td class="num">81,498</td>
+          <td class="num">1.2 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">10</td>
+          <td class="host"><span class="hid">c.chengyann_011</span><span class="live-dot"></span><br><span class="nick">蛋餅欸🥚🍳</span></td>
+          <td class="num strong">530,989</td>
+          <td class="num">524,499</td>
+          <td class="num">7天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">159</td>
+          <td class="num gap">45,933</td>
+          <td class="num rline">335,218</td>
+          <td class="num">74,928</td>
+          <td class="num">0.6 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-safe">
+          <td class="rk">11</td>
+          <td class="host"><span class="hid">peng0430</span><span class="live-dot"></span><br><span class="nick">🍭芃芃ㄆㄥˊ𝓟𝓮𝓷𝓰🐾</span></td>
+          <td class="num strong">408,885</td>
+          <td class="num">387,565</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">1,362</td>
+          <td class="num gap">122,104</td>
+          <td class="num rline">457,322</td>
+          <td class="num">35,233</td>
+          <td class="num">3.5 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-chance qlf-safe">
+          <td class="rk">12</td>
+          <td class="host"><span class="hid">sax_jason</span><br><span class="nick">Sax阿正🎷㊣</span></td>
+          <td class="num strong">368,681</td>
+          <td class="num">342,011</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">1,897</td>
+          <td class="num gap">40,204</td>
+          <td class="num rline">497,526</td>
+          <td class="num">31,091</td>
+          <td class="num">1.3 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">13</td>
+          <td class="host"><span class="hid">tiffany_0630_</span><br><span class="nick">⁺⁎˚Ი𐑼俞婷🐰ིྀ</span></td>
+          <td class="num strong">359,059</td>
+          <td class="num">353,639</td>
+          <td class="num">6天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">122</td>
+          <td class="num gap">9,622</td>
+          <td class="num rline">507,148</td>
+          <td class="num">58,939</td>
+          <td class="num">0.2 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">14</td>
+          <td class="host"><span class="hid">chenfongsing</span><span class="live-dot"></span><br><span class="nick">𝙃𝙎.辰楓𓈒𝒸𝒻 ༊</span></td>
+          <td class="num strong">333,181</td>
+          <td class="num">320,391</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">579</td>
+          <td class="num gap">25,878</td>
+          <td class="num rline">533,026</td>
+          <td class="num">32,039</td>
+          <td class="num">0.8 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-fail">
+          <td class="rk">15</td>
+          <td class="host"><span class="hid">samting70</span><br><span class="nick">𝕴丁丁喔𝕴👾</span></td>
+          <td class="num strong">272,332</td>
+          <td class="num">265,432</td>
+          <td class="num">7天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">200</td>
+          <td class="num gap">60,849</td>
+          <td class="num rline">593,875</td>
+          <td class="num">37,918</td>
+          <td class="num">1.6 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">16</td>
+          <td class="host"><span class="hid">huei_0606</span><br><span class="nick">🍀慧慧ᥫᩣᵕ̈°⁶°⁶</span></td>
+          <td class="num strong">261,045</td>
+          <td class="num">249,225</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">482</td>
+          <td class="num gap">11,287</td>
+          <td class="num rline">605,162</td>
+          <td class="num">24,922</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-safe">
+          <td class="rk">17</td>
+          <td class="host"><span class="hid">ice_m01</span><span class="live-dot"></span><br><span class="nick">𝙃𝙎. ICEᴴᴴ家🐷出租中</span></td>
+          <td class="num strong">217,729</td>
+          <td class="num">203,139</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">689</td>
+          <td class="num gap">43,316</td>
+          <td class="num rline">648,478</td>
+          <td class="num">18,467</td>
+          <td class="num">2.3 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">18</td>
+          <td class="host"><span class="hid">ty.voice_</span><br><span class="nick">𝙃𝙎.天予ᵀʸ⌁⋆</span></td>
+          <td class="num strong">196,638</td>
+          <td class="num">184,918</td>
+          <td class="num">7天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">682</td>
+          <td class="num gap">21,091</td>
+          <td class="num rline">669,569</td>
+          <td class="num">26,416</td>
+          <td class="num">0.8 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">19</td>
+          <td class="host"><span class="hid">wu.tsen</span><br><span class="nick">🤍岑岑🤍</span></td>
+          <td class="num strong">182,689</td>
+          <td class="num">181,399</td>
+          <td class="num">1天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">59</td>
+          <td class="num gap">13,949</td>
+          <td class="num rline">683,518</td>
+          <td class="num">181,399</td>
+          <td class="num">0.1 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-fail">
+          <td class="rk">20</td>
+          <td class="host"><span class="hid">fanny._.0101</span><span class="live-dot"></span><br><span class="nick">🖕何小万😎</span></td>
+          <td class="num strong">81,919</td>
+          <td class="num">80,149</td>
+          <td class="num">2天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">37</td>
+          <td class="num gap">100,770</td>
+          <td class="num rline">784,288</td>
+          <td class="num">40,074</td>
+          <td class="num">2.5 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-chance qlf-fail">
+          <td class="rk">21</td>
+          <td class="host"><span class="hid">lala__0212</span><br><span class="nick">菈菈菈菈菈</span></td>
+          <td class="num strong">47,570</td>
+          <td class="num">44,720</td>
+          <td class="num">4天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">5</td>
+          <td class="num gap">34,349</td>
+          <td class="num rline">818,637</td>
+          <td class="num">11,180</td>
+          <td class="num">3.1 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hard qlf-fail">
+          <td class="rk">22</td>
+          <td class="host"><span class="hid">set_1105</span><br><span class="nick">𝙃𝙎. 霄穎 ♪ˢᵗ  ⭠超我 愛比偷看中...</span></td>
+          <td class="num strong">16,990</td>
+          <td class="num">14,800</td>
+          <td class="num">2天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">79</td>
+          <td class="num gap">30,580</td>
+          <td class="num rline">849,217</td>
+          <td class="num">7,400</td>
+          <td class="num">4.1 天</td>
+          <td class="tag"><span style="background:#eceff1;color:#78909c">⚪ 較難</span></td>
+        </tr><tr class="lv-hard qlf-fail">
+          <td class="rk">23</td>
+          <td class="host"><span class="hid">____yvyv</span><br><span class="nick">湯圓2.0🥣¹¹¹⁶</span></td>
+          <td class="num strong">0</td>
+          <td class="num">0</td>
+          <td class="num">0天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">0</td>
+          <td class="num gap">16,990</td>
+          <td class="num rline">866,207</td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+          <td class="tag"><span style="background:#eceff1;color:#78909c">⚪ 較難</span></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </section>
+    <section class="act" id="act-wending">
+      <div class="act-head">
+        <h2>⭐ 穩定之星</h2>
+        <div class="act-meta">參賽 <b>26</b> 人 · 各賽道前 <b>3</b> 名獲獎 · </div>
+      </div>
+      <div class="rules">
+        <span>🚪 賽道門檻：近30天累積積分 300k – 700k</span>
+        <span>🚪 參賽資格：有效開播 ≥ <b>12</b>天 且 累積時長 ≥ <b>30</b>h</span>
+      </div>
+      <div class="rules2">
+        <span>💎 1 鑽石 = <b>1</b> 分</span>
+        <span>📅 1 有效開播日 = <b>700</b> 分</span>
+        <span>💚 1 新粉絲團 = <b>10</b> 分</span>
+        <span>🏆 前3名：🥇三階 / 🥈二階 / 🥉一階 神秘寶庫</span>
+      </div>
+      <div class="qlf-banner">📋 <b>資格預測（至 07/15 截止，剩餘 4 天含今天）</b>：
+      <span class="qlf q-fail">🔴 9 人確定無法達標</span>
+      <span class="qlf q-risk">🟡 8 人邊緣危險</span>
+      <span class="qlf q-ok">🟢 9 人已達標/安全（其中 9 人還未達標但尚餘空間）</span>
+      <div class="qlf-note">算法：當前有效天數 + 剩餘 4 天（含今天，假設每日皆開播之樂觀上限）對比門檻 12 天。邊緣危險=還差 1~2 天、須全勤或空間僅 1 天；已安全=還差數天且尚餘 ≥2 天空間；無法達標=即便全勤也差 ≥1 天。</div>
+    </div>
+      <h3 class="sub">🏆 頒獎台（當前前3名）</h3>
+      <div class="podium">
+        <div class="pod" style="border-top:4px solid #b8860b">
+          <div class="pod-medal">🥇</div>
+          <div class="pod-id">bella_bella1313</div>
+          <div class="pod-score">716,730 分</div>
+          <div class="pod-sub">鑽石 714,350 · 3有效天</div>
+          <div class="pod-qlf" style="background:#ffebee;color:#c62828">🔴 無法達標</div>
+          <div class="pod-reason">即使剩餘 4 天全勤，最多 7 天，仍低於 12 天門檻（還差 9 天）</div>
+        </div>
+        <div class="pod" style="border-top:4px solid #78909c">
+          <div class="pod-medal">🥈</div>
+          <div class="pod-id">yyyy8888aaaa</div>
+          <div class="pod-score">428,461 分</div>
+          <div class="pod-sub">鑽石 418,541 · 10有效天</div>
+          <div class="pod-qlf" style="background:#e8f5e9;color:#2e7d32">🟢 已安全</div>
+          <div class="pod-reason">目前 10 天，還差 2 天達標，剩 4 天可補</div>
+        </div>
+        <div class="pod" style="border-top:4px solid #c62828">
+          <div class="pod-medal">🥉</div>
+          <div class="pod-id">weeeeee0406</div>
+          <div class="pod-score">383,183 分</div>
+          <div class="pod-sub">鑽石 376,083 · 8有效天 <span class="risk">⚠️可被反超</span></div>
+          <div class="pod-qlf" style="background:#fff3e0;color:#e65100">🟡 邊緣危險</div>
+          <div class="pod-reason">目前 8 天，須剩餘 4 天全勤才達 12 天門檻（還差 4 天）</div>
+        </div></div>
+      <h3 class="sub">🎯 獎勵線挑戰（距第3名最近的主播）</h3><div class="cands">
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#4</span>
+            <span class="cand-name">tongtong3131</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>347</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 10 天，還差 2 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#5</span>
+            <span class="cand-name">hello_hello_151</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>12,227</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.3</b> 倍 · 約 <b>0.3 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 10 天，還差 2 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#6</span>
+            <span class="cand-name">peggyhuang0622</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>45,620</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>1.2</b> 倍 · 約 <b>1.2 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#fff3e0;color:#e65100">🟡 邊緣危險</div><span class="pod-reason" style="margin-left:6px">目前 9 天，還差 3 天，空間僅 1 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#7</span>
+            <span class="cand-name">54red</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>73,139</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>2.4</b> 倍 · 約 <b>2.4 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 10 天，還差 2 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div></div><h3 class="sub">📈 排名上升機會（最容易往上爬一名）</h3><div class="cands">
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#23</span>
+            <span class="cand-name">show2266</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>117</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#4</span>
+            <span class="cand-name">tongtong3131</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距前一名 <b>347</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#9</span>
+            <span class="cand-name">shingni0516</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距前一名 <b>658</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#22</span>
+            <span class="cand-name">ii05090509</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>3,529</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.3</b> 倍 · 約 <b>0.3 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div></div>
+      <h3 class="sub">📊 完整排行 · 機會分析</h3>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th>排名</th><th>主播</th><th>積分</th><th>鑽石數</th><th>有效開播</th><th>資格預測</th><th>新粉團</th>
+          <th>距前一名</th><th>距前三(獎勵線)</th><th>日均鑽</th><th>反超所需</th><th>機會</th>
+        </tr></thead>
+        <tbody><tr class="lv-leader rwd qlf-fail">
+          <td class="rk">🥇 1</td>
+          <td class="host"><span class="hid">bella_bella1313</span><br><span class="nick">👼Angel㊙️專屬벨라🌹</span></td>
+          <td class="num strong">716,730</td>
+          <td class="num">714,350</td>
+          <td class="num">3天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">28</td>
+          <td class="num gap">—</td>
+          <td class="num rline">🏆</td>
+          <td class="num">238,116</td>
+          <td class="num">守擂</td>
+          <td class="tag"><span style="background:#fff8e1;color:#b8860b">🏆 榜首</span></td>
+        </tr><tr class="lv-hard rwd qlf-safe">
+          <td class="rk">🥈 2</td>
+          <td class="host"><span class="hid">yyyy8888aaaa</span><br><span class="nick">AKA壹玖𖥧🧯(有錢版）</span></td>
+          <td class="num strong">428,461</td>
+          <td class="num">418,541</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">292</td>
+          <td class="num gap">288,269</td>
+          <td class="num rline">🏆</td>
+          <td class="num">41,854</td>
+          <td class="num">6.9 天</td>
+          <td class="tag"><span style="background:#eceff1;color:#78909c">⚪ 較難</span></td>
+        </tr><tr class="lv-hot rwd qlf-risk">
+          <td class="rk">🥉 3</td>
+          <td class="host"><span class="hid">weeeeee0406</span><br><span class="nick">𝜗𝜚💫小月🌙♡</span></td>
+          <td class="num strong">383,183</td>
+          <td class="num">376,083</td>
+          <td class="num">8天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">150</td>
+          <td class="num gap">45,278</td>
+          <td class="num rline">🏆</td>
+          <td class="num">47,010</td>
+          <td class="num">1.0 天 <span class="risk" title="與後一名差距極小，有被反超風險">⚠️守</span></td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">4</td>
+          <td class="host"><span class="hid">tongtong3131</span><span class="live-dot"></span><br><span class="nick">彤彤🐰🐰</span></td>
+          <td class="num strong">382,836</td>
+          <td class="num">375,506</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">33</td>
+          <td class="num gap">347</td>
+          <td class="num rline">347</td>
+          <td class="num">37,550</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">5</td>
+          <td class="host"><span class="hid">hello_hello_151</span><span class="live-dot"></span><br><span class="nick">蘿蘿🥕¹²³</span></td>
+          <td class="num strong">370,956</td>
+          <td class="num">362,286</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">167</td>
+          <td class="num gap">11,880</td>
+          <td class="num rline">12,227</td>
+          <td class="num">36,228</td>
+          <td class="num">0.3 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">6</td>
+          <td class="host"><span class="hid">peggyhuang0622</span><span class="live-dot"></span><br><span class="nick">✨珮珮🐟🎤</span></td>
+          <td class="num strong">337,563</td>
+          <td class="num">329,693</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">157</td>
+          <td class="num gap">33,393</td>
+          <td class="num rline">45,620</td>
+          <td class="num">36,632</td>
+          <td class="num">0.9 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">7</td>
+          <td class="host"><span class="hid">54red</span><span class="live-dot"></span><br><span class="nick">吳是閎®️⁵⁴</span></td>
+          <td class="num strong">310,044</td>
+          <td class="num">302,724</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">32</td>
+          <td class="num gap">27,519</td>
+          <td class="num rline">73,139</td>
+          <td class="num">30,272</td>
+          <td class="num">0.9 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-safe">
+          <td class="rk">8</td>
+          <td class="host"><span class="hid">kreis54170</span><span class="live-dot"></span><br><span class="nick">🦵龍云大濕¹¹¹⁵🔥</span></td>
+          <td class="num strong">272,759</td>
+          <td class="num">260,759</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">430</td>
+          <td class="num gap">37,285</td>
+          <td class="num rline">110,424</td>
+          <td class="num">23,705</td>
+          <td class="num">1.6 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">9</td>
+          <td class="host"><span class="hid">shingni0516</span><span class="live-dot"></span><br><span class="nick">尬💢妮老師</span></td>
+          <td class="num strong">272,101</td>
+          <td class="num">259,561</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">554</td>
+          <td class="num gap">658</td>
+          <td class="num rline">111,082</td>
+          <td class="num">25,956</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">10</td>
+          <td class="host"><span class="hid">su360momo</span><br><span class="nick">白淺🍌𝓨𝓼❧ 🐝</span></td>
+          <td class="num strong">250,871</td>
+          <td class="num">240,461</td>
+          <td class="num">6天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">621</td>
+          <td class="num gap">21,230</td>
+          <td class="num rline">132,312</td>
+          <td class="num">40,076</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-risk">
+          <td class="rk">11</td>
+          <td class="host"><span class="hid">hehe30678</span><span class="live-dot"></span><br><span class="nick">◔̯◔沒心態のW</span></td>
+          <td class="num strong">206,367</td>
+          <td class="num">195,097</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">497</td>
+          <td class="num gap">44,504</td>
+          <td class="num rline">176,816</td>
+          <td class="num">21,677</td>
+          <td class="num">2.1 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">12</td>
+          <td class="host"><span class="hid">yu_sailn1112</span><span class="live-dot"></span><br><span class="nick">°༝郁ㄦ🎣</span></td>
+          <td class="num strong">189,458</td>
+          <td class="num">183,798</td>
+          <td class="num">8天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">6</td>
+          <td class="num gap">16,909</td>
+          <td class="num rline">193,725</td>
+          <td class="num">22,974</td>
+          <td class="num">0.7 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">13</td>
+          <td class="host"><span class="hid">in26222595</span><span class="live-dot"></span><br><span class="nick">🇹🇼數勾尹捏🍼</span></td>
+          <td class="num strong">178,785</td>
+          <td class="num">171,725</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">76</td>
+          <td class="num gap">10,673</td>
+          <td class="num rline">204,398</td>
+          <td class="num">19,080</td>
+          <td class="num">0.6 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">14</td>
+          <td class="host"><span class="hid">crossing_cj</span><br><span class="nick">Jack 哥哥</span></td>
+          <td class="num strong">173,522</td>
+          <td class="num">167,012</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">21</td>
+          <td class="num gap">5,263</td>
+          <td class="num rline">209,661</td>
+          <td class="num">18,556</td>
+          <td class="num">0.3 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-fail">
+          <td class="rk">15</td>
+          <td class="host"><span class="hid">klio0606</span><br><span class="nick">33 ʚɞ ³ ³ ઇଓ</span></td>
+          <td class="num strong">146,184</td>
+          <td class="num">141,084</td>
+          <td class="num">7天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">20</td>
+          <td class="num gap">27,338</td>
+          <td class="num rline">236,999</td>
+          <td class="num">20,154</td>
+          <td class="num">1.4 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">16</td>
+          <td class="host"><span class="hid">star5201314_</span><br><span class="nick">✨Star✨碎碎念</span></td>
+          <td class="num strong">141,475</td>
+          <td class="num">136,915</td>
+          <td class="num">6天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">36</td>
+          <td class="num gap">4,709</td>
+          <td class="num rline">241,708</td>
+          <td class="num">22,819</td>
+          <td class="num">0.2 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">17</td>
+          <td class="host"><span class="hid">love_atj</span><br><span class="nick">JOJO💫 格局💫 ⁰⁵⁰⁶</span></td>
+          <td class="num strong">132,950</td>
+          <td class="num">122,120</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">383</td>
+          <td class="num gap">8,525</td>
+          <td class="num rline">250,233</td>
+          <td class="num">12,212</td>
+          <td class="num">0.7 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">18</td>
+          <td class="host"><span class="hid">nnnnn66666nnnnn</span><br><span class="nick">若若🅽uo⁶⁶（生日版🎂）</span></td>
+          <td class="num strong">125,729</td>
+          <td class="num">118,229</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">50</td>
+          <td class="num gap">7,221</td>
+          <td class="num rline">257,454</td>
+          <td class="num">11,822</td>
+          <td class="num">0.6 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-chance qlf-safe">
+          <td class="rk">19</td>
+          <td class="host"><span class="hid">shirley18504</span><br><span class="nick">𝙃𝙎.澪ฅ</span></td>
+          <td class="num strong">106,476</td>
+          <td class="num">98,136</td>
+          <td class="num">11天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">64</td>
+          <td class="num gap">19,253</td>
+          <td class="num rline">276,707</td>
+          <td class="num">8,921</td>
+          <td class="num">2.2 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-chance qlf-risk">
+          <td class="rk">20</td>
+          <td class="host"><span class="hid">kitty805666_</span><br><span class="nick">💕🫟霈～甄🫟💕💕🫟格ഒᩚ格🫟</span></td>
+          <td class="num strong">82,380</td>
+          <td class="num">66,930</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">915</td>
+          <td class="num gap">24,096</td>
+          <td class="num rline">300,803</td>
+          <td class="num">7,436</td>
+          <td class="num">3.2 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-chance qlf-fail">
+          <td class="rk">21</td>
+          <td class="host"><span class="hid">cassiexoxo1201</span><br><span class="nick">凱西KC🔆</span></td>
+          <td class="num strong">40,178</td>
+          <td class="num">36,628</td>
+          <td class="num">3天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">145</td>
+          <td class="num gap">42,202</td>
+          <td class="num rline">343,005</td>
+          <td class="num">12,209</td>
+          <td class="num">3.5 天</td>
+          <td class="tag"><span style="background:#e8f5e9;color:#2e7d32">✅ 有機會衝</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">22</td>
+          <td class="host"><span class="hid">ii05090509</span><br><span class="nick">潤潁Ruenying🪕</span></td>
+          <td class="num strong">36,649</td>
+          <td class="num">34,209</td>
+          <td class="num">3天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">34</td>
+          <td class="num gap">3,529</td>
+          <td class="num rline">346,534</td>
+          <td class="num">11,403</td>
+          <td class="num">0.3 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">23</td>
+          <td class="host"><span class="hid">show2266</span><br><span class="nick">賽班-小余班⛰️🎸🌊</span></td>
+          <td class="num strong">36,532</td>
+          <td class="num">29,722</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">51</td>
+          <td class="num gap">117</td>
+          <td class="num rline">346,651</td>
+          <td class="num">3,302</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hard qlf-fail">
+          <td class="rk">24</td>
+          <td class="host"><span class="hid">peishan5588</span><br><span class="nick">종샨샨 ღ ♏1029 ♚ 천갈궁</span></td>
+          <td class="num strong">8,047</td>
+          <td class="num">5,067</td>
+          <td class="num">4天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">18</td>
+          <td class="num gap">28,485</td>
+          <td class="num rline">375,136</td>
+          <td class="num">1,266</td>
+          <td class="num">22.5 天</td>
+          <td class="tag"><span style="background:#eceff1;color:#78909c">⚪ 較難</span></td>
+        </tr><tr class="lv-hard qlf-fail">
+          <td class="rk">25</td>
+          <td class="host"><span class="hid">aaa1234bbb0</span><br><span class="nick">澄澄🍊</span></td>
+          <td class="num strong">3,861</td>
+          <td class="num">3,851</td>
+          <td class="num">0天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">1</td>
+          <td class="num gap">4,186</td>
+          <td class="num rline">379,322</td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+          <td class="tag"><span style="background:#eceff1;color:#78909c">⚪ 較難</span></td>
+        </tr><tr class="lv-hard qlf-fail">
+          <td class="rk">26</td>
+          <td class="host"><span class="hid">medusachiang</span><br><span class="nick">凌霄魔女</span></td>
+          <td class="num strong">0</td>
+          <td class="num">0</td>
+          <td class="num">0天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">0</td>
+          <td class="num gap">3,861</td>
+          <td class="num rline">383,183</td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+          <td class="tag"><span style="background:#eceff1;color:#78909c">⚪ 較難</span></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </section>
+    <section class="act" id="act-chengzhang">
+      <div class="act-head">
+        <h2>🌱 成長之星</h2>
+        <div class="act-meta">參賽 <b>806</b> 人 · 各賽道前 <b>3</b> 名獲獎 · <span class="note-cap">本表顯示前 29 名（活躍競爭區），全體參賽 806 人</span></div>
+      </div>
+      <div class="rules">
+        <span>🚪 賽道門檻：近30天累積積分 &lt; 300k</span>
+        <span>🚪 參賽資格：有效開播 ≥ <b>11</b>天 且 累積時長 ≥ <b>30</b>h</span>
+      </div>
+      <div class="rules2">
+        <span>💎 1 鑽石 = <b>1</b> 分</span>
+        <span>📅 1 有效開播日 = <b>700</b> 分</span>
+        <span>💚 1 新粉絲團 = <b>10</b> 分</span>
+        <span>🏆 前3名：🥇三階 / 🥈二階 / 🥉一階 神秘寶庫</span>
+      </div>
+      <div class="qlf-banner">📋 <b>資格預測（至 07/15 截止，剩餘 4 天含今天）</b>：
+      <span class="qlf q-fail">🔴 15 人確定無法達標</span>
+      <span class="qlf q-risk">🟡 5 人邊緣危險</span>
+      <span class="qlf q-ok">🟢 9 人已達標/安全（其中 9 人還未達標但尚餘空間）</span>
+      <div class="qlf-note">算法：當前有效天數 + 剩餘 4 天（含今天，假設每日皆開播之樂觀上限）對比門檻 11 天。邊緣危險=還差 1~2 天、須全勤或空間僅 1 天；已安全=還差數天且尚餘 ≥2 天空間；無法達標=即便全勤也差 ≥1 天。</div>
+    </div>
+      <h3 class="sub">🏆 頒獎台（當前前3名）</h3>
+      <div class="podium">
+        <div class="pod" style="border-top:4px solid #b8860b">
+          <div class="pod-medal">🥇</div>
+          <div class="pod-id">ccc99999ccc<span class="live-dot"></span></div>
+          <div class="pod-score">686,416 分</div>
+          <div class="pod-sub">鑽石 681,266 · 6有效天</div>
+          <div class="pod-qlf" style="background:#ffebee;color:#c62828">🔴 無法達標</div>
+          <div class="pod-reason">即使剩餘 4 天全勤，最多 10 天，仍低於 11 天門檻（還差 5 天）</div>
+        </div>
+        <div class="pod" style="border-top:4px solid #78909c">
+          <div class="pod-medal">🥈</div>
+          <div class="pod-id">ppp66531456<span class="live-dot"></span></div>
+          <div class="pod-score">198,697 分</div>
+          <div class="pod-sub">鑽石 192,367 · 9有效天 <span class="risk">⚠️可被反超</span></div>
+          <div class="pod-qlf" style="background:#e8f5e9;color:#2e7d32">🟢 已安全</div>
+          <div class="pod-reason">目前 9 天，還差 2 天達標，剩 4 天可補</div>
+        </div>
+        <div class="pod" style="border-top:4px solid #c62828">
+          <div class="pod-medal">🥉</div>
+          <div class="pod-id">2003_0212</div>
+          <div class="pod-score">186,230 分</div>
+          <div class="pod-sub">鑽石 173,550 · 9有效天</div>
+          <div class="pod-qlf" style="background:#e8f5e9;color:#2e7d32">🟢 已安全</div>
+          <div class="pod-reason">目前 9 天，還差 2 天達標，剩 4 天可補</div>
+        </div></div>
+      <h3 class="sub">🎯 獎勵線挑戰（距第3名最近的主播）</h3><div class="cands">
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#5</span>
+            <span class="cand-name">raindk394</span>
+            </div>
+          <div class="cand-gap">距第3名(獎勵線) <b>37,216</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.5</b> 倍 · 約 <b>0.5 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#ffebee;color:#c62828">🔴 無法達標</div><span class="pod-reason" style="margin-left:6px">剩 4 天全勤最多 6 天 < 11 門檻（還差 9）</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#6</span>
+            <span class="cand-name">gingerbaby40</span>
+            </div>
+          <div class="cand-gap">距第3名(獎勵線) <b>41,501</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>2.4</b> 倍 · 約 <b>2.4 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#fff3e0;color:#e65100">🟡 邊緣危險</div><span class="pod-reason" style="margin-left:6px">目前 8 天，還差 3 天，空間僅 1 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#7</span>
+            <span class="cand-name">reine0823</span>
+            </div>
+          <div class="cand-gap">距第3名(獎勵線) <b>43,540</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>2.9</b> 倍 · 約 <b>2.9 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#e8f5e9;color:#2e7d32">🟢 已安全</div><span class="pod-reason" style="margin-left:6px">目前 9 天，還差 2 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#8</span>
+            <span class="cand-name">yuyu._.0919</span>
+            <span class="live-dot" title="直播中"></span></div>
+          <div class="cand-gap">距第3名(獎勵線) <b>47,996</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>2.9</b> 倍 · 約 <b>2.9 天</b>正常發揮可入前三</div>
+          <div class="pod-qlf" style="display:inline-block;background:#fff3e0;color:#e65100">🟡 邊緣危險</div><span class="pod-reason" style="margin-left:6px">目前 8 天，還差 3 天，空間僅 1 天</span>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🎯 衝獎勵線</div>
+        </div></div><h3 class="sub">📈 排名上升機會（最容易往上爬一名）</h3><div class="cands">
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#28</span>
+            <span class="cand-name">he_is_jackson_kor_kor</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>28</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#10</span>
+            <span class="cand-name">weiviolin_0710</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>35</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#24</span>
+            <span class="cand-name">ray_shao</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>213</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div>
+        <div class="cand" style="border-left:4px solid #c62828">
+          <div class="cand-top"><span class="cand-rank">#18</span>
+            <span class="cand-name">petty0803</span>
+            </div>
+          <div class="cand-gap">距前一名 <b>307</b> 分</div>
+          <div class="cand-sub">≈ 你日均產出 <b>0.0</b> 倍 · 約 <b>0.0 天</b>正常發揮可反超</div>
+          <div class="cand-tag" style="background:#ffebee;color:#c62828">🔥 極易反超</div>
+        </div></div>
+      <h3 class="sub">📊 完整排行 · 機會分析</h3>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th>排名</th><th>主播</th><th>積分</th><th>鑽石數</th><th>有效開播</th><th>資格預測</th><th>新粉團</th>
+          <th>距前一名</th><th>距前三(獎勵線)</th><th>日均鑽</th><th>反超所需</th><th>機會</th>
+        </tr></thead>
+        <tbody><tr class="lv-leader rwd qlf-fail">
+          <td class="rk">🥇 1</td>
+          <td class="host"><span class="hid">ccc99999ccc</span><span class="live-dot"></span><br><span class="nick">拎粥罵瞪萊.☘︎ ˖꙳ 🍒🫐</span></td>
+          <td class="num strong">686,416</td>
+          <td class="num">681,266</td>
+          <td class="num">6天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">95</td>
+          <td class="num gap">—</td>
+          <td class="num rline">🏆</td>
+          <td class="num">113,544</td>
+          <td class="num">守擂</td>
+          <td class="tag"><span style="background:#fff8e1;color:#b8860b">🏆 榜首</span></td>
+        </tr><tr class="lv-hard rwd qlf-safe">
+          <td class="rk">🥈 3</td>
+          <td class="host"><span class="hid">ppp66531456</span><span class="live-dot"></span><br><span class="nick">貝拉bella ¹ ¹ ⁶</span></td>
+          <td class="num strong">198,697</td>
+          <td class="num">192,367</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">3</td>
+          <td class="num gap">487,719</td>
+          <td class="num rline">🏆</td>
+          <td class="num">21,374</td>
+          <td class="num">22.8 天 <span class="risk" title="與後一名差距極小，有被反超風險">⚠️守</span></td>
+          <td class="tag"><span style="background:#eceff1;color:#78909c">⚪ 較難</span></td>
+        </tr><tr class="lv-hot rwd qlf-safe">
+          <td class="rk">🥉 4</td>
+          <td class="host"><span class="hid">2003_0212</span><br><span class="nick">🐚貝貝ت</span></td>
+          <td class="num strong">186,230</td>
+          <td class="num">173,550</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">638</td>
+          <td class="num gap">12,467</td>
+          <td class="num rline">🏆</td>
+          <td class="num">19,283</td>
+          <td class="num">0.6 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">5</td>
+          <td class="host"><span class="hid">raindk394</span><br><span class="nick">𝓗.雨默྅˖ᶤ🦋/7.15海御妳百天慶🌟</span></td>
+          <td class="num strong">149,014</td>
+          <td class="num">147,614</td>
+          <td class="num">2天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">0</td>
+          <td class="num gap">37,216</td>
+          <td class="num rline">37,216</td>
+          <td class="num">73,807</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">6</td>
+          <td class="host"><span class="hid">gingerbaby40</span><br><span class="nick">🦄阿諼A🦁</span></td>
+          <td class="num strong">144,729</td>
+          <td class="num">138,899</td>
+          <td class="num">8天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">23</td>
+          <td class="num gap">4,285</td>
+          <td class="num rline">41,501</td>
+          <td class="num">17,362</td>
+          <td class="num">0.2 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">7</td>
+          <td class="host"><span class="hid">reine0823</span><br><span class="nick">༺ෆོ 芸湮 ఌ🐾⁸²³</span></td>
+          <td class="num strong">142,690</td>
+          <td class="num">133,270</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">312</td>
+          <td class="num gap">2,039</td>
+          <td class="num rline">43,540</td>
+          <td class="num">14,807</td>
+          <td class="num">0.1 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">8</td>
+          <td class="host"><span class="hid">yuyu._.0919</span><span class="live-dot"></span><br><span class="nick">𝙃𝙎.語薇🌦️</span></td>
+          <td class="num strong">138,234</td>
+          <td class="num">132,514</td>
+          <td class="num">8天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">12</td>
+          <td class="num gap">4,456</td>
+          <td class="num rline">47,996</td>
+          <td class="num">16,564</td>
+          <td class="num">0.3 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">9</td>
+          <td class="host"><span class="hid">nothingtotell25</span><br><span class="nick">波皮辣椒🌶️</span></td>
+          <td class="num strong">134,491</td>
+          <td class="num">128,811</td>
+          <td class="num">8天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">8</td>
+          <td class="num gap">3,743</td>
+          <td class="num rline">51,739</td>
+          <td class="num">16,101</td>
+          <td class="num">0.2 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">10</td>
+          <td class="host"><span class="hid">weiviolin_0710</span><br><span class="nick">Violin⚡️WEi🎻</span></td>
+          <td class="num strong">134,456</td>
+          <td class="num">130,946</td>
+          <td class="num">5天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">1</td>
+          <td class="num gap">35</td>
+          <td class="num rline">51,774</td>
+          <td class="num">26,189</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">11</td>
+          <td class="host"><span class="hid">carysonhuang</span><br><span class="nick">黃譽韶Caryson</span></td>
+          <td class="num strong">128,423</td>
+          <td class="num">118,753</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">267</td>
+          <td class="num gap">6,033</td>
+          <td class="num rline">57,807</td>
+          <td class="num">11,875</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">12</td>
+          <td class="host"><span class="hid">tizzy1334</span><br><span class="nick">𝙃𝙎.溫何𝔀𝓱｜7月份生日活動開跑囉</span></td>
+          <td class="num strong">125,591</td>
+          <td class="num">110,941</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">835</td>
+          <td class="num gap">2,832</td>
+          <td class="num rline">60,639</td>
+          <td class="num">12,326</td>
+          <td class="num">0.2 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">13</td>
+          <td class="host"><span class="hid">sandywu___</span><br><span class="nick">Sandy 珊珊🐻💕</span></td>
+          <td class="num strong">109,926</td>
+          <td class="num">106,346</td>
+          <td class="num">5天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">8</td>
+          <td class="num gap">15,665</td>
+          <td class="num rline">76,304</td>
+          <td class="num">21,269</td>
+          <td class="num">0.7 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">14</td>
+          <td class="host"><span class="hid">peggychen43</span><br><span class="nick">🫧白白🫧⁰⁷²³</span></td>
+          <td class="num strong">104,993</td>
+          <td class="num">97,423</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">57</td>
+          <td class="num gap">4,933</td>
+          <td class="num rline">81,237</td>
+          <td class="num">9,742</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">15</td>
+          <td class="host"><span class="hid">__smile888</span><br><span class="nick">── 柔</span></td>
+          <td class="num strong">102,636</td>
+          <td class="num">101,606</td>
+          <td class="num">1天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">33</td>
+          <td class="num gap">2,357</td>
+          <td class="num rline">83,594</td>
+          <td class="num">101,606</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">16</td>
+          <td class="host"><span class="hid">trockmane</span><span class="live-dot"></span><br><span class="nick">🦁嘎總（Rock）🦁</span></td>
+          <td class="num strong">101,883</td>
+          <td class="num">97,053</td>
+          <td class="num">6天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">63</td>
+          <td class="num gap">753</td>
+          <td class="num rline">84,347</td>
+          <td class="num">16,175</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">17</td>
+          <td class="host"><span class="hid">yang_mie00</span><br><span class="nick">羊咩同學🎹🐑</span></td>
+          <td class="num strong">101,333</td>
+          <td class="num">97,673</td>
+          <td class="num">5天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">16</td>
+          <td class="num gap">550</td>
+          <td class="num rline">84,897</td>
+          <td class="num">19,534</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">18</td>
+          <td class="host"><span class="hid">petty0803</span><br><span class="nick">↬牙牙⁰⁸⁰³･◡･🦷</span></td>
+          <td class="num strong">101,026</td>
+          <td class="num">93,796</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">93</td>
+          <td class="num gap">307</td>
+          <td class="num rline">85,204</td>
+          <td class="num">10,421</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">19</td>
+          <td class="host"><span class="hid">yuyu.0911</span><br><span class="nick">👗衣繁 🦋</span></td>
+          <td class="num strong">85,630</td>
+          <td class="num">84,770</td>
+          <td class="num">1天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">16</td>
+          <td class="num gap">15,396</td>
+          <td class="num rline">100,600</td>
+          <td class="num">84,770</td>
+          <td class="num">0.2 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">20</td>
+          <td class="host"><span class="hid">yuxin1009</span><br><span class="nick">單單🧝🏻‍♀️</span></td>
+          <td class="num strong">84,426</td>
+          <td class="num">78,716</td>
+          <td class="num">8天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">11</td>
+          <td class="num gap">1,204</td>
+          <td class="num rline">101,804</td>
+          <td class="num">9,839</td>
+          <td class="num">0.1 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">21</td>
+          <td class="host"><span class="hid">showlo.0726</span><br><span class="nick">wo嘎電man ⚡️</span></td>
+          <td class="num strong">84,042</td>
+          <td class="num">80,502</td>
+          <td class="num">5天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">4</td>
+          <td class="num gap">384</td>
+          <td class="num rline">102,188</td>
+          <td class="num">16,100</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">22</td>
+          <td class="host"><span class="hid">1130_wow</span><br><span class="nick">小熊哥哥🐨₁₁₃₀🎤</span></td>
+          <td class="num strong">83,101</td>
+          <td class="num">75,511</td>
+          <td class="num">6天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">339</td>
+          <td class="num gap">941</td>
+          <td class="num rline">103,129</td>
+          <td class="num">12,585</td>
+          <td class="num">0.1 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">23</td>
+          <td class="host"><span class="hid">chenchen316_x</span><span class="live-dot"></span><br><span class="nick">ෆ 陳陳🪽„𝕐𝕙”</span></td>
+          <td class="num strong">76,805</td>
+          <td class="num">71,875</td>
+          <td class="num">5天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">143</td>
+          <td class="num gap">6,296</td>
+          <td class="num rline">109,425</td>
+          <td class="num">14,375</td>
+          <td class="num">0.4 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">24</td>
+          <td class="host"><span class="hid">ray_shao</span><br><span class="nick">👑睿少👑</span></td>
+          <td class="num strong">76,592</td>
+          <td class="num">72,182</td>
+          <td class="num">6天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">21</td>
+          <td class="num gap">213</td>
+          <td class="num rline">109,638</td>
+          <td class="num">12,030</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">25</td>
+          <td class="host"><span class="hid">tingting3208</span><br><span class="nick">小彭佳慧🍍黃亭亭🍍</span></td>
+          <td class="num strong">75,773</td>
+          <td class="num">74,293</td>
+          <td class="num">2天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">8</td>
+          <td class="num gap">819</td>
+          <td class="num rline">110,457</td>
+          <td class="num">37,146</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">26</td>
+          <td class="host"><span class="hid">happy.bosom.friend.alan</span><br><span class="nick">幸福知音阿澤</span></td>
+          <td class="num strong">74,255</td>
+          <td class="num">70,655</td>
+          <td class="num">5天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">10</td>
+          <td class="num gap">1,518</td>
+          <td class="num rline">111,975</td>
+          <td class="num">14,131</td>
+          <td class="num">0.1 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-fail">
+          <td class="rk">27</td>
+          <td class="host"><span class="hid">xiao._o7</span><span class="live-dot"></span><br><span class="nick">🐹小歪寶包</span></td>
+          <td class="num strong">70,231</td>
+          <td class="num">66,681</td>
+          <td class="num">5天</td>
+          <td class="tag qlf"><span style="background:#ffebee;color:#c62828">🔴 無法達標</span></td>
+          <td class="num">5</td>
+          <td class="num gap">4,024</td>
+          <td class="num rline">115,999</td>
+          <td class="num">13,336</td>
+          <td class="num">0.3 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-risk">
+          <td class="rk">28</td>
+          <td class="host"><span class="hid">he_is_jackson_kor_kor</span><br><span class="nick">小倫Jackson</span></td>
+          <td class="num strong">70,203</td>
+          <td class="num">64,493</td>
+          <td class="num">8天</td>
+          <td class="tag qlf"><span style="background:#fff3e0;color:#e65100">🟡 邊緣危險</span></td>
+          <td class="num">11</td>
+          <td class="num gap">28</td>
+          <td class="num rline">116,027</td>
+          <td class="num">8,061</td>
+          <td class="num">0.0 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">29</td>
+          <td class="host"><span class="hid">sta259670lw</span><br><span class="nick">🦄yoyo🦄</span></td>
+          <td class="num strong">69,626</td>
+          <td class="num">60,386</td>
+          <td class="num">10天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">224</td>
+          <td class="num gap">577</td>
+          <td class="num rline">116,604</td>
+          <td class="num">6,038</td>
+          <td class="num">0.1 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr><tr class="lv-hot qlf-safe">
+          <td class="rk">30</td>
+          <td class="host"><span class="hid">medd11111</span><br><span class="nick">🇹🇼🛸U小夭夭ᰔᩚ</span></td>
+          <td class="num strong">66,614</td>
+          <td class="num">60,214</td>
+          <td class="num">9天</td>
+          <td class="tag qlf"><span style="background:#e8f5e9;color:#2e7d32">🟢 已安全</span></td>
+          <td class="num">10</td>
+          <td class="num gap">3,012</td>
+          <td class="num rline">119,616</td>
+          <td class="num">6,690</td>
+          <td class="num">0.5 天</td>
+          <td class="tag"><span style="background:#ffebee;color:#c62828">🔥 極易反超</span></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </section>
+  <div class="foot">機會判定：以「差距 ÷ 該主播日均鑽石產出」估算反超/入前三所需天數（日均鑽 = 累積鑽石 ÷ 有效開播天數，為活動期產出強度之代理指標）。🔥一天內可補、✅剩餘天數內有機會、⚪較難。前3名標 🥇🥈🥉 並以底色標示獎勵區。<br>⚠️ 資格預測（🔴無法達標 / 🟡邊緣危險 / 🟢已達標·已安全）依後端回傳之活動期有效開播天數（ValidLiveDayCount，窗口 7/1–7/15）對比各賽道門檻（成長11天 / 實力·穩定12天）推算，剩餘 4 天含今天（假設每日皆開播之樂觀上限）：還差 1~2 天且須全勤/空間僅1天者為「邊緣危險」，還差數天且尚餘≥2天空間者為「已安全」，即便全勤也差≥1天者為「無法達標」。未計「累積時長≥30h」條件，僅供參考，請以後台最終結算為準。</div>
+</div></body></html>
