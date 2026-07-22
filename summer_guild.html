@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏆 HOTA 夏季公會賽｜季度榮耀之戰</title>
+<style>
+:root{
+  --bg:#0c0e14; --panel:#161a24; --panel2:#1d2230; --line:#2a3142;
+  --txt:#eef1f6; --muted:#9aa6bd; --gold:#ffcf4d; --gold2:#ff9f1c;
+  --cyan:#3fd0ff; --pink:#ff4d7d; --green:#39d98a; --red:#ff5c5c;
+  --grad:linear-gradient(135deg,#ff9f1c,#ff4d7d 55%,#c026d3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 50% -10%,#241a12 0%,var(--bg) 55%);color:var(--txt);font-family:-apple-system,"PingFang TC","Microsoft JhengHei",Segoe UI,sans-serif;line-height:1.6;padding:26px 16px 80px}
+.wrap{max-width:1000px;margin:0 auto}
+header{text-align:center;padding:14px 0 6px}
+header .kicker{color:var(--gold);font-size:13px;letter-spacing:3px;font-weight:700}
+header h1{font-size:30px;margin:8px 0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;letter-spacing:1px}
+header .tagline{color:var(--muted);font-size:14px}
+header .flame{font-size:22px}
+
+/* 倒數英雄區 */
+.hero{margin:22px 0;background:linear-gradient(135deg,#1b140d,#221726);border:1px solid var(--line);border-radius:18px;padding:22px 18px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 50% 0%,rgba(255,159,28,.18),transparent 70%);pointer-events:none}
+.hero .label{color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1px}
+.hero .phase{font-size:22px;font-weight:900;margin:6px 0 2px}
+.hero .cd{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.hero .cd .u{background:#0008;border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:78px}
+.hero .cd .n{font-size:30px;font-weight:900;color:#fff;font-variant-numeric:tabular-nums}
+.hero .cd .l{font-size:11px;color:var(--muted);letter-spacing:1px}
+.hero .hint{margin-top:10px;color:var(--muted);font-size:13px}
+
+h2{font-size:19px;margin:34px 0 14px;padding-left:12px;border-left:4px solid var(--gold2);display:flex;align-items:center;gap:8px}
+.note{font-size:12px;color:var(--muted);font-weight:400;border-left:none;padding:0;margin:-6px 0 12px}
+
+/* 賽程軸 */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tl{border:1px solid var(--line);border-radius:14px;padding:14px 12px;background:var(--panel);text-align:center;position:relative}
+.tl .ph{font-weight:800;font-size:15px}
+.tl .dt{color:var(--muted);font-size:12px;margin-top:4px}
+.tl .st{margin-top:10px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block}
+.st.ended{background:#26120f;color:var(--red)}
+.st.live{background:#0c2a1c;color:var(--green)}
+.st.wait{background:#1a2233;color:var(--cyan)}
+.tl.live{border-color:var(--green);box-shadow:0 0 0 1px var(--green) inset,0 0 24px rgba(57,217,138,.15)}
+.tl.ended{opacity:.6}
+@media(max-width:680px){.timeline{grid-template-columns:repeat(2,1fr)}}
+
+/* 分組 */
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.groups{grid-template-columns:1fr}}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;overflow:hidden}
+.group.grow{border-top:3px solid var(--cyan)}
+.group.peak{border-top:3px solid var(--gold)}
+.group h3{font-size:18px;margin-bottom:4px}
+.group .desc{color:var(--muted);font-size:13px;margin-bottom:14px}
+.reward{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-top:1px dashed var(--line)}
+.reward .medal{font-size:24px;line-height:1;flex-shrink:0}
+.reward .body{flex:1}
+.reward .rank{font-weight:800;font-size:14px}
+.reward .items{margin-top:3px;font-size:13px;color:#dde3ee}
+.reward .dia{color:var(--gold);font-weight:800}
+.prize-ico{font-size:14px}
+
+.rules{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 22px}
+.rules li{margin:9px 0;color:#dde3ee;font-size:14px;list-style:none;padding-left:22px;position:relative}
+.rules li::before{content:"◆";position:absolute;left:0;color:var(--gold2)}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;line-height:1.8}
+.updated{text-align:center;color:var(--muted);font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">HOTA · QUARTERLY GLORY</div>
+    <h1>🏆 夏季公會賽｜季度榮耀之戰</h1>
+    <div class="tagline">這三個月的努力，終將迎來屬於自己的舞台。<span class="flame">🔥</span></div>
+  </header>
+
+  <!-- 倒數英雄區 -->
+  <section class="hero">
+    <div class="label" id="cdLabel">距離下一階段</div>
+    <div class="phase" id="cdPhase">—</div>
+    <div class="cd" id="cdBox">
+      <div class="u"><div class="n" id="d">--</div><div class="l">DAYS 天</div></div>
+      <div class="u"><div class="n" id="h">--</div><div class="l">HRS 時</div></div>
+      <div class="u"><div class="n" id="m">--</div><div class="l">MIN 分</div></div>
+      <div class="u"><div class="n" id="s">--</div><div class="l">SEC 秒</div></div>
+    </div>
+    <div class="hint" id="cdHint"></div>
+  </section>
+
+  <!-- 賽程軸 -->
+  <h2>📅 賽程時間軸</h2>
+  <div class="timeline" id="timeline"></div>
+
+  <!-- 分組與獎勵 -->
+  <h2>🏅 分組競賽與獎勵</h2>
+  <div class="note">公會依主播近三個月表現安排分組，各組獨立競賽、獨立排名、獨立頒獎。（文宣亦稱「巔峰組」）</div>
+  <div class="groups">
+    <div class="group grow">
+      <h3>🌱 成長組</h3>
+      <div class="desc">獻給每一位不斷突破自己的主播。每一次努力，都值得被看見。</div>
+      <div class="reward"><div class="medal">🥇</div><div class="body"><div class="rank">冠軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 成長冠軍盃 ＋ <span class="prize-ico">🖼️</span> 成長冠軍海報 ＋ <span class="dia">💎 30,000 鑽石</span></div></div></div>
+      <div class="reward"><div class="medal">🥈</div><div class="body"><div class="rank">亞軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 成長亞軍盃 ＋ <span class="prize-ico">🖼️</span> 成長亞軍海報 ＋ <span class="dia">💎 15,000 鑽石</span></div></div></div>
+      <div class="reward"><div class="medal">🥉</div><div class="body"><div class="rank">季軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 成長季軍盃 ＋ <span class="prize-ico">🖼️</span> 成長季軍海報 ＋ <span class="dia">💎 10,000 鑽石</span></div></div></div>
+    </div>
+    <div class="group peak">
+      <h3>👑 尖端組</h3>
+      <div class="desc">HOTA 核心力量主播的最高競技舞台。與強者交手，挑戰更高目標。</div>
+      <div class="reward"><div class="medal">🥇</div><div class="body"><div class="rank">冠軍</div><div class="items"><span class="prize-ico">✈️</span> 年底公會盛典機票＋酒店 ＋ <span class="prize-ico">🏆</span> Q3 榮耀冠軍盃 ＋ <span class="prize-ico">🖼️</span> 榮耀冠軍海報 ＋ <span class="dia">💎 44,999 鑽石</span></div></div></div>
+      <div class="reward"><div class="medal">🥈</div><div class="body"><div class="rank">亞軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 榮耀亞軍盃 ＋ <span class="prize-ico">🖼️</span> 榮耀亞軍海報 ＋ <span class="dia">💎 20,000 鑽石</span></div></div></div>
+      <div class="reward"><div class="medal">🥉</div><div class="body"><div class="rank">季軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 榮耀季軍盃 ＋ <span class="prize-ico">🖼️</span> 榮耀季軍海報 ＋ <span class="dia">💎 15,000 鑽石</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- 賽事說明 -->
+  <h2>📌 賽事說明</h2>
+  <div class="rules">
+    <ul>
+      <li>公會將依據主播近三個月直播表現、流水數據及整體發展狀況，安排至成長組或巔峰組。</li>
+      <li>各組獨立競賽、獨立排名、獨立頒發獎勵。</li>
+      <li>排名賽結束後，各組前 16 名晉級淘汰賽。</li>
+      <li>最終由晉級主播角逐各組冠、亞、季軍。</li>
+      <li>公會保留活動最終解釋權。</li>
+    </ul>
+  </div>
+
+  <div class="updated" id="updated"></div>
+  <div class="foot">
+    🌟 三個月一次，只為這一戰。<br>
+    期待每一位主播，站在自己的舞台上。<br>
+    HOTA 夏日公會賽，正式開戰！🔥
+  </div>
+</div>
+
+<script>
+// 所有時間以 GMT+8（台灣時間）為準
+const PHASES = [
+  {name:"報名時間",  start:"2026-07-21T00:00:00+08:00", end:"2026-07-24T23:59:59+08:00"},
+  {name:"排名賽",    start:"2026-07-25T00:00:00+08:00", end:"2026-07-27T23:59:59+08:00"},
+  {name:"16強淘汰賽", start:"2026-07-29T21:00:00+08:00", end:"2026-07-29T23:00:00+08:00"},
+  {name:"總決賽",    start:"2026-07-30T21:00:00+08:00", end:"2026-07-30T23:00:00+08:00"},
+];
+
+function statusOf(p, now){
+  if(now < new Date(p.start)) return "wait";
+  if(now > new Date(p.end))   return "ended";
+  return "live";
+}
+const ST_LABEL = {wait:"未開始", live:"進行中", ended:"已結束"};
+
+function pad(n){return String(n).padStart(2,"0");}
+function diffParts(ms){
+  if(ms<0) ms=0;
+  const d=Math.floor(ms/86400000);
+  const h=Math.floor(ms%86400000/3600000);
+  const m=Math.floor(ms%3600000/60000);
+  const s=Math.floor(ms%60000/1000);
+  return {d,h,m,s};
+}
+
+function renderTimeline(now){
+  const el=document.getElementById("timeline");
+  el.innerHTML="";
+  PHASES.forEach(p=>{
+    const st=statusOf(p,now);
+    const div=document.createElement("div");
+    div.className="tl "+st;
+    const fmt=s=>{const t=new Date(s);return `${t.getMonth()+1}/${t.getDate()} ${t.getHours()}:${pad(t.getMinutes())}`;};
+    const dt = (p.name==="16強淘汰賽"||p.name==="總決賽") ? fmt(p.start) : `${fmt(p.start)} – ${fmt(p.end).replace(/^\d+\//,'')}`;
+    div.innerHTML=`<div class="ph">${p.name}</div><div class="dt">${dt}</div><div class="st ${st}">${ST_LABEL[st]}</div>`;
+    el.appendChild(div);
+  });
+}
+
+function tick(){
+  const now=new Date();
+  renderTimeline(now);
+
+  // 英雄倒數：找「下一個未開始」的階段；若某階段進行中則倒數其結束
+  let target=null, label="", hint="";
+  const livePhase=PHASES.find(p=>statusOf(p,now)==="live");
+  if(livePhase){
+    target=new Date(livePhase.end);
+    label=`${livePhase.name} 進行中`;
+    hint="把握時間，為榮耀而戰！";
+  } else {
+    const next=PHASES.find(p=>statusOf(p,now)==="wait");
+    if(next){
+      target=new Date(next.start);
+      label=`下一階段：${next.name}`;
+      hint="準備好了嗎？舞台屬於堅持的人。";
+    } else {
+      label="賽事圓滿落幕";
+      hint="感謝每一位站上舞台的主播 🏆";
+    }
+  }
+
+  const {d,h,m,s}= target? diffParts(target-now):{d:0,h:0,m:0,s:0};
+  document.getElementById("cdLabel").textContent = target? "距離":"";
+  document.getElementById("cdPhase").textContent=label;
+  document.getElementById("d").textContent=pad(d);
+  document.getElementById("h").textContent=pad(h);
+  document.getElementById("m").textContent=pad(m);
+  document.getElementById("s").textContent=pad(s);
+  document.getElementById("cdHint").textContent=hint;
+
+  const u=document.getElementById("updated");
+  if(u) u.textContent="頁面即時更新 · 最後刷新 "+now.toLocaleString("zh-Hant",{hour12:false});
+}
+tick();
+setInterval(tick,1000);
+</script>
+</body>
+</html>
