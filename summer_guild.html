@@ -63,6 +63,17 @@ h2{font-size:19px;margin:34px 0 14px;padding-left:12px;border-left:4px solid var
 .reward .dia{color:var(--gold);font-weight:800}
 .prize-ico{font-size:14px}
 
+/* 報名 */
+.signup{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:680px){.signup{grid-template-columns:1fr}}
+.signup>div{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.signup .big{font-weight:800;font-size:15px;color:var(--gold)}
+.signup .points{font-size:30px;font-weight:900;margin:6px 0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.signup .lead{color:var(--muted);font-size:13px}
+.signup .act-title{font-weight:800;font-size:15px;color:var(--cyan);margin-bottom:6px}
+.signup .act-desc{font-size:14px;color:#dde3ee;line-height:1.7}
+.signup .at{color:var(--gold);font-weight:800}
+
 .rules{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 22px}
 .rules li{margin:9px 0;color:#dde3ee;font-size:14px;list-style:none;padding-left:22px;position:relative}
 .rules li::before{content:"◆";position:absolute;left:0;color:var(--gold2)}
@@ -94,6 +105,20 @@ h2{font-size:19px;margin:34px 0 14px;padding-left:12px;border-left:4px solid var
   <!-- 賽程軸 -->
   <h2>📅 賽程時間軸</h2>
   <div class="timeline" id="timeline"></div>
+
+  <!-- 報名方式與報名獎勵 -->
+  <h2>📝 報名方式與報名獎勵</h2>
+  <div class="signup">
+    <div>
+      <div class="big">🎁 完成報名即可獲得</div>
+      <div class="points">20,000 積分</div>
+      <div class="lead">領先開跑 · 屆時將手動加入排行榜中</div>
+    </div>
+    <div>
+      <div class="act-title">📌 報名動作</div>
+      <div class="act-desc">發布 HOTA 公會賽相關的限動或作品，<br>並標記 <span class="at">@hota_tw</span></div>
+    </div>
+  </div>
 
   <!-- 分組與獎勵 -->
   <h2>🏅 分組競賽與獎勵</h2>
