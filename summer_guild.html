@@ -79,6 +79,22 @@ h2{font-size:19px;margin:34px 0 14px;padding-left:12px;border-left:4px solid var
 .rules li::before{content:"◆";position:absolute;left:0;color:var(--gold2)}
 .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;line-height:1.8}
 .updated{text-align:center;color:var(--muted);font-size:12px;margin-top:6px}
+
+/* 各賽道16強 */
+.groups16{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.groups16{grid-template-columns:1fr}}
+.g16{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;overflow:hidden}
+.g16 h3{font-size:18px;margin-bottom:6px}
+.g16 .rank-link{display:inline-block;margin:4px 0 14px;color:var(--cyan);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 12px;border-radius:20px}
+.g16 .rank-link:hover{border-color:var(--cyan)}
+.rank16{margin:0;padding:0;list-style:none}
+.rank16 li{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.rank16 li::before{content:counter(r);counter-increment:r;width:24px;height:24px;flex-shrink:0;border-radius:50%;background:var(--panel2);color:var(--gold);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+.rank16{counter-reset:r}
+.rank16 li .nm{flex:1;color:#eef1f6;font-weight:600}
+.rank16 li .sc{color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums}
+.rank16 li.empty{color:var(--muted);font-style:italic}
+.rank16 li.empty::before{content:"–";background:transparent;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -137,6 +153,56 @@ h2{font-size:19px;margin:34px 0 14px;padding-left:12px;border-left:4px solid var
       <div class="reward"><div class="medal">🥇</div><div class="body"><div class="rank">冠軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 榮耀冠軍盃 ＋ <span class="prize-ico">🖼️</span> 榮耀冠軍海報 ＋ <span class="dia">💎 44,999 鑽石</span></div></div></div>
       <div class="reward"><div class="medal">🥈</div><div class="body"><div class="rank">亞軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 榮耀亞軍盃 ＋ <span class="prize-ico">🖼️</span> 榮耀亞軍海報 ＋ <span class="dia">💎 20,000 鑽石</span></div></div></div>
       <div class="reward"><div class="medal">🥉</div><div class="body"><div class="rank">季軍</div><div class="items"><span class="prize-ico">🏆</span> Q3 榮耀季軍盃 ＋ <span class="prize-ico">🖼️</span> 榮耀季軍海報 ＋ <span class="dia">💎 15,000 鑽石</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- 各賽道16強 -->
+  <h2>🏆 各賽道 16 強</h2>
+  <div class="note">排名賽各組前 16 名晉級淘汰賽。下列名單依官方排名（Backstage）更新，詳情請見各組官方連結。資料更新：2026-07-28，來源：TikTok LIVE Backstage 官方排名（依各組連結 1 / 2 擷取）。</div>
+  <div class="groups16">
+    <div class="g16">
+      <h3>賽道 1</h3>
+      <a class="rank-link" href="https://live-backstage.tiktok.com/portal/tools/activity/rank-multistage-activity-analytics?activityId=7666020557464567815&entryFrom=revenue_activity_page" target="_blank">🔗 官方排名詳情（連結 1）</a>
+      <ol class="rank16">
+        <li><span class="nm">✨珮珮🐟🎤</span><span class="sc">💎170,169 · 175,119分</span></li>
+        <li><span class="nm">⭐️⭐️ 🌟心肝寶貝娘子🌟⭐️⭐️</span><span class="sc">💎74,786 · 89,276分</span></li>
+        <li><span class="nm">🖤🎙️額頭🎙️🤍</span><span class="sc">💎69,944 · 74,644分</span></li>
+        <li><span class="nm">白淺🍌𝓨𝓼❧ 🐝</span><span class="sc">💎65,219 · 71,849分</span></li>
+        <li><span class="nm">羊咩同學🎹🐑</span><span class="sc">💎57,334 · 61,084分</span></li>
+        <li><span class="nm">🐚貝貝ت</span><span class="sc">💎51,317 · 54,537分</span></li>
+        <li><span class="nm">◔̯◔沒心態のW</span><span class="sc">💎37,400 · 43,150分</span></li>
+        <li><span class="nm">🍷林則希🥃</span><span class="sc">💎41,828 · 43,018分</span></li>
+        <li><span class="nm">🐹小歪寶包</span><span class="sc">💎37,963 · 40,713分</span></li>
+        <li><span class="nm">🦁嘎總（Rock）🦁</span><span class="sc">💎32,808 · 40,658分</span></li>
+        <li><span class="nm">종샨샨 ღ ♏1029 ♚ 💜🦭</span><span class="sc">💎34,297 · 39,687分</span></li>
+        <li><span class="nm">Jack 哥哥</span><span class="sc">💎34,724 · 36,724分</span></li>
+        <li><span class="nm">小彭佳慧🍍黃亭亭🍍</span><span class="sc">💎32,753 · 36,093分</span></li>
+        <li><span class="nm">吳是閎®️⁵⁴</span><span class="sc">💎31,875 · 35,135分</span></li>
+        <li><span class="nm">ෆ 陳陳🪽„𝕐𝕙”</span><span class="sc">💎26,232 · 30,642分</span></li>
+        <li><span class="nm">⟣ 𝓝𝓲𝓷𝓰 ꙳ ❥🍷小甯萌⁰³¹⁶</span><span class="sc">💎26,515 · 29,555分</span></li>
+      </ol>
+    </div>
+    <div class="g16">
+      <h3>賽道 2</h3>
+      <a class="rank-link" href="https://live-backstage.tiktok.com/portal/tools/activity/rank-multistage-activity-analytics?activityId=7666024523359371282&entryFrom=revenue_activity_page" target="_blank">🔗 官方排名詳情（連結 2）</a>
+      <ol class="rank16">
+        <li><span class="nm">拎粥罵瞪萊.☘︎ ˖꙳ 🍒🫐</span><span class="sc">💎251,528 · 253,228分</span></li>
+        <li><span class="nm">薩克斯維維🎷SaxWei🎷</span><span class="sc">💎242,195 · 245,665分</span></li>
+        <li><span class="nm">𝙃𝙎. ICEᴴᴴ家有一隻🐷</span><span class="sc">💎233,162 · 237,442分</span></li>
+        <li><span class="nm">吳登凱YoYoCello🎻🎵ʸᵒʸᵒ</span><span class="sc">💎155,629 · 157,139分</span></li>
+        <li><span class="nm">👼Angel㊙️專屬벨라🌹</span><span class="sc">💎152,619 · 154,139分</span></li>
+        <li><span class="nm">Jammy 哲宇🪐</span><span class="sc">💎144,173 · 144,973分</span></li>
+        <li><span class="nm">薇薇vivi🗿</span><span class="sc">💎130,043 · 132,673分</span></li>
+        <li><span class="nm">蘿蘿🥕¹²³</span><span class="sc">💎101,168 · 102,818分</span></li>
+        <li><span class="nm">小貓日記🐱📖</span><span class="sc">💎98,711 · 101,091分</span></li>
+        <li><span class="nm">𝜗𝜚💫小月🌙♡</span><span class="sc">💎94,252 · 97,832分</span></li>
+        <li><span class="nm">伍壹柒🍗517⁰²⁰⁶🍁</span><span class="sc">💎57,869 · 62,369分</span></li>
+        <li><span class="nm">🍭芃芃ㄆㄥˊ𝓟𝓮𝓷𝓰🐾</span><span class="sc">💎58,406 · 59,986分</span></li>
+        <li><span class="nm">⁺⁎˚Ი𐑼俞婷🐰ིྀ</span><span class="sc">💎54,305 · 56,395分</span></li>
+        <li><span class="nm">AKA壹玖𖥧🧯(有錢版）</span><span class="sc">💎51,500 · 52,580分</span></li>
+        <li><span class="nm">🇹🇼數勾尹捏🍼</span><span class="sc">💎48,109 · 50,239分</span></li>
+        <li><span class="nm">Sax阿正🎷㊣</span><span class="sc">💎40,761 · 43,791分</span></li>
+      </ol>
     </div>
   </div>
 
