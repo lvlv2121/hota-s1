@@ -107,16 +107,16 @@ h1 {
 
   <div class="mid">
     <div class="fighters">
-      <div class="fighter">
-        <div class="avatar-wrap"><img class="avatar" src="assets/chenfongsing.jpg" alt="chenfongsing"></div>
-        <div class="name">chenfongsing</div>
-        <div class="id">@chenfongsing</div>
+      <div class="fighter" id="left">
+        <div class="avatar-wrap"><img class="avatar" id="l-img" src="" alt=""></div>
+        <div class="name" id="l-name"></div>
+        <div class="id" id="l-id"></div>
       </div>
       <div class="vs">VS</div>
-      <div class="fighter">
-        <div class="avatar-wrap"><img class="avatar" src="assets/weeeeee0406.jpg" alt="weeeeee0406"></div>
-        <div class="name">weeeeee0406</div>
-        <div class="id">@weeeeee0406</div>
+      <div class="fighter" id="right">
+        <div class="avatar-wrap"><img class="avatar" id="r-img" src="" alt=""></div>
+        <div class="name" id="r-name"></div>
+        <div class="id" id="r-id"></div>
       </div>
     </div>
   </div>
@@ -132,5 +132,27 @@ h1 {
     </div>
   </div>
 </div>
+
+<script>
+const PLAYERS = {
+  chenfongsing: { name: 'chenfongsing', img: 'assets/chenfongsing.jpg' },
+  weeeeee0406:  { name: 'weeeeee0406',  img: 'assets/weeeeee0406.jpg' },
+  saxwei:       { name: 'saxwei',       img: 'assets/saxwei.jpg' },
+  peng0430:     { name: 'peng0430',     img: 'assets/peng0430.png' },
+  ccc99999ccc:  { name: 'ccc99999ccc',  img: 'assets/ccc99999ccc.png' },
+  sax_jason:    { name: 'sax_jason',    img: 'assets/sax_jason.png' }
+};
+function setPlayer(side, id){
+  const p = PLAYERS[id];
+  if(!p){ console.warn('unknown player', id); return; }
+  document.getElementById(side+'-img').src = p.img;
+  document.getElementById(side+'-img').alt = p.name;
+  document.getElementById(side+'-name').textContent = p.name;
+  document.getElementById(side+'-id').textContent = '@'+p.name;
+}
+const params = new URLSearchParams(location.search);
+setPlayer('l', params.get('l') || 'chenfongsing');
+setPlayer('r', params.get('r') || 'weeeeee0406');
+</script>
 </body>
 </html>
