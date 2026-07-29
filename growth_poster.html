@@ -61,7 +61,20 @@ h1 {
   padding:16px 46px; border-radius:16px;
   box-shadow: 0 0 40px rgba(255,70,0,.65);
 }
-.mid { flex:1; display:flex; align-items:center; justify-content:center; }
+.mid { flex:1; display:flex; align-items:center; justify-content:center; position:relative; }
+.vs {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  z-index:5;
+  width:128px; height:128px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:50px; font-weight:900; letter-spacing:2px;
+  color:#fff;
+  background: radial-gradient(circle at 38% 32%, #ff8a00, #c81e00 78%);
+  border:4px solid #ffce4d;
+  box-shadow: 0 0 38px rgba(255,90,0,.75), inset 0 0 18px rgba(0,0,0,.35);
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
 .grid {
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -107,6 +120,7 @@ h1 {
   </div>
 
   <div class="mid">
+    <div class="vs">VS</div>
     <div class="grid">
       <div class="fighter" id="p0">
         <div class="avatar-wrap"><img class="avatar" id="p0-img" src="" alt=""></div>
@@ -135,9 +149,9 @@ h1 {
     <div class="rules-box">
       <h3>⚔️ 決賽規則</h3>
       <ul>
-        <li>賽制：成長組四人局，一局爭奪冠、亞、季軍。</li>
+        <li>賽制：成長組四人局，一局定勝負。</li>
         <li>道具卡：本輪不使用道具卡。</li>
-        <li>排名規則：按實際鑽石數進行排名，角逐冠亞季軍。</li>
+        <li>排名規則：依局內實際鑽石數排名，第 1 名為冠軍、第 2 名為亞軍、第 3 名為季軍。</li>
       </ul>
     </div>
   </div>
