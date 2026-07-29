@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>HOTA 夏季公會賽 2026｜成長組決賽</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; }
+body {
+  background:
+    radial-gradient(circle at 50% 16%, rgba(255,140,0,.40), transparent 46%),
+    radial-gradient(circle at 16% 82%, rgba(255,40,0,.30), transparent 52%),
+    radial-gradient(circle at 86% 72%, rgba(255,95,0,.24), transparent 52%),
+    linear-gradient(165deg, #1a0500 0%, #2c0a04 42%, #100300 100%);
+  color:#fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  overflow:hidden; position:relative;
+}
+.glow {
+  position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(640px 320px at 50% 30%, rgba(255,170,0,.16), transparent 70%);
+}
+.crown {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:920px;
+  opacity:.24; filter:blur(6px) brightness(1.15);
+  z-index:1; pointer-events:none;
+  mix-blend-mode: screen;
+}
+.crown img { width:100%; display:block; }
+.wrap {
+  position:relative; z-index:3;
+  height:100%; display:flex; flex-direction:column;
+  padding:100px 70px 90px;
+}
+.top { text-align:center; }
+.badge {
+  display:inline-block;
+  background: rgba(255,80,0,.18);
+  border:2px solid rgba(255,150,0,.65);
+  color:#ffb347;
+  padding:14px 38px; border-radius:999px;
+  font-size:27px; font-weight:800; letter-spacing:5px;
+  margin-bottom:38px;
+  box-shadow: 0 0 26px rgba(255,120,0,.45);
+}
+h1 {
+  font-size:104px; font-weight:900; letter-spacing:10px; line-height:1.04;
+  color:#ffce4d;
+  text-shadow: 0 5px 0 #b3400a, 0 8px 28px rgba(255,90,0,.6);
+  margin-bottom:18px;
+}
+.sub { font-size:34px; color:#ffd9a0; letter-spacing:8px; margin-bottom:26px; }
+.time {
+  display:inline-block;
+  font-size:44px; font-weight:900; letter-spacing:4px;
+  color:#fff;
+  background: linear-gradient(90deg, #ff2d00, #ff8a00);
+  padding:16px 46px; border-radius:16px;
+  box-shadow: 0 0 40px rgba(255,70,0,.65);
+}
+.mid { flex:1; display:flex; align-items:center; justify-content:center; }
+.grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:40px 50px;
+  width:100%;
+}
+.fighter { text-align:center; }
+.avatar-wrap {
+  width:300px; height:300px; margin:0 auto 26px;
+  border-radius:50%;
+  border:7px solid #ff5a00;
+  box-shadow: 0 0 50px rgba(255,90,0,.55), inset 0 0 40px rgba(0,0,0,.4);
+  overflow:hidden; background:#000;
+}
+.avatar { width:100%; height:100%; object-fit:cover; }
+.fighter .name {
+  font-size:38px; font-weight:900; margin-bottom:10px;
+  color:#ffd27a;
+  text-shadow: 0 2px 12px rgba(255,80,0,.55);
+}
+.fighter .id { font-size:26px; color:#ffb347; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:1px; }
+.bottom { }
+.rules-box {
+  background: rgba(255,60,0,.09);
+  border:1.5px solid rgba(255,120,0,.38);
+  border-radius:30px; padding:42px 56px; width:100%;
+}
+.rules-box h3 { font-size:32px; color:#ff8a00; margin-bottom:22px; letter-spacing:3px; }
+.rules-box ul { list-style:none; font-size:28px; line-height:2.05; color:#ffe6cf; }
+.rules-box li { padding-left:44px; position:relative; }
+.rules-box li::before { content:"🔥"; position:absolute; left:0; top:2px; }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="crown"><img src="assets/crown.png" alt="crown"></div>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">🏆 HOTA 夏季公會賽 2026</div>
+    <h1>成長組 決賽</h1>
+    <div class="sub">GROWTH GROUP FINALS</div>
+    <div class="time">🔥 7月30日 23:00 開戰 🔥</div>
+  </div>
+
+  <div class="mid">
+    <div class="grid">
+      <div class="fighter" id="p0">
+        <div class="avatar-wrap"><img class="avatar" id="p0-img" src="" alt=""></div>
+        <div class="name" id="p0-name"></div>
+        <div class="id" id="p0-id"></div>
+      </div>
+      <div class="fighter" id="p1">
+        <div class="avatar-wrap"><img class="avatar" id="p1-img" src="" alt=""></div>
+        <div class="name" id="p1-name"></div>
+        <div class="id" id="p1-id"></div>
+      </div>
+      <div class="fighter" id="p2">
+        <div class="avatar-wrap"><img class="avatar" id="p2-img" src="" alt=""></div>
+        <div class="name" id="p2-name"></div>
+        <div class="id" id="p2-id"></div>
+      </div>
+      <div class="fighter" id="p3">
+        <div class="avatar-wrap"><img class="avatar" id="p3-img" src="" alt=""></div>
+        <div class="name" id="p3-name"></div>
+        <div class="id" id="p3-id"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="rules-box">
+      <h3>⚔️ 決賽規則</h3>
+      <ul>
+        <li>賽制：成長組四人局，一局爭奪冠、亞、季軍。</li>
+        <li>道具卡：本輪不使用道具卡。</li>
+        <li>排名規則：按實際鑽石數進行排名，角逐冠亞季軍。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+const PLAYERS = {
+  a7a7a268:      { name: 'a7a7a268',      img: 'assets/a7a7a268.png' },
+  peggyhuang0622:{ name: 'peggyhuang0622',img: 'assets/peggyhuang0622.jpg' },
+  crossing_cj:   { name: 'crossing_cj',   img: 'assets/crossing_cj.png' },
+  yang_mie00:    { name: 'yang_mie00',    img: 'assets/yang_mie00.jpg' }
+};
+const ORDER = ['a7a7a268','peggyhuang0622','crossing_cj','yang_mie00'];
+function setPlayer(idx, id){
+  const p = PLAYERS[id];
+  if(!p){ console.warn('unknown player', id); return; }
+  document.getElementById('p'+idx+'-img').src = p.img;
+  document.getElementById('p'+idx+'-img').alt = p.name;
+  document.getElementById('p'+idx+'-name').textContent = p.name;
+  document.getElementById('p'+idx+'-id').textContent = '@'+p.name;
+}
+const params = new URLSearchParams(location.search);
+const order = params.get('order');
+const ids = order ? order.split(',') : ORDER;
+ids.slice(0,4).forEach((id, i)=> setPlayer(i, id));
+</script>
+</body>
+</html>
