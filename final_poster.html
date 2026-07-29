@@ -24,10 +24,12 @@ body {
 .crown {
   position:absolute; top:52%; left:50%;
   transform:translate(-50%,-50%);
-  width:900px; opacity:.14; filter:blur(5px);
+  width:950px;
+  opacity:.24; filter:blur(6px) brightness(1.15);
   z-index:1; pointer-events:none;
+  mix-blend-mode: screen;
 }
-.crown svg { width:100%; display:block; }
+.crown img { width:100%; display:block; }
 .wrap {
   position:relative; z-index:3;
   height:100%; display:flex; flex-direction:column;
@@ -94,24 +96,7 @@ h1 {
 </head>
 <body>
 <div class="glow"></div>
-<div class="crown">
-  <svg viewBox="0 0 240 170" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#ffe9a8"/>
-        <stop offset="1" stop-color="#ff9d2e"/>
-      </linearGradient>
-    </defs>
-    <path d="M20 150 L35 70 L75 110 L120 45 L165 110 L205 70 L220 150 Z" fill="url(#g)"/>
-    <rect x="18" y="140" width="204" height="26" rx="6" fill="url(#g)"/>
-    <circle cx="120" cy="153" r="9" fill="#ff4d2e"/>
-    <circle cx="78" cy="153" r="7" fill="#ffd23f"/>
-    <circle cx="162" cy="153" r="7" fill="#ffd23f"/>
-    <circle cx="35" cy="66" r="10" fill="#ffe9a8"/>
-    <circle cx="120" cy="40" r="11" fill="#ffe9a8"/>
-    <circle cx="205" cy="66" r="10" fill="#ffe9a8"/>
-  </svg>
-</div>
+<div class="crown"><img src="assets/crown.png" alt="crown"></div>
 <div class="wrap">
   <div class="top">
     <div class="badge">🏆 HOTA 夏季公會賽 2026</div>
