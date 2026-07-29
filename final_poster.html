@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>HOTA 夏季公會賽 2026｜尖端組決賽</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  width:1080px;
+  height:1350px;
+}
+body {
+  background: linear-gradient(160deg, #0b0e1e 0%, #151b33 50%, #0b0e1e 100%);
+  color:#fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  overflow:hidden;
+  position:relative;
+}
+.bg-stars {
+  position:absolute; inset:0;
+  background-image:
+    radial-gradient(2px 2px at 80px 120px, rgba(255,255,255,.22), transparent),
+    radial-gradient(2px 2px at 400px 300px, rgba(255,215,0,.18), transparent),
+    radial-gradient(1px 1px at 900px 200px, rgba(255,255,255,.18), transparent),
+    radial-gradient(2px 2px at 700px 800px, rgba(255,215,0,.13), transparent),
+    radial-gradient(2px 2px at 200px 900px, rgba(255,255,255,.15), transparent),
+    radial-gradient(1px 1px at 980px 1100px, rgba(255,215,0,.12), transparent);
+  pointer-events:none;
+}
+.wrap {
+  position:relative; z-index:2;
+  height:100%;
+  display:flex; flex-direction:column; align-items:center;
+  padding:70px 60px 60px;
+}
+.badge {
+  background: rgba(255,215,0,.12);
+  border:1px solid rgba(255,215,0,.45);
+  color:#ffd700;
+  padding:10px 28px;
+  border-radius:999px;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:3px;
+  margin-bottom:22px;
+}
+h1 { font-size:72px; font-weight:900; letter-spacing:6px; margin-bottom:8px; text-shadow:0 4px 20px rgba(0,0,0,.5); }
+.sub { font-size:28px; color:#a8b2d1; letter-spacing:4px; margin-bottom:58px; }
+.fighters { display:flex; align-items:center; justify-content:center; gap:40px; width:100%; margin-bottom:48px; }
+.fighter { text-align:center; width:360px; }
+.avatar-wrap {
+  width:300px; height:300px; margin:0 auto 28px;
+  border-radius:50%;
+  border:6px solid rgba(255,215,0,.65);
+  box-shadow: 0 0 40px rgba(255,215,0,.25), inset 0 0 40px rgba(0,0,0,.35);
+  overflow:hidden;
+  background:#000;
+}
+.avatar { width:100%; height:100%; object-fit:cover; }
+.fighter .name { font-size:36px; font-weight:800; margin-bottom:10px; }
+.fighter .id { font-size:24px; color:#ffd700; font-family: ui-monospace, SFMono-Regular, "SF Mono", monospace; letter-spacing:1px; }
+.vs {
+  font-size:90px; font-weight:900; color:#ffd700;
+  text-shadow: 0 0 30px rgba(255,215,0,.45);
+  line-height:1;
+}
+.rules-box {
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  padding:36px 48px;
+  width:100%;
+  margin-top:auto;
+}
+.rules-box h3 { font-size:26px; color:#ffd700; margin-bottom:18px; letter-spacing:2px; }
+.rules-box ul { list-style:none; font-size:24px; line-height:1.85; color:#dce2f0; }
+.rules-box li { padding-left:34px; position:relative; }
+.rules-box li::before { content:"▸"; position:absolute; left:0; color:#ffd700; }
+</style>
+</head>
+<body>
+<div class="bg-stars"></div>
+<div class="wrap">
+  <div class="badge">🏆 HOTA 夏季公會賽 2026</div>
+  <h1>尖端組 決賽</h1>
+  <div class="sub">GRAND FINALS · TOP GROUP</div>
+
+  <div class="fighters">
+    <div class="fighter">
+      <div class="avatar-wrap"><img class="avatar" src="assets/chenfongsing.jpg" alt="chenfongsing"></div>
+      <div class="name">chenfongsing</div>
+      <div class="id">@chenfongsing</div>
+    </div>
+    <div class="vs">VS</div>
+    <div class="fighter">
+      <div class="avatar-wrap"><img class="avatar" src="assets/weeeeee0406.jpg" alt="weeeeee0406"></div>
+      <div class="name">weeeeee0406</div>
+      <div class="id">@weeeeee0406</div>
+    </div>
+  </div>
+
+  <div class="rules-box">
+    <h3>⚔️ 決賽規則</h3>
+    <ul>
+      <li>對戰形式：1v1 單挑，三局兩勝（先贏兩局者勝出）。</li>
+      <li>道具卡：本輪不使用道具卡。</li>
+      <li>排名規則：按贏家實際鑽石數進行排名；單局對決贏了之後，緊盯實際鑽石（可選日榜）角逐冠亞季軍。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
