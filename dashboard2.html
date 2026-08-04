@@ -101,6 +101,21 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 .search, .teamsel { padding:8px 12px; border:1px solid rgba(140,130,180,0.28); border-radius:10px; font-size:13px; margin-bottom:12px; background:rgba(255,255,255,0.55); color:#5e5980; }
 .search { width:100%; max-width:320px; }
 .toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+
+/* 团队多选下拉（勾选面板） */
+.msel { position:relative; display:inline-block; margin-bottom:12px; }
+.msel-btn { padding:8px 12px; border:1px solid rgba(140,130,180,0.28); border-radius:10px; font-size:13px; background:rgba(255,255,255,0.55); color:#5e5980; cursor:pointer; display:flex; align-items:center; gap:6px; }
+.msel-caret { font-size:10px; opacity:.7; transition:.15s; }
+.msel.open .msel-caret { transform:rotate(180deg); }
+.msel-panel { display:none; position:absolute; z-index:30; top:calc(100% + 6px); left:0; min-width:210px; max-height:300px; overflow:auto; background:#fff; border:1px solid rgba(140,130,180,0.25); border-radius:12px; box-shadow:0 10px 30px rgba(120,110,170,0.25); padding:8px; }
+.msel.open .msel-panel { display:block; }
+.msel-actions { display:flex; gap:8px; margin-bottom:8px; }
+.msel-actions button { flex:1; padding:5px 8px; font-size:12px; border:1px solid rgba(140,130,180,0.3); border-radius:8px; background:rgba(245,243,255,0.85); color:#5e5980; cursor:pointer; }
+.msel-actions button:hover { background:rgba(230,196,254,0.4); }
+.msel-opts { display:flex; flex-direction:column; gap:2px; }
+.msel-opt { display:flex; align-items:center; gap:8px; padding:6px 8px; font-size:13px; color:#5e5980; border-radius:8px; cursor:pointer; }
+.msel-opt:hover { background:rgba(230,196,254,0.25); }
+.msel-opt input { accent-color:#9b7fd4; }
 .hint { font-size:12px; color:#8b87a3; margin-top:12px; line-height:1.7; }
 .banner { background:rgba(255,243,224,0.92); border:1px solid rgba(230,180,120,0.65); color:#8a5a2a; border-radius:12px; padding:10px 14px; font-size:12.5px; line-height:1.7; margin-bottom:16px; }
 .banner b { color:#7a4a1a; }
@@ -173,7 +188,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
   <div class="head" onclick="toggle('b2')"><h2>👥 二大块 · 主播稳定度 <span class="tag">（稳定 = 7月达标 22天/100小时）</span></h2><span class="chev">▼</span></div>
   <div class="body">
     <h3 style="margin:4px 0 10px;font-size:15px;color:#4d4641;">✅ 7月稳定开播主播 · <b>41</b> 人</h3>
-    <div class="toolbar"><select class="teamsel" id="teamA" onchange="filterTeam('tblA',this.value)"><option value="">全部团队</option><option value="">全部团队</option><option value="manba-tw">manba-tw</option><option value="九離火">九離火</option><option value="信仰娛樂">信仰娛樂</option><option value="冰冰團隊">冰冰團隊</option><option value="刘岩">刘岩</option><option value="台湾HOTA">台湾HOTA</option><option value="哞会长">哞会长</option><option value="天意团队">天意团队</option><option value="富婆吕大队">富婆吕大队</option><option value="怪人团队">怪人团队</option><option value="旺來哥哥">旺來哥哥</option><option value="星世纪">星世纪</option><option value="無底線">無底線</option><option value="羊羊團隊">羊羊團隊</option><option value="艾力克斯">艾力克斯</option><option value="葛泽康">葛泽康</option><option value="逐夢空間">逐夢空間</option></select></div>
+    <div class="toolbar"><div class="msel" id="ms-tblA">
+    <button class="msel-btn" type="button" onclick="toggleMS('ms-tblA')"><span class="msel-lbl">全部团队</span><span class="msel-caret">▾</span></button>
+    <div class="msel-panel">
+      <div class="msel-actions"><button type="button" onclick="msAll('ms-tblA',true)">全选</button><button type="button" onclick="msAll('ms-tblA',false)">清空</button></div>
+      <div class="msel-opts"><label class="msel-opt"><input type="checkbox" value="manba-tw"> manba-tw</label><label class="msel-opt"><input type="checkbox" value="九離火"> 九離火</label><label class="msel-opt"><input type="checkbox" value="信仰娛樂"> 信仰娛樂</label><label class="msel-opt"><input type="checkbox" value="冰冰團隊"> 冰冰團隊</label><label class="msel-opt"><input type="checkbox" value="刘岩"> 刘岩</label><label class="msel-opt"><input type="checkbox" value="台湾HOTA"> 台湾HOTA</label><label class="msel-opt"><input type="checkbox" value="哞会长"> 哞会长</label><label class="msel-opt"><input type="checkbox" value="天意团队"> 天意团队</label><label class="msel-opt"><input type="checkbox" value="富婆吕大队"> 富婆吕大队</label><label class="msel-opt"><input type="checkbox" value="怪人团队"> 怪人团队</label><label class="msel-opt"><input type="checkbox" value="旺來哥哥"> 旺來哥哥</label><label class="msel-opt"><input type="checkbox" value="星世纪"> 星世纪</label><label class="msel-opt"><input type="checkbox" value="無底線"> 無底線</label><label class="msel-opt"><input type="checkbox" value="羊羊團隊"> 羊羊團隊</label><label class="msel-opt"><input type="checkbox" value="艾力克斯"> 艾力克斯</label><label class="msel-opt"><input type="checkbox" value="葛泽康"> 葛泽康</label><label class="msel-opt"><input type="checkbox" value="逐夢空間"> 逐夢空間</label></div>
+    </div>
+  </div></div>
     <div class="scrolly" style="max-height:420px;">
     <table id="tblA"><thead><tr><th>主播</th><th>团队</th><th>8月有效天数</th><th>8月直播时长(h)</th><th>7月钻石</th><th>8月钻石</th><th>层级跃迁进度<br><small style="font-weight:400">达到7月级数 / 升级</small></th><th>进度状态</th><th>备注</th><th>开播时间(本地)</th></tr></thead>
     <tbody><tr data-team="富婆吕大队">
@@ -882,7 +903,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <button class="chip" data-lv="22天100小时">22天100小时 <b>0</b></button><button class="chip" data-lv="20天80小时">20天80小时 <b>18</b></button><button class="chip" data-lv="17天60小时">17天60小时 <b>29</b></button><button class="chip" data-lv="14天20小时">14天20小时 <b>76</b></button><button class="chip" data-lv="8天25小时">8天25小时 <b>31</b></button><button class="chip" data-lv="未达标">未达标 <b>268</b></button><button class="chip" data-lv="无7月基准">无7月基准 <b>83</b></button>
     </div>
     <div class="toolbar">
-      <select class="teamsel" id="teamB" onchange="filterTeam('tblB',this.value)"><option value="">全部团队</option><option value="">全部团队</option><option value="Max團隊">Max團隊</option><option value="four团队">four团队</option><option value="manba-tw">manba-tw</option><option value="九離火">九離火</option><option value="信仰娛樂">信仰娛樂</option><option value="冰冰團隊">冰冰團隊</option><option value="刘岩">刘岩</option><option value="台湾HOTA">台湾HOTA</option><option value="吕吕团队">吕吕团队</option><option value="呂呂醬">呂呂醬</option><option value="哞会长">哞会长</option><option value="夢曦文化傳媒有限公司">夢曦文化傳媒有限公司</option><option value="天意团队">天意团队</option><option value="富婆吕大队">富婆吕大队</option><option value="小路">小路</option><option value="小酒窝团队">小酒窝团队</option><option value="怪人团队">怪人团队</option><option value="戰國藝能行銷">戰國藝能行銷</option><option value="扣桑">扣桑</option><option value="旺來哥哥">旺來哥哥</option><option value="星世纪">星世纪</option><option value="晞晞">晞晞</option><option value="未加入组">未加入组</option><option value="灵芝姨">灵芝姨</option><option value="玉皇娛樂">玉皇娛樂</option><option value="羊羊團隊">羊羊團隊</option><option value="艾力克斯">艾力克斯</option><option value="荳荳菊網路媒體行銷有限公司">荳荳菊網路媒體行銷有限公司</option><option value="葛泽康">葛泽康</option><option value="逐夢空間">逐夢空間</option><option value="陳家軍">陳家軍</option><option value="顾米娱乐">顾米娱乐</option></select>
+      <div class="msel" id="ms-tblB">
+    <button class="msel-btn" type="button" onclick="toggleMS('ms-tblB')"><span class="msel-lbl">全部团队</span><span class="msel-caret">▾</span></button>
+    <div class="msel-panel">
+      <div class="msel-actions"><button type="button" onclick="msAll('ms-tblB',true)">全选</button><button type="button" onclick="msAll('ms-tblB',false)">清空</button></div>
+      <div class="msel-opts"><label class="msel-opt"><input type="checkbox" value="Max團隊"> Max團隊</label><label class="msel-opt"><input type="checkbox" value="four团队"> four团队</label><label class="msel-opt"><input type="checkbox" value="manba-tw"> manba-tw</label><label class="msel-opt"><input type="checkbox" value="九離火"> 九離火</label><label class="msel-opt"><input type="checkbox" value="信仰娛樂"> 信仰娛樂</label><label class="msel-opt"><input type="checkbox" value="冰冰團隊"> 冰冰團隊</label><label class="msel-opt"><input type="checkbox" value="刘岩"> 刘岩</label><label class="msel-opt"><input type="checkbox" value="台湾HOTA"> 台湾HOTA</label><label class="msel-opt"><input type="checkbox" value="吕吕团队"> 吕吕团队</label><label class="msel-opt"><input type="checkbox" value="呂呂醬"> 呂呂醬</label><label class="msel-opt"><input type="checkbox" value="哞会长"> 哞会长</label><label class="msel-opt"><input type="checkbox" value="夢曦文化傳媒有限公司"> 夢曦文化傳媒有限公司</label><label class="msel-opt"><input type="checkbox" value="天意团队"> 天意团队</label><label class="msel-opt"><input type="checkbox" value="富婆吕大队"> 富婆吕大队</label><label class="msel-opt"><input type="checkbox" value="小路"> 小路</label><label class="msel-opt"><input type="checkbox" value="小酒窝团队"> 小酒窝团队</label><label class="msel-opt"><input type="checkbox" value="怪人团队"> 怪人团队</label><label class="msel-opt"><input type="checkbox" value="戰國藝能行銷"> 戰國藝能行銷</label><label class="msel-opt"><input type="checkbox" value="扣桑"> 扣桑</label><label class="msel-opt"><input type="checkbox" value="旺來哥哥"> 旺來哥哥</label><label class="msel-opt"><input type="checkbox" value="星世纪"> 星世纪</label><label class="msel-opt"><input type="checkbox" value="晞晞"> 晞晞</label><label class="msel-opt"><input type="checkbox" value="未加入组"> 未加入组</label><label class="msel-opt"><input type="checkbox" value="灵芝姨"> 灵芝姨</label><label class="msel-opt"><input type="checkbox" value="玉皇娛樂"> 玉皇娛樂</label><label class="msel-opt"><input type="checkbox" value="羊羊團隊"> 羊羊團隊</label><label class="msel-opt"><input type="checkbox" value="艾力克斯"> 艾力克斯</label><label class="msel-opt"><input type="checkbox" value="荳荳菊網路媒體行銷有限公司"> 荳荳菊網路媒體行銷有限公司</label><label class="msel-opt"><input type="checkbox" value="葛泽康"> 葛泽康</label><label class="msel-opt"><input type="checkbox" value="逐夢空間"> 逐夢空間</label><label class="msel-opt"><input type="checkbox" value="陳家軍"> 陳家軍</label><label class="msel-opt"><input type="checkbox" value="顾米娱乐"> 顾米娱乐</label></div>
+    </div>
+  </div>
       <input class="search" id="q" placeholder="搜索主播名 / 团队…" oninput="filterB()">
     </div>
     <div class="scrolly">
@@ -9880,7 +9907,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 
     <h3 style="margin:24px 0 10px;font-size:15px;color:#4d4641;">🔋 待激活主播（6月开播 · 7月停播） · <b>91</b> 人</h3>
     <div class="toolbar">
-      <select class="teamsel" id="teamD" onchange="filterTeam('tblD',this.value)"><option value="">全部团队</option><option value="">全部团队</option><option value="four团队">four团队</option><option value="manba-tw">manba-tw</option><option value="九離火">九離火</option><option value="冰冰團隊">冰冰團隊</option><option value="刘岩">刘岩</option><option value="台湾HOTA">台湾HOTA</option><option value="吕吕团队">吕吕团队</option><option value="呂呂醬">呂呂醬</option><option value="哞会长">哞会长</option><option value="天意团队">天意团队</option><option value="富婆吕大队">富婆吕大队</option><option value="小酒窝团队">小酒窝团队</option><option value="怪人团队">怪人团队</option><option value="旺來哥哥">旺來哥哥</option><option value="未加入群組">未加入群組</option><option value="無底線">無底線</option><option value="玉皇娛樂">玉皇娛樂</option><option value="羊羊團隊">羊羊團隊</option><option value="艾力克斯">艾力克斯</option><option value="荳荳菊網路媒體行銷有限公司">荳荳菊網路媒體行銷有限公司</option><option value="葛泽康">葛泽康</option><option value="逐夢空間">逐夢空間</option></select>
+      <div class="msel" id="ms-tblD">
+    <button class="msel-btn" type="button" onclick="toggleMS('ms-tblD')"><span class="msel-lbl">全部团队</span><span class="msel-caret">▾</span></button>
+    <div class="msel-panel">
+      <div class="msel-actions"><button type="button" onclick="msAll('ms-tblD',true)">全选</button><button type="button" onclick="msAll('ms-tblD',false)">清空</button></div>
+      <div class="msel-opts"><label class="msel-opt"><input type="checkbox" value="four团队"> four团队</label><label class="msel-opt"><input type="checkbox" value="manba-tw"> manba-tw</label><label class="msel-opt"><input type="checkbox" value="九離火"> 九離火</label><label class="msel-opt"><input type="checkbox" value="冰冰團隊"> 冰冰團隊</label><label class="msel-opt"><input type="checkbox" value="刘岩"> 刘岩</label><label class="msel-opt"><input type="checkbox" value="台湾HOTA"> 台湾HOTA</label><label class="msel-opt"><input type="checkbox" value="吕吕团队"> 吕吕团队</label><label class="msel-opt"><input type="checkbox" value="呂呂醬"> 呂呂醬</label><label class="msel-opt"><input type="checkbox" value="哞会长"> 哞会长</label><label class="msel-opt"><input type="checkbox" value="天意团队"> 天意团队</label><label class="msel-opt"><input type="checkbox" value="富婆吕大队"> 富婆吕大队</label><label class="msel-opt"><input type="checkbox" value="小酒窝团队"> 小酒窝团队</label><label class="msel-opt"><input type="checkbox" value="怪人团队"> 怪人团队</label><label class="msel-opt"><input type="checkbox" value="旺來哥哥"> 旺來哥哥</label><label class="msel-opt"><input type="checkbox" value="未加入群組"> 未加入群組</label><label class="msel-opt"><input type="checkbox" value="無底線"> 無底線</label><label class="msel-opt"><input type="checkbox" value="玉皇娛樂"> 玉皇娛樂</label><label class="msel-opt"><input type="checkbox" value="羊羊團隊"> 羊羊團隊</label><label class="msel-opt"><input type="checkbox" value="艾力克斯"> 艾力克斯</label><label class="msel-opt"><input type="checkbox" value="荳荳菊網路媒體行銷有限公司"> 荳荳菊網路媒體行銷有限公司</label><label class="msel-opt"><input type="checkbox" value="葛泽康"> 葛泽康</label><label class="msel-opt"><input type="checkbox" value="逐夢空間"> 逐夢空間</label></div>
+    </div>
+  </div>
       <input class="search" id="qd" placeholder="搜索主播名 / 团队…" oninput="filterD()">
     </div>
     <div class="scrolly" style="max-height:420px;">
@@ -10891,7 +10924,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 
     <h3 style="margin:24px 0 10px;font-size:15px;color:#4a4560;">⑥ 稳定掉速榜（具體主播 · 按掉速排序）· <b>41</b> 人</h3>
     <div class="toolbar">
-      <select class="teamsel" id="teamSD" onchange="filterTeam('tblSD',this.value)"><option value="">全部团队</option><option value="">全部团队</option><option value="manba-tw">manba-tw</option><option value="九離火">九離火</option><option value="信仰娛樂">信仰娛樂</option><option value="冰冰團隊">冰冰團隊</option><option value="刘岩">刘岩</option><option value="台湾HOTA">台湾HOTA</option><option value="哞会长">哞会长</option><option value="天意团队">天意团队</option><option value="富婆吕大队">富婆吕大队</option><option value="怪人团队">怪人团队</option><option value="旺來哥哥">旺來哥哥</option><option value="星世纪">星世纪</option><option value="無底線">無底線</option><option value="羊羊團隊">羊羊團隊</option><option value="艾力克斯">艾力克斯</option><option value="葛泽康">葛泽康</option><option value="逐夢空間">逐夢空間</option></select>
+      <div class="msel" id="ms-tblSD">
+    <button class="msel-btn" type="button" onclick="toggleMS('ms-tblSD')"><span class="msel-lbl">全部团队</span><span class="msel-caret">▾</span></button>
+    <div class="msel-panel">
+      <div class="msel-actions"><button type="button" onclick="msAll('ms-tblSD',true)">全选</button><button type="button" onclick="msAll('ms-tblSD',false)">清空</button></div>
+      <div class="msel-opts"><label class="msel-opt"><input type="checkbox" value="manba-tw"> manba-tw</label><label class="msel-opt"><input type="checkbox" value="九離火"> 九離火</label><label class="msel-opt"><input type="checkbox" value="信仰娛樂"> 信仰娛樂</label><label class="msel-opt"><input type="checkbox" value="冰冰團隊"> 冰冰團隊</label><label class="msel-opt"><input type="checkbox" value="刘岩"> 刘岩</label><label class="msel-opt"><input type="checkbox" value="台湾HOTA"> 台湾HOTA</label><label class="msel-opt"><input type="checkbox" value="哞会长"> 哞会长</label><label class="msel-opt"><input type="checkbox" value="天意团队"> 天意团队</label><label class="msel-opt"><input type="checkbox" value="富婆吕大队"> 富婆吕大队</label><label class="msel-opt"><input type="checkbox" value="怪人团队"> 怪人团队</label><label class="msel-opt"><input type="checkbox" value="旺來哥哥"> 旺來哥哥</label><label class="msel-opt"><input type="checkbox" value="星世纪"> 星世纪</label><label class="msel-opt"><input type="checkbox" value="無底線"> 無底線</label><label class="msel-opt"><input type="checkbox" value="羊羊團隊"> 羊羊團隊</label><label class="msel-opt"><input type="checkbox" value="艾力克斯"> 艾力克斯</label><label class="msel-opt"><input type="checkbox" value="葛泽康"> 葛泽康</label><label class="msel-opt"><input type="checkbox" value="逐夢空間"> 逐夢空間</label></div>
+    </div>
+  </div>
       <input class="search" id="qsd" placeholder="搜索主播名 / 团队…" oninput="filterSD()">
     </div>
     <div class="scrolly" style="max-height:380px;">
@@ -11271,7 +11310,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 
     <h3 style="margin:24px 0 10px;font-size:15px;color:#4a4560;">⑦ 待激活喚醒優先級（6月開播·7月停播 · 按6月活躍排序）· <b>91</b> 人</h3>
     <div class="toolbar">
-      <select class="teamsel" id="teamDP" onchange="filterTeam('tblDP',this.value)"><option value="">全部团队</option><option value="">全部团队</option><option value="four团队">four团队</option><option value="manba-tw">manba-tw</option><option value="九離火">九離火</option><option value="冰冰團隊">冰冰團隊</option><option value="刘岩">刘岩</option><option value="台湾HOTA">台湾HOTA</option><option value="吕吕团队">吕吕团队</option><option value="呂呂醬">呂呂醬</option><option value="哞会长">哞会长</option><option value="天意团队">天意团队</option><option value="富婆吕大队">富婆吕大队</option><option value="小酒窝团队">小酒窝团队</option><option value="怪人团队">怪人团队</option><option value="旺來哥哥">旺來哥哥</option><option value="未加入群組">未加入群組</option><option value="無底線">無底線</option><option value="玉皇娛樂">玉皇娛樂</option><option value="羊羊團隊">羊羊團隊</option><option value="艾力克斯">艾力克斯</option><option value="荳荳菊網路媒體行銷有限公司">荳荳菊網路媒體行銷有限公司</option><option value="葛泽康">葛泽康</option><option value="逐夢空間">逐夢空間</option></select>
+      <div class="msel" id="ms-tblDP">
+    <button class="msel-btn" type="button" onclick="toggleMS('ms-tblDP')"><span class="msel-lbl">全部团队</span><span class="msel-caret">▾</span></button>
+    <div class="msel-panel">
+      <div class="msel-actions"><button type="button" onclick="msAll('ms-tblDP',true)">全选</button><button type="button" onclick="msAll('ms-tblDP',false)">清空</button></div>
+      <div class="msel-opts"><label class="msel-opt"><input type="checkbox" value="four团队"> four团队</label><label class="msel-opt"><input type="checkbox" value="manba-tw"> manba-tw</label><label class="msel-opt"><input type="checkbox" value="九離火"> 九離火</label><label class="msel-opt"><input type="checkbox" value="冰冰團隊"> 冰冰團隊</label><label class="msel-opt"><input type="checkbox" value="刘岩"> 刘岩</label><label class="msel-opt"><input type="checkbox" value="台湾HOTA"> 台湾HOTA</label><label class="msel-opt"><input type="checkbox" value="吕吕团队"> 吕吕团队</label><label class="msel-opt"><input type="checkbox" value="呂呂醬"> 呂呂醬</label><label class="msel-opt"><input type="checkbox" value="哞会长"> 哞会长</label><label class="msel-opt"><input type="checkbox" value="天意团队"> 天意团队</label><label class="msel-opt"><input type="checkbox" value="富婆吕大队"> 富婆吕大队</label><label class="msel-opt"><input type="checkbox" value="小酒窝团队"> 小酒窝团队</label><label class="msel-opt"><input type="checkbox" value="怪人团队"> 怪人团队</label><label class="msel-opt"><input type="checkbox" value="旺來哥哥"> 旺來哥哥</label><label class="msel-opt"><input type="checkbox" value="未加入群組"> 未加入群組</label><label class="msel-opt"><input type="checkbox" value="無底線"> 無底線</label><label class="msel-opt"><input type="checkbox" value="玉皇娛樂"> 玉皇娛樂</label><label class="msel-opt"><input type="checkbox" value="羊羊團隊"> 羊羊團隊</label><label class="msel-opt"><input type="checkbox" value="艾力克斯"> 艾力克斯</label><label class="msel-opt"><input type="checkbox" value="荳荳菊網路媒體行銷有限公司"> 荳荳菊網路媒體行銷有限公司</label><label class="msel-opt"><input type="checkbox" value="葛泽康"> 葛泽康</label><label class="msel-opt"><input type="checkbox" value="逐夢空間"> 逐夢空間</label></div>
+    </div>
+  </div>
       <input class="search" id="qdp" placeholder="搜索主播名 / 团队…" oninput="filterDP()">
     </div>
     <div class="scrolly" style="max-height:380px;">
@@ -11828,7 +11873,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 
     <h3 style="margin:24px 0 10px;font-size:15px;color:#4a4560;">⑧ 非穩定高價值 Top40（7月鑽石高·8月低迷 · 最大槓桿）</h3>
     <div class="toolbar">
-      <select class="teamsel" id="teamNSV" onchange="filterTeam('tblNSV',this.value)"><option value="">全部团队</option><option value="">全部团队</option><option value="九離火">九離火</option><option value="信仰娛樂">信仰娛樂</option><option value="冰冰團隊">冰冰團隊</option><option value="刘岩">刘岩</option><option value="台湾HOTA">台湾HOTA</option><option value="吕吕团队">吕吕团队</option><option value="哞会长">哞会长</option><option value="富婆吕大队">富婆吕大队</option><option value="羊羊團隊">羊羊團隊</option><option value="艾力克斯">艾力克斯</option><option value="逐夢空間">逐夢空間</option><option value="陳家軍">陳家軍</option></select>
+      <div class="msel" id="ms-tblNSV">
+    <button class="msel-btn" type="button" onclick="toggleMS('ms-tblNSV')"><span class="msel-lbl">全部团队</span><span class="msel-caret">▾</span></button>
+    <div class="msel-panel">
+      <div class="msel-actions"><button type="button" onclick="msAll('ms-tblNSV',true)">全选</button><button type="button" onclick="msAll('ms-tblNSV',false)">清空</button></div>
+      <div class="msel-opts"><label class="msel-opt"><input type="checkbox" value="九離火"> 九離火</label><label class="msel-opt"><input type="checkbox" value="信仰娛樂"> 信仰娛樂</label><label class="msel-opt"><input type="checkbox" value="冰冰團隊"> 冰冰團隊</label><label class="msel-opt"><input type="checkbox" value="刘岩"> 刘岩</label><label class="msel-opt"><input type="checkbox" value="台湾HOTA"> 台湾HOTA</label><label class="msel-opt"><input type="checkbox" value="吕吕团队"> 吕吕团队</label><label class="msel-opt"><input type="checkbox" value="哞会长"> 哞会长</label><label class="msel-opt"><input type="checkbox" value="富婆吕大队"> 富婆吕大队</label><label class="msel-opt"><input type="checkbox" value="羊羊團隊"> 羊羊團隊</label><label class="msel-opt"><input type="checkbox" value="艾力克斯"> 艾力克斯</label><label class="msel-opt"><input type="checkbox" value="逐夢空間"> 逐夢空間</label><label class="msel-opt"><input type="checkbox" value="陳家軍"> 陳家軍</label></div>
+    </div>
+  </div>
       <input class="search" id="qnsv" placeholder="搜索主播名 / 团队…" oninput="filterNSV()">
     </div>
     <div class="scrolly" style="max-height:380px;">
@@ -12162,41 +12213,67 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 </div>
 <script>
 function toggle(id){ document.getElementById(id).classList.toggle('collapsed'); }
-function filterTeam(tblId, val){
-  document.querySelectorAll('#'+tblId+' tbody tr').forEach(tr=>{
-    tr.style.display = (!val || tr.dataset.team===val) ? '' : 'none';
-  });
+
+// ---------- 多选团队筛选 ----------
+function toggleMS(msId){ document.getElementById(msId).classList.toggle('open'); }
+function msAll(msId, on){
+  document.querySelectorAll('#'+msId+' .msel-opt input').forEach(cb=>cb.checked=on);
+  applyMS(msId);
 }
+function getMSSet(msId){
+  const set=new Set();
+  document.querySelectorAll('#'+msId+' .msel-opt input:checked').forEach(cb=>set.add(cb.value));
+  return set;
+}
+function applyMS(msId){
+  const tblId = msId.startsWith('ms-') ? msId.slice(3) : msId;
+  const set = getMSSet(msId);
+  const lbl = document.querySelector('#'+msId+' .msel-lbl');
+  if(lbl) lbl.textContent = set.size ? ('已选 '+set.size+' 个团队') : '全部团队';
+  document.querySelectorAll('#'+tblId+' tbody tr').forEach(tr=>{
+    tr.style.display = (!set.size || set.has(tr.dataset.team)) ? '' : 'none';
+  });
+  if(tblId==='tblB') filterB();
+  else if(tblId==='tblD') filterD();
+  else if(tblId==='tblSD') filterSD();
+  else if(tblId==='tblDP') filterDP();
+  else if(tblId==='tblNSV') filterNSV();
+}
+document.addEventListener('click', e=>{
+  if(!e.target.closest('.msel')) document.querySelectorAll('.msel.open').forEach(m=>m.classList.remove('open'));
+});
+
 let curLv = 'ALL';
 document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
   document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
   c.classList.add('active'); curLv=c.dataset.lv; filterB();
 });
+function mset(tblId){ return getMSSet('ms-'+tblId); }
 function filterB(){
   const q=(document.getElementById('q').value||'').toLowerCase().trim();
-  const tv=document.getElementById('teamB').value;
+  const set=mset('tblB');
   document.querySelectorAll('#tblB tbody tr').forEach(tr=>{
     const okLv = curLv==='ALL' || tr.dataset.level===curLv;
     const okQ = !q || tr.dataset.name.includes(q) || tr.dataset.team.toLowerCase().includes(q);
-    const okT = !tv || tr.dataset.team===tv;
+    const okT = !set.size || set.has(tr.dataset.team);
     tr.style.display = (okLv&&okQ&&okT)?'':'none';
   });
 }
 function filterD(){
   const q=(document.getElementById('qd').value||'').toLowerCase().trim();
-  const tv=document.getElementById('teamD').value;
+  const set=mset('tblD');
   document.querySelectorAll('#tblD tbody tr').forEach(tr=>{
     const okQ = !q || tr.dataset.name.includes(q) || tr.dataset.team.toLowerCase().includes(q);
-    const okT = !tv || tr.dataset.team===tv;
+    const okT = !set.size || set.has(tr.dataset.team);
     tr.style.display = (okQ&&okT)?'':'none';
   });
 }
 function filterGeneric(tblId, qid){
   const q=(document.getElementById(qid).value||'').toLowerCase().trim();
-  const tv=document.getElementById('team'+tblId.slice(3)).value;
+  const set=mset(tblId);
   document.querySelectorAll('#'+tblId+' tbody tr').forEach(tr=>{
     const okQ = !q || tr.dataset.name.includes(q) || tr.dataset.team.toLowerCase().includes(q);
-    const okT = !tv || tr.dataset.team===tv;
+    const okT = !set.size || set.has(tr.dataset.team);
     tr.style.display = (okQ&&okT)?'':'none';
   });
 }
