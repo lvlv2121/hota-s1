@@ -187,12 +187,74 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 .ev-notice  { background:rgba(214,150,196,0.3); color:#8a3f6b; }
 .evempty { text-align:center; padding:26px; color:#8a85a0; font-size:13px; line-height:1.9; background:rgba(255,255,255,0.5); border:1px dashed var(--line); border-radius:14px; }
 @media (max-width:720px){ .kpis{ grid-template-columns:repeat(2,1fr);} .paths{ grid-template-columns:1fr; } }
+
+/* ── 顶部速览卡片 ── */
+.overview { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:14px; }
+.ovcard { background:rgba(255,255,255,0.66); border:1px solid rgba(255,255,255,0.8); border-radius:16px; padding:13px 14px; cursor:pointer; box-shadow:0 6px 20px rgba(120,110,170,0.12); transition:.15s; text-align:left; }
+.ovcard:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(120,110,170,0.2); }
+.ovcard .ol { font-size:12px; color:var(--sub); margin-bottom:6px; }
+.ovcard .ov { font-size:20px; font-weight:700; color:#3e3a56; }
+.ovcard .ov.big { font-size:23px; background:linear-gradient(90deg,#7c6fb3,#4a9bc7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.ovcard .on { font-size:11px; color:#9591ad; margin-top:5px; }
+.ovcard.alert { border-color:rgba(214,107,138,0.5); }
+.ovcard.alert .ov { color:#c96b8a; }
+@media (max-width:900px){ .overview{ grid-template-columns:repeat(2,1fr);} }
+
+/* 名词解释 */
+.glossary { background:rgba(255,255,255,0.5); border:1px solid var(--line); border-radius:12px; padding:8px 14px; margin-bottom:14px; font-size:12.5px; color:#5e5980; }
+.glossary summary { cursor:pointer; font-weight:700; color:#4a4560; }
+.glossary .glist { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:6px 18px; margin-top:8px; padding-left:2px; }
+.glossary .gitem { line-height:1.6; }
+.glossary .gitem b { color:#6b5fb5; }
+
+/* 锚点导航 */
+.nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.nav a { font-size:12.5px; padding:6px 14px; border-radius:20px; background:rgba(255,255,255,0.6); border:1px solid rgba(140,130,180,0.28); color:#5e5980; text-decoration:none; cursor:pointer; }
+.nav a:hover { background:linear-gradient(90deg,var(--c4),var(--c1)); color:#fff; }
+
+/* 深挖折叠 */
+.deep { margin-top:18px; border-top:1px dashed var(--line); padding-top:14px; }
+.deephead { display:flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:#4a4560; cursor:pointer; user-select:none; }
+.deephead .chev2 { transition:.2s; color:#9b96b8; display:inline-block; }
+.deep.collapsed .chev2 { transform:rotate(-90deg); }
+.deep.collapsed .deepbody { display:none; }
+
+/* 表格横向滚动（手机可看） */
+.tablescroll { overflow-x:auto; }
+.tablescroll table { min-width:760px; }
+@media (max-width:760px){ .tablescroll table { min-width:680px; } }
 </style></head>
 <body><div class="wrap">
 <header>
   <h1>HOTA 公会运营看板 · 营收 & 主播稳定度</h1>
   <div class="sub">数据更新：2026/8/5 14:06:58 (GMT+8)</div>
 </header>
+
+<!-- 顶部速览：结论先行，10 秒看懂今天该干嘛 -->
+<div class="overview">
+  <div class="ovcard alert" onclick="goSec('b1')"><div class="ol">营收缺口（距 8% 目标）</div><div class="ov big">55,851,318</div><div class="on">已产 5,878,682 / 目标 61,730,000</div></div>
+  <div class="ovcard alert" onclick="goSec('b3')"><div class="ol">最该催的团队</div><div class="ov">富婆吕大队</div><div class="on">掉速 20%</div></div>
+  <div class="ovcard alert" onclick="goSec('b3')"><div class="ol">重心=是 落后</div><div class="ov">4<span style="font-size:13px;color:#9591ad"> / 4</span></div><div class="on">共 4 位重心=是</div></div>
+  <div class="ovcard alert" onclick="goSec('b3')"><div class="ol">风险主播</div><div class="ov">11</div><div class="on">跳槽/不播/离台等</div></div>
+  <div class="ovcard" onclick="goSec('b4')"><div class="ol">新入會主播</div><div class="ov">17</div><div class="on">7 月起入会</div></div>
+</div>
+
+<details class="glossary"><summary>名词解释（点开看懂术语）</summary><div class="glist">
+  <div class="gitem"><b>流水权重</b>：榜单排序依据。优先取 8 月钻石，无则回退 7 月钻石，再无则取 6 月时长。</div>
+  <div class="gitem"><b>活跃层级</b>：以主播 7 月活跃定档（8天25h / 14天20h / 17天60h / 20天80h / 22天100h），为整月目标。</div>
+  <div class="gitem"><b>MTD</b>：Month-To-Date 月初至今累计。本看板取「前一天 UTC 日」累计，排除当日未结部分。</div>
+  <div class="gitem"><b>稳定 / 非稳定</b>：稳定=7月达标 22天/100h；其余为非稳定，按各自 7 月档位追进度。</div>
+  <div class="gitem"><b>UTC+0 结算</b>：以伦敦自然日为日界（台湾时间 08:00 换日），有效天=单日直播≥1h。</div>
+</div></details>
+
+<div class="nav">
+  <a onclick="goSec('b1')">🍮 总营收</a>
+  <a onclick="goSec('b2')">👥 主播稳定度</a>
+  <a onclick="goSec('b3')">📊 冲刺分析</a>
+  <a onclick="goSec('b4')">🆕 新主播</a>
+  <a onclick="goSec('b3');sec9()">💡 运营建议</a>
+</div>
+
 
 
 <!-- BLOCK 1 -->
@@ -239,7 +301,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 
 <!-- BLOCK 2 -->
 <div class="block" id="b2">
-  <div class="head" onclick="toggle('b2')"><h2>👥 二大块 · 主播稳定度 <span class="tag">（稳定 = 7月达标 22天/100小时）</span></h2><span class="chev">▼</span></div>
+  <div class="head" onclick="toggle('b2')"><h2>👥 二大块 · 主播稳定度 <span class="tag">（稳定 41 · 非稳定 504 · 待激活 91）</span></h2><span class="chev">▼</span></div>
   <div class="body">
     <h3 style="margin:4px 0 10px;font-size:15px;color:#4d4641;">✅ 7月稳定开播主播 · <b>41</b> 人</h3>
     <div class="toolbar"><div class="msel" id="ms-tblA">
@@ -250,7 +312,8 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     </div>
   </div></div>
     <div class="scrolly" style="max-height:420px;">
-    <table id="tblA"><thead><tr><th>主播</th><th>团队</th><th>8月有效天数</th><th>8月直播时长(h)</th><th>7月钻石</th><th>8月钻石</th><th>层级跃迁进度<br><small style="font-weight:400">达到7月级数 / 升级</small></th><th>进度状态</th><th>备注</th><th>开播频率<br><small style="font-weight:400">逐场记录·准实时</small></th><th>时段分布<br><small style="font-weight:400">0→23时</small></th></tr></thead>
+    <div class="tablescroll">
+    <table id="tblA"><thead><tr><th>主播</th><th>团队</th><th>8月有效天数</th><th>8月直播时长(h)</th><th>7月钻石</th><th>8月钻石</th><th>层级跃迁进度<br><small style="font-weight:400">达到7月级数 / 升级</small></th><th>进度状态</th><th>开播频率<br><small style="font-weight:400">逐场记录·准实时</small></th><th>时段分布<br><small style="font-weight:400">0→23时</small></th></tr></thead>
     <tbody><tr data-team="富婆吕大队">
     <td class="name">ccc99999ccc</td>
     <td>富婆吕大队</td>
@@ -266,7 +329,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L10 还需 4,553,109 / 日 168,634</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 22%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">9场 / 3天 · 场均2.1h</div>
@@ -289,7 +351,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L10 还需 4,699,073 / 日 174,040</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 29%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-mid">周3-4次</span></div>
     <div class="p2">2场 / 2天 · 场均3.7h</div>
@@ -312,7 +373,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L8 还需 1,393,193 / 日 51,600</div>
   </div></td>
     <td><span class="spd spd-up">超前</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 51,702 vs 7月日均 43,820</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">4场 / 4天 · 场均7.2h</div>
@@ -335,7 +395,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L4 还需 108,464 / 日 4,018</div>
   </div></td>
     <td><span class="spd spd-up">超前</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 47,884 vs 7月日均 8,136</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">4场 / 3天 · 场均4.5h</div>
@@ -358,7 +417,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L9 还需 2,318,716 / 日 85,879</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 20%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">5场 / 4天 · 场均4.3h</div>
@@ -381,7 +439,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L9 还需 2,321,285 / 日 85,974</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 40%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">7场 / 4天 · 场均2.2h</div>
@@ -404,7 +461,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L8 还需 1,496,659 / 日 55,432</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 34%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">7场 / 4天 · 场均2.9h</div>
@@ -427,7 +483,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L7 还需 898,432 / 日 33,276</div>
   </div></td>
     <td><span class="spd spd-up">稳步进行</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 25,392 vs 7月日均 23,086</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-daily">日播</span></div>
     <div class="p2">9场 / 5天 · 场均3.3h</div>
@@ -450,7 +505,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L9 还需 2,403,418 / 日 89,016</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 60%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">3场 / 3天 · 场均3.3h</div>
@@ -473,7 +527,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L8 还需 1,532,235 / 日 56,750</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 52%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">7场 / 4天 · 场均2.9h</div>
@@ -496,7 +549,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L5 还需 440,621 / 日 16,320</div>
   </div></td>
     <td><span class="spd spd-up">超前</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 14,845 vs 7月日均 11,449</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">4场 / 3天 · 场均5.7h</div>
@@ -519,7 +571,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L5 还需 444,955 / 日 16,480</div>
   </div></td>
     <td><span class="spd spd-up">稳步进行</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 13,761 vs 7月日均 12,162</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">9场 / 4天 · 场均3.4h</div>
@@ -542,7 +593,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L4 还需 246,900 / 日 9,145</div>
   </div></td>
     <td><span class="spd spd-up">超前</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 13,275 vs 7月日均 9,530</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-daily">日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">12场 / 5天 · 场均2.1h</div>
@@ -565,7 +615,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L5 还需 457,283 / 日 16,937</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 19%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">5场 / 3天 · 场均5.6h</div>
@@ -588,7 +637,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L7 还需 959,337 / 日 35,531</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 66%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">3场 / 3天 · 场均5.2h</div>
@@ -611,7 +659,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L8 还需 1,560,009 / 日 57,779</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 70%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-mid">周3-4次</span></div>
     <div class="p2">4场 / 2天 · 场均2.2h</div>
@@ -634,7 +681,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L5 还需 462,163 / 日 17,118</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 27%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-daily">日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">5场 / 5天 · 场均4.1h</div>
@@ -657,7 +703,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L8 还需 1,563,053 / 日 57,891</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 81%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-mid">周3-4次</span></div>
     <div class="p2">3场 / 2天 · 场均3.5h</div>
@@ -680,7 +725,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L6 还需 665,443 / 日 24,647</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 53%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">3场 / 3天 · 场均4.6h</div>
@@ -703,7 +747,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L3 还需 172,438 / 日 6,387</div>
   </div></td>
     <td><span class="spd spd-up">超前</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 6,891 vs 7月日均 4,396</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">3场 / 3天 · 场均5.1h</div>
@@ -726,7 +769,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 73,468 / 日 2,722</div>
   </div></td>
     <td><span class="spd spd-up">超前</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 6,633 vs 7月日均 2,177</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">3场 / 3天 · 场均4.9h</div>
@@ -749,7 +791,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L3 还需 186,942 / 日 6,924</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 44%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-daily">日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">14场 / 5天 · 场均2.2h</div>
@@ -772,7 +813,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L4 还需 287,964 / 日 10,666</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 61%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">4场 / 3天 · 场均2.6h</div>
@@ -795,7 +835,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L5 还需 490,874 / 日 18,181</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 77%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">4场 / 4天 · 场均2.6h</div>
@@ -818,7 +857,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 91,262 / 日 3,381</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 4%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-mid">周3-4次</span></div>
     <div class="p2">5场 / 2天 · 场均1.9h</div>
@@ -841,7 +879,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 95,055 / 日 3,521</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 52%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">3场 / 3天 · 场均5.3h</div>
@@ -864,7 +901,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 97,984 / 日 3,630</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 48%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">5场 / 3天 · 场均2.3h</div>
@@ -887,7 +923,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 98,068 / 日 3,633</div>
   </div></td>
     <td><span class="spd spd-up">稳步进行</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 483 vs 7月日均 424</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">4场 / 4天 · 场均4h</div>
@@ -910,7 +945,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 98,959 / 日 3,666</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 45%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">7场 / 4天 · 场均1.7h</div>
@@ -933,7 +967,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,388 / 日 3,682</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 31%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-daily">日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">9场 / 5天 · 场均1.7h</div>
@@ -956,7 +989,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,527 / 日 3,687</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 88%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">10场 / 4天 · 场均2.4h</div>
@@ -979,7 +1011,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,587 / 日 3,689</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 67%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-daily">日播</span></div>
     <div class="p2">10场 / 5天 · 场均1.6h</div>
@@ -1002,7 +1033,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,611 / 日 3,690</div>
   </div></td>
     <td><span class="spd spd-up">超前</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">日均 97 vs 7月日均 60</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">4场 / 4天 · 场均7.1h</div>
@@ -1025,7 +1055,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,668 / 日 3,692</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 61%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-daily">日播</span></div>
     <div class="p2">10场 / 5天 · 场均2.2h</div>
@@ -1048,7 +1077,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,853 / 日 3,699</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 77%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">12场 / 4天 · 场均1.2h</div>
@@ -1071,7 +1099,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,872 / 日 3,699</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 91%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">5场 / 4天 · 场均5h</div>
@@ -1094,7 +1121,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,984 / 日 3,704</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 43%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">3场 / 3天 · 场均4.3h</div>
@@ -1117,7 +1143,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,996 / 日 3,704</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 90%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-mid">周3-4次</span></div>
     <div class="p2">4场 / 2天 · 场均2.4h</div>
@@ -1140,7 +1165,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,998 / 日 3,704</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 96%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span><span class="livenow">● 直播中</span></div>
     <div class="p2">3场 / 3天 · 场均4.7h</div>
@@ -1163,7 +1187,6 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L2 还需 99,999 / 日 3,704</div>
   </div></td>
     <td><span class="spd spd-down">落後</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">掉速 99%</td>
     <td><div class="patc">
     <div class="p1"><span class="freq f-alt">隔日播</span></div>
     <div class="p2">5场 / 3天 · 场均3.7h</div>
@@ -1186,10 +1209,10 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     <div class="tneed">升 L3 还需 200,000 / 日 7,408</div>
   </div></td>
     <td><span class="spd ">8月暂无</span></td>
-    <td style="font-size:12px;color:#7d7895;max-width:180px;">待开播</td>
     <td><span class="f-none">无记录</span></td>
     <td></td>
   </tr></tbody></table>
+    </div>
     </div>
 
     <h3 style="margin:22px 0 10px;font-size:15px;color:#4d4641;">⚠️ 正常进度 · 非稳定主播（对标各自 7 月活跃） · <b>504</b> 人</h3>
@@ -1208,6 +1231,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <input class="search" id="q" placeholder="搜索主播名 / 团队…" oninput="filterB()">
     </div>
     <div class="scrolly">
+    <div class="tablescroll">
     <table id="tblB"><thead><tr><th>主播</th><th>团队</th><th>对标7月活跃<br><small style="font-weight:400">7月基准 / 8月进度</small></th><th>活跃目标<br><small style="font-weight:400">以7月数据定</small></th><th>7月钻石</th><th>8月钻石</th><th>层级跃迁进度<br><small style="font-weight:400">达到7月级数 / 升级</small></th><th>开播频率<br><small style="font-weight:400">逐场记录·准实时</small></th></tr></thead>
     <tbody><tr data-level="未达标" data-name="bella_bella1313" data-team="台湾HOTA">
     <td class="name">bella_bella1313</td>
@@ -11776,6 +11800,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
   </div></td>
   </tr></tbody></table>
     </div>
+    </div>
     <div class="hint"><b>主播活跃目标（以 7 月数据定档）</b>：每位非稳定主播的「目标档」由其 <b>7 月</b>活跃定 —— <b>8天25小时 / 14天20小时 / 17天60小时 / 20天80小时 / 22天100小时</b>（整月目标）。「活跃目标」列即显示该档位。<br>
     <b>8 月实时数据比对进度</b>见「对标7月活跃」列：以各主播<b>自身 7 月</b>有效天数/时长为基准，按当前进度比例（已过 4/31）缩放，显示 8 月追进度 —— <b>≥100% = 超/追平 7 月同期节奏</b>（绿），<b>&lt;100% = 落後</b>（紫）。「7月停播·8月已复播」「新主播·无7月基准」两类无 7 月基准，仅列 8 月实况，目标档显示「无7月基准」。<br>
     <b>层级跃迁规则</b>：<b>达到7月级数</b>=8月钻石 ÷ 7月层级门槛；<b>升级</b>=8月钻石冲向下一层级。阈值：L2≥10万 / L3≥20万 / L4≥30万 / L5≥50万 / L6≥70万 / L7≥100万 / L8≥160万 / L9≥250万 / L10≥500万。剩余 27 天，日需 = 还需钻石 ÷ 27。</div>
@@ -12797,6 +12822,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     </div>
     <div class="hint">合计：A+B = <b>269,828/天</b>，仍差 <b class="down">329,070/天</b> 需靠稳定主播整体增长或扩新主播补足。可激活池 219 人 7月日均合计 45,334/天，是最大杠杆。</div>
 
+    <div class="deep collapsed" id="deepSec"><div class="deephead" onclick="toggleDeep()"><span class="chev2">▼</span> 📂 深入钻取 · 具体主播名单（稳定掉速 / 唤醒 / 非稳定高价值 / 运营建议）</div><div class="deepbody">
     <h3 style="margin:24px 0 10px;font-size:15px;color:#4a4560;">⑥ 稳定掉速榜（具體主播 · 按流水权重排序）· <b>41</b> 人</h3>
     <div class="toolbar">
       <div class="msel" id="ms-tblSD">
@@ -14083,7 +14109,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     </div>
     <div class="hint">這 40 人是「7 月產出高、8 月掉下來」的槓桿點——只要拉回 7 月水平，對達標貢獻最大。經濟人可在線填寫重心分配表（與本看板同源）：<a href="https://docs.qq.com/sheet/DZVRBdXZuaXhLa0xm" target="_blank" style="color:#6b5fb5;font-weight:700;">https://docs.qq.com/sheet/DZVRBdXZuaXhLa0xm</a>，填完告訴我即可讀回補齊分析。</div>
 
-    <h3 style="margin:26px 0 10px;font-size:15px;color:#4a4560;">⑨ 运营建议综合 · 来自经济人线上标注表</h3>
+    <h3 id="sec9" style="margin:26px 0 10px;font-size:15px;color:#4a4560;">⑨ 运营建议综合 · 来自经济人线上标注表</h3>
     <div class="kpis">
       <div class="kpi"><div class="lbl">已标注主播</div><div class="val big">172</div><div class="note">重心=是 4 · 觀察 48 · 否 84</div></div>
       <div class="kpi"><div class="lbl">重心=是 预计月产出</div><div class="val">9,100,000</div><div class="note">8月已产 669,442</div></div>
@@ -14342,6 +14368,8 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       </div>
     </div>
     <div class="hint">数据来源：经济人在线标注表（与看板同源，每日 12:00/16:30 自动读回）。重心栏为空的共 <b>36</b> 人，建议补齐以便自动化汇总运营建议。</div>
+    </div>
+    </div>
   </div>
 </div>
 
@@ -14517,6 +14545,17 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 </div>
 <script>
 function toggle(id){ document.getElementById(id).classList.toggle('collapsed'); }
+function goSec(id){
+  const el=document.getElementById(id);
+  if(el && el.classList.contains('collapsed')) el.classList.remove('collapsed');
+  setTimeout(()=>{ if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+}
+function sec9(){
+  const b3=document.getElementById('b3'); if(b3 && b3.classList.contains('collapsed')) b3.classList.remove('collapsed');
+  const d=document.getElementById('deepSec'); if(d && d.classList.contains('collapsed')) d.classList.remove('collapsed');
+  setTimeout(()=>{ const s=document.getElementById('sec9'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 80);
+}
+function toggleDeep(){ const d=document.getElementById('deepSec'); if(d) d.classList.toggle('collapsed'); }
 
 // ---------- 多选团队筛选 ----------
 function toggleMS(msId){ document.getElementById(msId).classList.toggle('open'); }
