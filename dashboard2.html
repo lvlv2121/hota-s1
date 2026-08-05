@@ -182,19 +182,19 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 <body><div class="wrap">
 <header>
   <h1>HOTA 公会运营看板 · 营收 & 主播稳定度</h1>
-  <div class="sub">数据更新：2026/8/5 13:36:52 (GMT+8) ｜ 营收口径：收入→激励任务→营收增量任务（实时，UTC+0:00 结算）｜ 稳定定义：7月有效开播≥22天 且 直播时长≥100小时</div>
+  <div class="sub">数据更新：2026/8/5 14:06:58 (GMT+8) ｜ 营收口径：收入→激励任务→营收增量任务（实时，UTC+0:00 结算）｜ 稳定定义：7月有效开播≥22天 且 直播时长≥100小时</div>
 </header>
 
 
 <!-- BLOCK 1 -->
 <div class="block" id="b1">
-  <div class="head" onclick="toggle('b1')"><h2>🍮 一大块 · 本月总营收 <span class="tag">（MTD 截至 8/4，已完成 4 天；8/5 计入剩余）</span></h2><span class="chev">▼</span></div>
+  <div class="head" onclick="toggle('b1')"><h2>🍮 一大块 · 本月总营收 <span class="tag">（MTD 截至前一天 8/4，已完成 4 天；8/5 当日未结不计入）</span></h2><span class="chev">▼</span></div>
   <div class="body">
     <div class="kpis">
-      <div class="kpi"><div class="lbl">本月总营收 (MTD)</div><div class="val big">6,228,358</div><div class="note">钻石 ｜ 上月同期 7,985,659</div></div>
-      <div class="kpi"><div class="lbl">环比上月同期</div><div class="val down">-22.0%</div><div class="note">⚠ 低于去年同期</div></div>
+      <div class="kpi"><div class="lbl">本月总营收 (MTD)</div><div class="val big">5,878,682</div><div class="note">钻石 ｜ 上月同期 7,985,659</div></div>
+      <div class="kpi"><div class="lbl">环比上月同期</div><div class="val down">-26.4%</div><div class="note">⚠ 低于去年同期</div></div>
       <div class="kpi"><div class="lbl">本月剩余天数</div><div class="val">27</div><div class="note">至 8/31（共 31 天）</div></div>
-      <div class="kpi"><div class="lbl">当前日均产出</div><div class="val">1,557,090</div><div class="note">= MTD ÷ 4 天</div></div>
+      <div class="kpi"><div class="lbl">当前日均产出</div><div class="val">1,469,671</div><div class="note">= MTD ÷ 4 天</div></div>
     </div>
     <table>
       <thead><tr><th>营收增量任务档位</th><th>目标全月总营收</th><th>还需完成</th><th>每日需完成</th></tr></thead>
@@ -202,29 +202,29 @@ tr:hover td { background:rgba(255,255,255,0.55); }
   <tr>
     <td><span class="grow">8%</span></td>
     <td class="num">61,730,000</td>
-    <td class="num">55,501,642</td>
-    <td class="num strong">2,055,617</td>
+    <td class="num">55,851,318</td>
+    <td class="num strong">2,068,568</td>
   </tr>
   <tr>
     <td><span class="grow">6%</span></td>
     <td class="num">55,560,000</td>
-    <td class="num">49,331,642</td>
-    <td class="num strong">1,827,098</td>
+    <td class="num">49,681,318</td>
+    <td class="num strong">1,840,049</td>
   </tr>
   <tr>
     <td><span class="grow">3%</span></td>
     <td class="num">49,380,000</td>
-    <td class="num">43,151,642</td>
-    <td class="num strong">1,598,209</td>
+    <td class="num">43,501,318</td>
+    <td class="num strong">1,611,160</td>
   </tr>
   <tr>
     <td><span class="grow">2%</span></td>
     <td class="num">43,210,000</td>
-    <td class="num">36,981,642</td>
-    <td class="num strong">1,369,691</td>
+    <td class="num">37,331,318</td>
+    <td class="num strong">1,382,642</td>
   </tr></tbody>
     </table>
-    <div class="hint">说明：目标档位取自收入→激励任务→营收增量任务页面的「鑽石標竿」（8%: 61.73M / 6%: 55.56M / 3%: 49.38M / 2%: 43.21M）。每日需完成 =（目标总营收 − 已产 MTD）÷ 剩余 27 天。当前日均 1,557,090 钻石，低于达成 2% 档位所需的 1,369,691，需提产约 -187,398/天。</div>
+    <div class="hint">说明：总营收取自收入→激励任务→营收增量任务页面的「钻石里程碑」柱形图，取<b>前一天 UTC 日</b>的累计值（如 8/5 运行取 8/4 的 5,878,682），排除当日未结算的实时部分。目标档位（8%: 61.73M / 6%: 55.56M / 3%: 49.38M / 2%: 43.21M）亦来自同页面。</div>
   </div>
 </div>
 
@@ -12522,17 +12522,17 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 <div class="block" id="b3">
   <div class="head" onclick="toggle('b3')"><h2>📊 第三大块 · 8% 冲刺分析 <span class="tag">（本月目标 61,730,000 钻石）</span></h2><span class="chev">▼</span></div>
   <div class="body">
-    <h3 style="margin:4px 0 12px;font-size:15px;color:#4a4560;">① 缺口仪表（截至 8/5，剩余 27 天）</h3>
+    <h3 style="margin:4px 0 12px;font-size:15px;color:#4a4560;">① 缺口仪表（截至前一天 8/4，剩余 27 天）</h3>
     <div class="kpis">
       <div class="kpi"><div class="lbl">8% 目标总营收</div><div class="val big">61,730,000</div><div class="note">营收增量任务 · 8% 档</div></div>
-      <div class="kpi"><div class="lbl">已产出（8/4 口径）</div><div class="val">6,228,358</div><div class="note">距今还需 55,501,642</div></div>
-      <div class="kpi"><div class="lbl">日均需完成</div><div class="val strong">2,055,617</div><div class="note">÷ 剩余 27 天</div></div>
-      <div class="kpi"><div class="lbl">当前日均</div><div class="val down">1,557,090</div><div class="note">每天缺口 <b class="down">498,528</b></div></div>
+      <div class="kpi"><div class="lbl">已产出（8/4 口径）</div><div class="val">5,878,682</div><div class="note">距今还需 55,851,318</div></div>
+      <div class="kpi"><div class="lbl">日均需完成</div><div class="val strong">2,068,568</div><div class="note">÷ 剩余 27 天</div></div>
+      <div class="kpi"><div class="lbl">当前日均</div><div class="val down">1,469,671</div><div class="note">每天缺口 <b class="down">598,898</b></div></div>
     </div>
 
     <h3 style="margin:22px 0 10px;font-size:15px;color:#4a4560;">② 按当前节奏预测</h3>
-    <div class="projbar"><div class="projfill" style="width:78.2%"></div><span class="projtxt">按当前节奏全月预计 48,269,775 ＝ 8% 目标的 <b>78.2%</b></span></div>
-    <div class="hint">若保持现状，全月只到 <b>78.2%</b>，距 8% 目标还差 <b class="down">13,460,225</b> 钻石。要拿 8 个点，必须从「维持」切换成「增长」。</div>
+    <div class="projbar"><div class="projfill" style="width:73.8%"></div><span class="projtxt">按当前节奏全月预计 45,559,786 ＝ 8% 目标的 <b>73.8%</b></span></div>
+    <div class="hint">若保持现状，全月只到 <b>73.8%</b>，距 8% 目标还差 <b class="down">16,170,214</b> 钻石。要拿 8 个点，必须从「维持」切换成「增长」。</div>
 
     <h3 style="margin:22px 0 10px;font-size:15px;color:#4a4560;">③ 基本盘诊断 · 稳定主播（41 人）</h3>
     <div class="kpis">
@@ -12780,13 +12780,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
     </div>
     <div class="hint">红＝掉速（8月日均低于7月），绿＝提速。吕吕团队、冰冰團隊、艾力克斯、九離火为当前最需介入的掉速团队。</div>
 
-    <h3 style="margin:22px 0 10px;font-size:15px;color:#4a4560;">⑤ 补足路径拆解（每天还差 498,528）</h3>
+    <h3 style="margin:22px 0 10px;font-size:15px;color:#4a4560;">⑤ 补足路径拆解（每天还差 598,898）</h3>
     <div class="paths">
       <div class="path"><b>路径 A · 稳定主播回升</b><br>35 人拉回 7月水平 → <b class="up">+224,494/天</b></div>
       <div class="path"><b>路径 B · 激活沉睡主播</b><br>219 人有 7月战绩但 8月 0 钻，全恢复 → <b class="up">+45,334/天</b><br><small style="color:#a89f95">激活一半即 +22,667/天</small></div>
-      <div class="path"><b>路径 C · 稳定主播再增长</b><br>A+B 后剩余缺口 → 35 人每人每天再多 <b class="strong">5,579</b> 钻</div>
+      <div class="path"><b>路径 C · 稳定主播再增长</b><br>A+B 后剩余缺口 → 35 人每人每天再多 <b class="strong">8,027</b> 钻</div>
     </div>
-    <div class="hint">合计：A+B = <b>269,828/天</b>，仍差 <b class="down">228,700/天</b> 需靠稳定主播整体增长或扩新主播补足。可激活池 219 人 7月日均合计 45,334/天，是最大杠杆。</div>
+    <div class="hint">合计：A+B = <b>269,828/天</b>，仍差 <b class="down">329,070/天</b> 需靠稳定主播整体增长或扩新主播补足。可激活池 219 人 7月日均合计 45,334/天，是最大杠杆。</div>
 
     <h3 style="margin:24px 0 10px;font-size:15px;color:#4a4560;">⑥ 稳定掉速榜（具體主播 · 按掉速排序）· <b>41</b> 人</h3>
     <div class="toolbar">
@@ -14135,13 +14135,13 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <span style="font-size:12px;opacity:.85">已用 peng0430 / xiao._o7 / shingni0516 三人的逐场记录重算，与后台明细表单 <b>100% 吻合</b>，规则确认无误。</span>
     </div>
     <div class="srcgrid"><div class="srcard">
-    <div class="st">本月营收（一大块）<span class="cadence cad-rt">准实时</span></div>
+    <div class="st">本月营收（一大块）<span class="cadence cad-fix">每日结算（T+1，取前一天累计）</span></div>
     <div class="sr">
-      数据截止：<b>2026-8-5 14:05:10</b> (GMT+8)<br>
+      数据截止：<b>2026-8-5 14:31:02</b> (GMT+8)<br>
       
-      <span class="api">agency/get_agency_overview</span>
+      <span class="api">agency/task/get_monthly_chart + agency/get_agency_overview</span>
     </div>
-    <div class="cav">营收为平台侧实时汇总，与主播明细表单口径不同步</div>
+    <div class="cav">柱形图取「前一天 UTC 日」累计值（如 8/5 运行取 8/4 的 5,878,682），排除当日未结算的实时部分</div>
   </div><div class="srcard">
     <div class="st">钻石 / 有效天数 / 直播时长（二·三大块主数据）<span class="cadence cad-t1">每日结算（T+1）</span></div>
     <div class="sr">
