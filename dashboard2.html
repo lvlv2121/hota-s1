@@ -80,6 +80,10 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 /* 活跃目标徽章（以7月数据定档） */
 .lv { font-size:11px; padding:3px 9px; border-radius:8px; font-weight:600; background:rgba(196,211,254,0.5); color:#3f5896; white-space:nowrap; }
 .lv.low { background:rgba(140,130,180,0.16); color:#6f6a8f; }
+/* 完成上月活跃度 → 距下档标注 */
+.nextlv { margin-top:3px; font-size:10px; line-height:1.35; color:#1a7f4b; font-weight:600; }
+.nextlv b { color:#0f5c36; }
+.nextlv.maxed { color:#9a6a00; }
 
 /* 对标7月活跃 单元 */
 .julact { font-size:11px; color:var(--sub); min-width:150px; }
@@ -1486,7 +1490,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">280% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>20天80小时</b> 还差 1天6.4时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">238%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">294%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -1515,7 +1519,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="behind" style="width:93%"></i></div>
       <div class="ja-pct behind">93% · 落後節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 0天23.9时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">121%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">181%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -1776,7 +1780,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">144% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">114%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">400%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -1863,7 +1867,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">148% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 0天3.8时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">129%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">281%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2079,7 +2083,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="behind" style="width:81%"></i></div>
       <div class="ja-pct behind">81% · 落後節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 2天28.4时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">107%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">158%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2355,7 +2359,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">107% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天15.7时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">114%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">222%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2413,7 +2417,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="behind" style="width:85%"></i></div>
       <div class="ja-pct behind">85% · 落後節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天30.4时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">114%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">148%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2442,7 +2446,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">100% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 0天14.3时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">121%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">229%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2495,7 +2499,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">128% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 0天11.7时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">143%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">242%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2661,7 +2665,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">148% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">20天80小时</span></td>
+    <td><span class="lv ">20天80小时</span><div class="nextlv">✅已达标 · 下档 <b>22天100小时</b> 还差 2天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">100%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">157%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2864,7 +2868,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">132% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 2天21.4时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">107%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">193%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -2951,7 +2955,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">210% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 2天16.3时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">188%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">175%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -3061,7 +3065,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="behind" style="width:70%"></i></div>
       <div class="ja-pct behind">70% · 落後節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天31.8时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">114%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">141%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -3198,7 +3202,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">111% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>14天20小时</b> 还差 5天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">113%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">178%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -3256,7 +3260,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">144% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>14天20小时</b> 还差 1天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">163%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">212%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -3495,7 +3499,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="behind" style="width:95%"></i></div>
       <div class="ja-pct behind">95% · 落後節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 3天30.9时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">100%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">146%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -3767,7 +3771,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">178% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>14天20小时</b> 还差 2天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">150%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">135%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -3883,7 +3887,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">123% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 0天22.6时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">143%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">187%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -3952,7 +3956,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">107% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>14天20小时</b> 还差 6天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">100%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">119%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -4247,7 +4251,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">112% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">17天60小时</span></td>
+    <td><span class="lv ">17天60小时</span><div class="nextlv">✅已达标 · 下档 <b>20天80小时</b> 还差 1天5.8时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">112%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">124%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -4461,7 +4465,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">107% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天37.9时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">114%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">111%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -4627,7 +4631,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">170% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 2天18.3时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">188%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">167%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -4738,7 +4742,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">156% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天11.2时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">114%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">244%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -4935,7 +4939,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">133% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>14天20小时</b> 还差 5天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">113%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">127%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -4980,7 +4984,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">105% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 2天16.1时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">107%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">219%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -5198,7 +5202,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">117% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 2天2时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">107%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">290%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -5227,7 +5231,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">216% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>20天80小时</b> 还差 1天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">238%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">346%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -6146,7 +6150,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">112% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天27.5时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">114%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">163%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -6485,7 +6489,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">126% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>14天20小时</b> 还差 2天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">150%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">106%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -6708,7 +6712,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">190% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 0天4.1时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">129%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">280%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -8627,7 +8631,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">146% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">17天60小时</span></td>
+    <td><span class="lv ">17天60小时</span><div class="nextlv">✅已达标 · 下档 <b>20天80小时</b> 还差 1天2.5时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">112%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">129%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -9077,7 +9081,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">111% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 3天37.6时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">100%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">112%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -9316,7 +9320,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">140% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 0天23.5时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">129%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">183%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -9860,7 +9864,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="behind" style="width:96%"></i></div>
       <div class="ja-pct behind">96% · 落後節奏</div>
     </div></td>
-    <td><span class="lv ">14天20小时</span></td>
+    <td><span class="lv ">14天20小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 3天22.9时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">100%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">186%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -10092,7 +10096,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">148% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">17天60小时</span></td>
+    <td><span class="lv ">17天60小时</span><div class="nextlv">✅已达标 · 下档 <b>20天80小时</b> 还差 2天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">106%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">150%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -10216,7 +10220,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">198% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>17天60小时</b> 还差 1天19时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">200%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">164%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
@@ -10448,7 +10452,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
       <div class="ja-bar"><i class="ahead" style="width:100%"></i></div>
       <div class="ja-pct ahead">102% · 超節奏</div>
     </div></td>
-    <td><span class="lv ">8天25小时</span></td>
+    <td><span class="lv ">8天25小时</span><div class="nextlv">✅已达标 · 下档 <b>14天20小时</b> 还差 6天0时</div></td>
     <td><div class="mg">
       <div class="mg-r"><span>天</span><b class="mg-ok">100%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
       <div class="mg-r"><span>时</span><b class="mg-ok">104%</b><div class="mg-bar"><i class="ok" style="width:100%"></i></div></div>
