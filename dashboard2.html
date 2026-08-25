@@ -255,6 +255,24 @@ tr:hover td { background:rgba(255,255,255,0.55); }
 .sprint-card.hot .spn { color:#d65a78; }
 .sprint-card.hot .spm b { color:#c44d6e; }
 .sprint-card.hot .spact { color:#a23b54; background:rgba(214,90,120,0.14); border-left-color:#e08aa0; }
+
+/* 高價值突停預警（第六大块） */
+.alert-block { border-color:#f0b8c4; background:linear-gradient(180deg,#fff6f8,#ffffff); }
+.alert-block > .head { background:linear-gradient(90deg,#ffe3ea,#fff6f8); border-bottom:1px solid #f3cdd6; }
+.alert-block > .head h2 { color:#a23b54; }
+.qtab { width:100%; border-collapse:collapse; font-size:13px; }
+.qtab th { text-align:left; padding:8px 10px; background:#fbe9ee; color:#a23b54; font-weight:700; border-bottom:2px solid #f0b8c4; position:sticky; top:0; z-index:1; }
+.qtab td { padding:7px 10px; border-bottom:1px solid #f3e3e8; color:#4a4558; }
+.qtab tr.q-sev { background:rgba(214,90,120,0.13); }
+.qtab tr.q-warn { background:rgba(214,90,120,0.05); }
+.qtab td.name { font-weight:700; color:#3a3550; }
+.qtab .q-sev td b { color:#c4274a; }
+.qtab .q-warn td b { color:#d65a78; }
+.qtab .down { color:#c4274a; font-weight:700; }
+.qtag { display:inline-block; padding:2px 9px; border-radius:10px; font-size:11px; font-weight:700; white-space:nowrap; }
+.qtag.q-t1 { background:rgba(214,90,120,0.16); color:#a23b54; }
+.qtag.q-t2 { background:rgba(142,95,181,0.16); color:#6b4fa0; }
+.empty { padding:18px; text-align:center; color:#8a859c; font-size:13px; }
 </style></head>
 <body><div class="wrap">
 <header>
@@ -269,6 +287,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
   <div class="ovcard alert" onclick="goSec('b3')"><div class="ol">重心=是 落后</div><div class="ov">4<span style="font-size:13px;color:#9591ad"> / 4</span></div><div class="on">共 4 位重心=是</div></div>
   <div class="ovcard alert" onclick="goSec('b3')"><div class="ol">风险主播</div><div class="ov">11</div><div class="on">跳槽/不播/离台等</div></div>
   <div class="ovcard" onclick="goSec('b4')"><div class="ol">新入會主播</div><div class="ov">17</div><div class="on">8 月起入会</div></div>
+  <div class="ovcard alert" onclick="goSec('b6')"><div class="ol">高價值突停預警</div><div class="ov">49</div><div class="on">高價值斷播 · 高產主播</div></div>
 </div>
 
 <details class="glossary"><summary>名词解释（点开看懂术语）</summary><div class="glist">
@@ -285,6 +304,7 @@ tr:hover td { background:rgba(255,255,255,0.55); }
   <a onclick="goSec('b3')">📊 冲刺分析</a>
   <a onclick="goSec('b4')">🆕 新主播</a>
   <a onclick="goSec('b5')">🔥 最後衝刺</a>
+  <a onclick="goSec('b6')">⚠ 突停預警</a>
   <a onclick="goSec('b3');sec9()">💡 运营建议</a>
 </div>
 
@@ -17592,6 +17612,408 @@ tr:hover td { background:rgba(255,255,255,0.55); }
         <div class="spact">動作：跳槽/不播/離台風險名單每日盤點，重心分配表補齊。</div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- BLOCK 6: 高價值突停預警 -->
+<div class="block alert-block" id="b6">
+  <div class="head" onclick="toggle('b6')"><h2>⚠ 第六大块 · 高價值突停預警 <span class="tag">（最近好幾天沒播 · 共 49 人）</span></h2><span class="chev">▼</span></div>
+  <div class="body">
+    <div class="hint">預警邏輯：7月或8月鑽石 <b>≥ 20萬</b> 的高價值主播，且最後一次開播已 <b>≥ 2 天前</b>（斷播）。「7月高價·8月掉速」= 8月鑽石明顯少於7月；「8月高價·突停」= 本月產出高但近期斷播。已停播數週的高價值也一併標出（與「待激活」塊不重複：本塊要求 8月曾有開播記錄）。每天 12:00 / 16:30 自動刷新。</div>
+    <div class="scrolly" style="max-height:540px;"><table class="qtab"><thead><tr><th>主播</th><th>團隊</th><th>7月鑽石</th><th>8月鑽石</th><th>掉速</th><th>最後開播</th><th>預警類型</th></tr></thead><tbody><tr class="q-sev">
+    <td class="name">bella_bella1313</td>
+    <td>台湾HOTA</td>
+    <td class="num">1,381,626</td>
+    <td class="num">371,494</td>
+    <td class="num down">▼73%</td>
+    <td class="num"><b>23 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">2003_0212</td>
+    <td>哞会长</td>
+    <td class="num">301,953</td>
+    <td class="num">150,605</td>
+    <td class="num down">▼50%</td>
+    <td class="num"><b>23 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">linjercy</td>
+    <td>信仰娛樂</td>
+    <td class="num">184,113</td>
+    <td class="num">233,765</td>
+    <td class="num ">—</td>
+    <td class="num"><b>23 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">saxwei</td>
+    <td>羊羊團隊</td>
+    <td class="num">3,273,880</td>
+    <td class="num">1,622,481</td>
+    <td class="num down">▼50%</td>
+    <td class="num"><b>22 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">tongtong3131</td>
+    <td>九離火</td>
+    <td class="num">656,344</td>
+    <td class="num">611,255</td>
+    <td class="num down">▼7%</td>
+    <td class="num"><b>22 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">tiffany_0630_</td>
+    <td>富婆吕大队</td>
+    <td class="num">551,974</td>
+    <td class="num">528,659</td>
+    <td class="num down">▼4%</td>
+    <td class="num"><b>22 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">xiao._o7</td>
+    <td>哞会长</td>
+    <td class="num">442,308</td>
+    <td class="num">265,095</td>
+    <td class="num down">▼40%</td>
+    <td class="num"><b>22 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">reine0823</td>
+    <td>哞会长</td>
+    <td class="num">272,653</td>
+    <td class="num">369,947</td>
+    <td class="num ">—</td>
+    <td class="num"><b>22 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">weiviolin_0710</td>
+    <td>艾力克斯</td>
+    <td class="num">221,074</td>
+    <td class="num">133,759</td>
+    <td class="num down">▼39%</td>
+    <td class="num"><b>22 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">weeeeee0406</td>
+    <td>羊羊團隊</td>
+    <td class="num">798,527</td>
+    <td class="num">528,296</td>
+    <td class="num down">▼34%</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">lienyou0416</td>
+    <td>無底線</td>
+    <td class="num">1,045,956</td>
+    <td class="num">271,556</td>
+    <td class="num down">▼74%</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">peggyhuang0622</td>
+    <td>冰冰團隊</td>
+    <td class="num">864,873</td>
+    <td class="num">194,713</td>
+    <td class="num down">▼77%</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">hehe30678</td>
+    <td>逐夢空間</td>
+    <td class="num">354,908</td>
+    <td class="num">404,303</td>
+    <td class="num ">—</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">54red</td>
+    <td>九離火</td>
+    <td class="num">476,010</td>
+    <td class="num">188,739</td>
+    <td class="num down">▼60%</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">nothingtotell25</td>
+    <td>富婆吕大队</td>
+    <td class="num">265,533</td>
+    <td class="num">267,825</td>
+    <td class="num ">—</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">nnnnn66666nnnnn</td>
+    <td>富婆吕大队</td>
+    <td class="num">310,536</td>
+    <td class="num">170,335</td>
+    <td class="num down">▼45%</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">fanny._.0101</td>
+    <td>艾力克斯</td>
+    <td class="num">198,964</td>
+    <td class="num">276,009</td>
+    <td class="num ">—</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">tizzy1334</td>
+    <td>刘岩</td>
+    <td class="num">213,817</td>
+    <td class="num">88,441</td>
+    <td class="num down">▼59%</td>
+    <td class="num"><b>21 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">0424w</td>
+    <td>九離火</td>
+    <td class="num">1,860,725</td>
+    <td class="num">1,472,387</td>
+    <td class="num down">▼21%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">minaloveu2</td>
+    <td>艾力克斯</td>
+    <td class="num">1,746,169</td>
+    <td class="num">1,546,474</td>
+    <td class="num down">▼11%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">kittybaby1314</td>
+    <td>艾力克斯</td>
+    <td class="num">2,086,573</td>
+    <td class="num">1,132,825</td>
+    <td class="num down">▼46%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">jammy.314.2200</td>
+    <td>九離火</td>
+    <td class="num">1,757,825</td>
+    <td class="num">1,162,858</td>
+    <td class="num down">▼34%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">yoyo_cello</td>
+    <td>吕吕团队</td>
+    <td class="num">1,992,375</td>
+    <td class="num">835,036</td>
+    <td class="num down">▼58%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">yulikeqq</td>
+    <td>manba-tw</td>
+    <td class="num">1,218,419</td>
+    <td class="num">1,279,832</td>
+    <td class="num ">—</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">c.chengyann_011</td>
+    <td>富婆吕大队</td>
+    <td class="num">1,358,411</td>
+    <td class="num">1,013,615</td>
+    <td class="num down">▼25%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">yichi5177</td>
+    <td>艾力克斯</td>
+    <td class="num">1,507,510</td>
+    <td class="num">844,182</td>
+    <td class="num down">▼44%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">sax_jason</td>
+    <td>旺來哥哥</td>
+    <td class="num">1,085,513</td>
+    <td class="num">768,539</td>
+    <td class="num down">▼29%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">hello_hello_151</td>
+    <td>哞会长</td>
+    <td class="num">900,745</td>
+    <td class="num">930,245</td>
+    <td class="num ">—</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">peng0430</td>
+    <td>台湾HOTA</td>
+    <td class="num">919,402</td>
+    <td class="num">897,617</td>
+    <td class="num down">▼2%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">in26222595</td>
+    <td>怪人团队</td>
+    <td class="num">377,011</td>
+    <td class="num">1,077,499</td>
+    <td class="num ">—</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">yu_0214x</td>
+    <td>冰冰團隊</td>
+    <td class="num">392,709</td>
+    <td class="num">1,049,782</td>
+    <td class="num ">—</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">ice_m01</td>
+    <td>刘岩</td>
+    <td class="num">715,657</td>
+    <td class="num">684,531</td>
+    <td class="num down">▼4%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">yang_mie00</td>
+    <td>吕吕团队</td>
+    <td class="num">691,015</td>
+    <td class="num">556,537</td>
+    <td class="num down">▼19%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">chenfongsing</td>
+    <td>刘岩</td>
+    <td class="num">542,318</td>
+    <td class="num">484,578</td>
+    <td class="num down">▼11%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">ty.voice_</td>
+    <td>刘岩</td>
+    <td class="num">305,196</td>
+    <td class="num">557,837</td>
+    <td class="num ">—</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">crossing_cj</td>
+    <td>九離火</td>
+    <td class="num">518,249</td>
+    <td class="num">330,581</td>
+    <td class="num down">▼36%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">su360momo</td>
+    <td>信仰娛樂</td>
+    <td class="num">444,314</td>
+    <td class="num">274,011</td>
+    <td class="num down">▼38%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">kreis54170</td>
+    <td>艾力克斯</td>
+    <td class="num">453,198</td>
+    <td class="num">190,668</td>
+    <td class="num down">▼58%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">gingerbaby40</td>
+    <td>信仰娛樂</td>
+    <td class="num">436,624</td>
+    <td class="num">183,565</td>
+    <td class="num down">▼58%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">shingni0516</td>
+    <td>信仰娛樂</td>
+    <td class="num">408,686</td>
+    <td class="num">201,029</td>
+    <td class="num down">▼51%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">ppp66531456</td>
+    <td>台湾HOTA</td>
+    <td class="num">403,785</td>
+    <td class="num">186,301</td>
+    <td class="num down">▼54%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">petty0803</td>
+    <td>無底線</td>
+    <td class="num">252,204</td>
+    <td class="num">283,728</td>
+    <td class="num ">—</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">he_is_jackson_kor_kor</td>
+    <td>逐夢空間</td>
+    <td class="num">308,220</td>
+    <td class="num">223,657</td>
+    <td class="num down">▼27%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">medd11111</td>
+    <td>冰冰團隊</td>
+    <td class="num">278,371</td>
+    <td class="num">219,481</td>
+    <td class="num down">▼21%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">carysonhuang</td>
+    <td>九離火</td>
+    <td class="num">244,421</td>
+    <td class="num">238,600</td>
+    <td class="num down">▼2%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t2">8月高價·突停</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">chenchen316_x</td>
+    <td>陳家軍</td>
+    <td class="num">296,002</td>
+    <td class="num">111,911</td>
+    <td class="num down">▼62%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">star5201314_</td>
+    <td>台湾HOTA</td>
+    <td class="num">299,654</td>
+    <td class="num">77,251</td>
+    <td class="num down">▼74%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">love_atj</td>
+    <td>星世纪</td>
+    <td class="num">239,451</td>
+    <td class="num">108,297</td>
+    <td class="num down">▼55%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr><tr class="q-sev">
+    <td class="name">trockmane</td>
+    <td>信仰娛樂</td>
+    <td class="num">277,596</td>
+    <td class="num">0</td>
+    <td class="num down">▼100%</td>
+    <td class="num"><b>20 天前</b></td>
+    <td><span class="qtag q-t1">7月高價·8月掉速</span></td>
+  </tr></tbody></table></div>
   </div>
 </div>
 
